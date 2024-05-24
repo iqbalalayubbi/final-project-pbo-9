@@ -31,23 +31,137 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        card1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        request_title = new javax.swing.JLabel();
+        card = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        send_title = new javax.swing.JLabel();
+        card2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        product_title = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        trancsaction_table = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 600));
         setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1162, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
-        );
+        jTabbedPane2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel4.setBackground(new java.awt.Color(238, 238, 238));
+        jPanel4.setMaximumSize(new java.awt.Dimension(32767, 200));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1270, 200));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 50));
+
+        card1.setBackground(new java.awt.Color(255, 255, 255));
+        card1.setMaximumSize(new java.awt.Dimension(200, 32767));
+        card1.setMinimumSize(new java.awt.Dimension(200, 56));
+        card1.setPreferredSize(new java.awt.Dimension(200, 100));
+        card1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 173, 181));
+        jLabel5.setText("300");
+        jLabel5.setPreferredSize(new java.awt.Dimension(100, 18));
+        card1.add(jLabel5);
+
+        request_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        request_title.setForeground(new java.awt.Color(57, 62, 70));
+        request_title.setText("Permintaan");
+        request_title.setPreferredSize(new java.awt.Dimension(100, 18));
+        card1.add(request_title);
+
+        jPanel4.add(card1);
+
+        card.setBackground(new java.awt.Color(255, 255, 255));
+        card.setMaximumSize(new java.awt.Dimension(200, 32767));
+        card.setMinimumSize(new java.awt.Dimension(200, 56));
+        card.setPreferredSize(new java.awt.Dimension(200, 100));
+        card.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 173, 181));
+        jLabel3.setText("250");
+        jLabel3.setPreferredSize(new java.awt.Dimension(100, 18));
+        card.add(jLabel3);
+
+        send_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        send_title.setForeground(new java.awt.Color(57, 62, 70));
+        send_title.setText("Terkirim");
+        send_title.setPreferredSize(new java.awt.Dimension(100, 18));
+        card.add(send_title);
+
+        jPanel4.add(card);
+
+        card2.setBackground(new java.awt.Color(255, 255, 255));
+        card2.setMaximumSize(new java.awt.Dimension(200, 32767));
+        card2.setMinimumSize(new java.awt.Dimension(200, 56));
+        card2.setPreferredSize(new java.awt.Dimension(200, 100));
+        card2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 173, 181));
+        jLabel7.setText("500");
+        jLabel7.setPreferredSize(new java.awt.Dimension(100, 18));
+        card2.add(jLabel7);
+
+        product_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        product_title.setForeground(new java.awt.Color(57, 62, 70));
+        product_title.setText("Barang");
+        product_title.setPreferredSize(new java.awt.Dimension(100, 18));
+        card2.add(product_title);
+
+        jPanel4.add(card2);
+
+        jPanel6.add(jPanel4);
+
+        jScrollPane1.setForeground(new java.awt.Color(153, 0, 255));
+
+        trancsaction_table.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        trancsaction_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "No", "Tanggal", "Kode Pesanan", "Pelanggan", "Total Pesanan", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        trancsaction_table.setRowHeight(25);
+        jScrollPane1.setViewportView(trancsaction_table);
+        if (trancsaction_table.getColumnModel().getColumnCount() > 0) {
+            trancsaction_table.getColumnModel().getColumn(0).setResizable(false);
+            trancsaction_table.getColumnModel().getColumn(0).setPreferredWidth(20);
+            trancsaction_table.getColumnModel().getColumn(1).setResizable(false);
+            trancsaction_table.getColumnModel().getColumn(2).setResizable(false);
+            trancsaction_table.getColumnModel().getColumn(3).setPreferredWidth(100);
+            trancsaction_table.getColumnModel().getColumn(4).setResizable(false);
+            trancsaction_table.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jPanel6.add(jScrollPane1);
 
         jTabbedPane2.addTab("Dashboard", jPanel6);
 
@@ -55,14 +169,40 @@ public class DashboardUI extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1162, Short.MAX_VALUE)
+            .addGap(0, 1170, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGap(0, 748, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("tab2", jPanel7);
+        jTabbedPane2.addTab("Permintaan", jPanel7);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1170, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 748, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Persediaan", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1170, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 748, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Pengiriman", jPanel2);
 
         getContentPane().add(jTabbedPane2, "card2");
 
@@ -72,8 +212,22 @@ public class DashboardUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel card;
+    private javax.swing.JPanel card1;
+    private javax.swing.JPanel card2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel product_title;
+    private javax.swing.JLabel request_title;
+    private javax.swing.JLabel send_title;
+    private javax.swing.JTable trancsaction_table;
     // End of variables declaration//GEN-END:variables
 }
