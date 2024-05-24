@@ -13,7 +13,8 @@ public class WindowStateManager {
 
     public static void main(String[] args){
         WindowStateManager windowManager = new WindowStateManager();
-        windowManager.showLoginForm();
+//        windowManager.showLoginForm();
+        windowManager.showDashboardUI();
     }
     
     // Fungsi untuk menampilkan loginForm
@@ -48,3 +49,4 @@ public class WindowStateManager {
         dashboardUI.setVisible(true);
     }
 }
+
