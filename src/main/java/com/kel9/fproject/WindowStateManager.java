@@ -15,6 +15,7 @@ public class WindowStateManager {
         WindowStateManager windowManager = new WindowStateManager();
 //        windowManager.showLoginForm();
         windowManager.showDashboardUI();
+        DatabaseConnect.getConnection();
     }
     
     // Fungsi untuk menampilkan loginForm
