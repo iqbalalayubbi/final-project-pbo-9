@@ -1,0 +1,6 @@
+// Buat dulu user dan database khusus di phpMyAdmin 
+// lalu taruh credentials database mysql kamu disini
+
+db.url=jdbc:mariadb://localhost:3306/yourDatabaseName
+db.user=yourUsername
+db.password=yourPassword
