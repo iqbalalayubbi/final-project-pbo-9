@@ -1,3 +1,4 @@
 target/
+src/main/resources/db.properties
 Test.form
 Test.java
