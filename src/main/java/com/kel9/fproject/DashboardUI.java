@@ -28,6 +28,7 @@ public class DashboardUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -51,9 +52,28 @@ public class DashboardUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pengiriman = new javax.swing.JPanel();
+        addnew = new javax.swing.JPanel();
+        kirim1 = new java.awt.Label();
+        text1 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        kirim2 = new java.awt.Label();
+        text2 = new javax.swing.JTextField();
+        kirim3 = new java.awt.Label();
+        text3 = new javax.swing.JTextField();
+        kirim4 = new java.awt.Label();
+        kirim5 = new java.awt.Label();
+        text5 = new javax.swing.JTextField();
+        kirim6 = new java.awt.Label();
+        text6 = new javax.swing.JTextField();
+        title = new java.awt.Label();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        listitem = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UPN Warehouse Management");
         getContentPane().setLayout(new java.awt.CardLayout());
 
         jTabbedPane2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
@@ -244,18 +264,146 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Persediaan", jPanel1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1182, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 748, Short.MAX_VALUE)
-        );
+        pengiriman.setLayout(new javax.swing.BoxLayout(pengiriman, javax.swing.BoxLayout.Y_AXIS));
 
-        jTabbedPane2.addTab("Pengiriman", jPanel2);
+        addnew.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addnew.setMaximumSize(new java.awt.Dimension(32767, 120));
+        addnew.setMinimumSize(new java.awt.Dimension(379, 20));
+        addnew.setPreferredSize(new java.awt.Dimension(1182, 400));
+        addnew.setLayout(new java.awt.GridBagLayout());
+
+        kirim1.setText("Pelanggan");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(kirim1, gridBagConstraints);
+
+        text1.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(text1, gridBagConstraints);
+
+        jButton4.setText("TAMBAH");
+        jButton4.setAlignmentX(0.5F);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(jButton4, gridBagConstraints);
+
+        kirim2.setText("Jenis Produk");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(kirim2, gridBagConstraints);
+
+        text2.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(text2, gridBagConstraints);
+
+        kirim3.setText("Biaya Pengiriman");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(kirim3, gridBagConstraints);
+
+        text3.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(text3, gridBagConstraints);
+
+        kirim4.setText("Jenis Pengiriman");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(kirim4, gridBagConstraints);
+
+        kirim5.setText("Tanggal Pengiriman");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(kirim5, gridBagConstraints);
+
+        text5.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(text5, gridBagConstraints);
+
+        kirim6.setText("Kode Pemesanan");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(kirim6, gridBagConstraints);
+
+        text6.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(text6, gridBagConstraints);
+
+        title.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        title.setText("Tambah Data Pengiriman Baru");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(title, gridBagConstraints);
+        title.getAccessibleContext().setAccessibleName("");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(300, 30));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(jComboBox1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
+        addnew.add(filler2, gridBagConstraints);
+
+        pengiriman.add(addnew);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Kode Pemesanan", "Pelanggan", "Jenis Produk", "Biaya Kirim", "Jasa Kirim", "Tanggal Kirim"
+            }
+        ));
+        listitem.setViewportView(jTable2);
+
+        pengiriman.add(listitem);
+
+        jTabbedPane2.addTab("Pengiriman", pengiriman);
 
         getContentPane().add(jTabbedPane2, "card2");
 
@@ -267,18 +415,25 @@ public class DashboardUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addnew;
     private javax.swing.JPanel card;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel card2;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
@@ -287,10 +442,25 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private java.awt.Label kirim1;
+    private java.awt.Label kirim2;
+    private java.awt.Label kirim3;
+    private java.awt.Label kirim4;
+    private java.awt.Label kirim5;
+    private java.awt.Label kirim6;
+    private javax.swing.JScrollPane listitem;
+    private javax.swing.JPanel pengiriman;
     private javax.swing.JLabel product_title;
     private javax.swing.JLabel request_title;
     private javax.swing.JLabel send_title;
+    private javax.swing.JTextField text1;
+    private javax.swing.JTextField text2;
+    private javax.swing.JTextField text3;
+    private javax.swing.JTextField text5;
+    private javax.swing.JTextField text6;
+    private java.awt.Label title;
     private javax.swing.JTable trancsaction_table;
     // End of variables declaration//GEN-END:variables
 }
