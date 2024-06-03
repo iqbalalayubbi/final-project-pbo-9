@@ -43,7 +43,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         product_title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        trancsaction_table = new javax.swing.JTable();
+        transaction_table = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -149,8 +149,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jScrollPane1.setForeground(new java.awt.Color(153, 0, 255));
 
-        trancsaction_table.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        trancsaction_table.setModel(new javax.swing.table.DefaultTableModel(
+        transaction_table.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        transaction_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null}
             },
@@ -173,16 +173,16 @@ public class DashboardUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        trancsaction_table.setRowHeight(25);
-        jScrollPane1.setViewportView(trancsaction_table);
-        if (trancsaction_table.getColumnModel().getColumnCount() > 0) {
-            trancsaction_table.getColumnModel().getColumn(0).setResizable(false);
-            trancsaction_table.getColumnModel().getColumn(0).setPreferredWidth(20);
-            trancsaction_table.getColumnModel().getColumn(1).setResizable(false);
-            trancsaction_table.getColumnModel().getColumn(2).setResizable(false);
-            trancsaction_table.getColumnModel().getColumn(3).setPreferredWidth(100);
-            trancsaction_table.getColumnModel().getColumn(4).setResizable(false);
-            trancsaction_table.getColumnModel().getColumn(5).setResizable(false);
+        transaction_table.setRowHeight(25);
+        jScrollPane1.setViewportView(transaction_table);
+        if (transaction_table.getColumnModel().getColumnCount() > 0) {
+            transaction_table.getColumnModel().getColumn(0).setResizable(false);
+            transaction_table.getColumnModel().getColumn(0).setPreferredWidth(20);
+            transaction_table.getColumnModel().getColumn(1).setResizable(false);
+            transaction_table.getColumnModel().getColumn(2).setResizable(false);
+            transaction_table.getColumnModel().getColumn(3).setPreferredWidth(100);
+            transaction_table.getColumnModel().getColumn(4).setResizable(false);
+            transaction_table.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel6.add(jScrollPane1);
@@ -396,7 +396,7 @@ public class DashboardUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Pemesanan", "Pelanggan", "Jenis Produk", "Biaya Kirim", "Jasa Kirim", "Tanggal Kirim"
+                "No", "Kode Pemesanan", "Pelanggan", "Jenis Produk", "Biaya Kirim", "Jasa Kirim", "Tanggal Kirim"
             }
         ));
         listitem.setViewportView(jTable2);
@@ -461,6 +461,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JTextField text5;
     private javax.swing.JTextField text6;
     private java.awt.Label title;
-    private javax.swing.JTable trancsaction_table;
+    private javax.swing.JTable transaction_table;
     // End of variables declaration//GEN-END:variables
 }
