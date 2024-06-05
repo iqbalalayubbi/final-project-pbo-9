@@ -13,7 +13,7 @@ public class Permintaan extends javax.swing.JFrame {
     /**
      * Creates new form Permintaan
      */
-    public Permintaan() {
+    public Permintaan() {        
         initComponents();
     }
 
