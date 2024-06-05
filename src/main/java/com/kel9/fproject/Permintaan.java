@@ -27,21 +27,42 @@ public class Permintaan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        gap1 = new javax.swing.JSeparator();
+        title_container = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        code_input = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        gap2 = new javax.swing.JSeparator();
+        jTextField1 = new javax.swing.JTextField();
+        gap6 = new javax.swing.JSeparator();
+        code_input1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        gap3 = new javax.swing.JSeparator();
         jTextField2 = new javax.swing.JTextField();
+        gap7 = new javax.swing.JSeparator();
+        code_input2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        gap4 = new javax.swing.JSeparator();
         jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        gap8 = new javax.swing.JSeparator();
+        code_input3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        gap5 = new javax.swing.JSeparator();
         jComboBox1 = new javax.swing.JComboBox<>();
+        gap9 = new javax.swing.JSeparator();
+        code_input4 = new javax.swing.JPanel();
+        add_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 209));
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+
+        gap1.setMaximumSize(new java.awt.Dimension(32767, 100));
+        gap1.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap1);
+
+        title_container.setMaximumSize(new java.awt.Dimension(32767, 100));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 173, 181));
@@ -49,121 +70,138 @@ public class Permintaan extends javax.swing.JFrame {
         jLabel1.setText("PERMINTAAN");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        title_container.add(jLabel1);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Tanggal Pemesanan");
+        jPanel1.add(title_container);
 
+        code_input.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input.setLayout(new javax.swing.BoxLayout(code_input, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Kode Pemesanan");
+        code_input.add(jLabel3);
+
+        gap2.setPreferredSize(new java.awt.Dimension(50, 20));
+        gap2.setRequestFocusEnabled(false);
+        code_input.add(gap2);
+
+        jTextField1.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jTextField1.setMinimumSize(new java.awt.Dimension(300, 24));
+        jTextField1.setPreferredSize(new java.awt.Dimension(300, 20));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        code_input.add(jTextField1);
 
-        jButton1.setText("Tambah");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel1.add(code_input);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Kode Pemesanan");
+        gap6.setMaximumSize(new java.awt.Dimension(32767, 30));
+        gap6.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap6);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Jenis Produk");
+        code_input1.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input1.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input1.setLayout(new javax.swing.BoxLayout(code_input1, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Jumlah Pemesanan");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Tanggal Pemesanan");
+        code_input1.add(jLabel7);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Status Pemesanan");
+        gap3.setPreferredSize(new java.awt.Dimension(50, 20));
+        gap3.setRequestFocusEnabled(false);
+        code_input1.add(gap3);
 
+        jTextField2.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jTextField2.setMinimumSize(new java.awt.Dimension(300, 24));
+        jTextField2.setPreferredSize(new java.awt.Dimension(300, 20));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
+        code_input1.add(jTextField2);
 
+        jPanel1.add(code_input1);
+
+        gap7.setMaximumSize(new java.awt.Dimension(32767, 30));
+        gap7.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap7);
+
+        code_input2.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input2.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input2.setLayout(new javax.swing.BoxLayout(code_input2, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Jumlah Pemesanan");
+        code_input2.add(jLabel8);
+
+        gap4.setPreferredSize(new java.awt.Dimension(50, 20));
+        gap4.setRequestFocusEnabled(false);
+        code_input2.add(gap4);
+
+        jTextField3.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jTextField3.setMinimumSize(new java.awt.Dimension(300, 24));
+        jTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
+        code_input2.add(jTextField3);
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        jPanel1.add(code_input2);
+
+        gap8.setMaximumSize(new java.awt.Dimension(32767, 30));
+        gap8.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap8);
+
+        code_input3.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input3.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input3.setLayout(new javax.swing.BoxLayout(code_input3, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Status Pemesanan");
+        code_input3.add(jLabel9);
+
+        gap5.setPreferredSize(new java.awt.Dimension(50, 20));
+        gap5.setRequestFocusEnabled(false);
+        code_input3.add(gap5);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diajukan", "Selesai", "Dibatalkan" }));
+        jComboBox1.setLightWeightPopupEnabled(false);
+        jComboBox1.setMaximumSize(new java.awt.Dimension(300, 32767));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(300, 24));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        code_input3.add(jComboBox1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(341, 341, 341))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 108, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(64, 64, 64)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(208, 208, 208))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(316, Short.MAX_VALUE))
-        );
+        jPanel1.add(code_input3);
+
+        gap9.setMaximumSize(new java.awt.Dimension(32767, 30));
+        gap9.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap9);
+
+        code_input4.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input4.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input4.setLayout(new java.awt.CardLayout());
+
+        add_btn.setText("Tambah");
+        add_btn.setMaximumSize(new java.awt.Dimension(200, 50));
+        add_btn.setPreferredSize(new java.awt.Dimension(100, 24));
+        add_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_btnActionPerformed(evt);
+            }
+        });
+        code_input4.add(add_btn, "card2");
+
+        jPanel1.add(code_input4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,20 +216,24 @@ public class Permintaan extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_add_btnActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -200,14 +242,6 @@ public class Permintaan extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,18 +279,31 @@ public class Permintaan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton add_btn;
+    private javax.swing.JPanel code_input;
+    private javax.swing.JPanel code_input1;
+    private javax.swing.JPanel code_input2;
+    private javax.swing.JPanel code_input3;
+    private javax.swing.JPanel code_input4;
+    private javax.swing.JSeparator gap1;
+    private javax.swing.JSeparator gap2;
+    private javax.swing.JSeparator gap3;
+    private javax.swing.JSeparator gap4;
+    private javax.swing.JSeparator gap5;
+    private javax.swing.JSeparator gap6;
+    private javax.swing.JSeparator gap7;
+    private javax.swing.JSeparator gap8;
+    private javax.swing.JSeparator gap9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JPanel title_container;
     // End of variables declaration//GEN-END:variables
 }
