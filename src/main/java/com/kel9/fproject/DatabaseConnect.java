@@ -12,6 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 
 public class DatabaseConnect {
     private static String URL;
@@ -70,5 +74,44 @@ public class DatabaseConnect {
             System.out.println("VendorError: " + e.getErrorCode());
             return false;
         }
+    }
+    
+    public static DefaultTableModel populatePengirimanTable() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("No");
+        model.addColumn("Kode Pemesanan");
+        model.addColumn("Pelanggan");
+        model.addColumn("Jenis Produk");
+        model.addColumn("Biaya Kirim");
+        model.addColumn("Jasa Kirim");
+        model.addColumn("Tanggal Kirim");
+
+        // SQL query to select all records from the pengiriman table
+        String query = "SELECT * FROM pengiriman";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getInt("nomor"));
+                row.add(rs.getString("kode_pemesanan"));
+                row.add(rs.getString("pelanggan"));
+                row.add(rs.getString("jenis_produk"));
+                row.add(rs.getDouble("biaya_kirim"));
+                row.add(rs.getString("jasa_kirim"));
+                row.add(rs.getDate("tanggal_kirim"));
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
     }
 }

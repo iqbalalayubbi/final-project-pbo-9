@@ -70,7 +70,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         listitem = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table_pengiriman = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UPN Warehouse Management");
@@ -290,6 +290,11 @@ public class DashboardUI extends javax.swing.JFrame {
         jButton4.setAlignmentX(0.5F);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -388,18 +393,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         pengiriman.add(addnew);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "No", "Kode Pemesanan", "Pelanggan", "Jenis Produk", "Biaya Kirim", "Jasa Kirim", "Tanggal Kirim"
-            }
-        ));
-        listitem.setViewportView(jTable2);
+        table_pengiriman.setModel(DatabaseConnect.populatePengirimanTable());
+        listitem.setViewportView(table_pengiriman);
 
         pengiriman.add(listitem);
 
@@ -442,7 +437,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private java.awt.Label kirim1;
     private java.awt.Label kirim2;
@@ -455,6 +449,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JLabel product_title;
     private javax.swing.JLabel request_title;
     private javax.swing.JLabel send_title;
+    private javax.swing.JTable table_pengiriman;
     private javax.swing.JTextField text1;
     private javax.swing.JTextField text2;
     private javax.swing.JTextField text3;
