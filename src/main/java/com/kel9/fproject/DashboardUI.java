@@ -39,7 +39,7 @@ public class DashboardUI extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel6 = new javax.swing.JPanel();
+        dashboard = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         card1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -52,14 +52,14 @@ public class DashboardUI extends javax.swing.JFrame {
         product_title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         transaction_table = new javax.swing.JTable();
-        jPanel7 = new javax.swing.JPanel();
+        require = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btn_add = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        supply = new javax.swing.JPanel();
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
         kirim1 = new java.awt.Label();
@@ -86,7 +86,7 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
 
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.Y_AXIS));
+        dashboard.setLayout(new javax.swing.BoxLayout(dashboard, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel4.setBackground(new java.awt.Color(238, 238, 238));
         jPanel4.setMaximumSize(new java.awt.Dimension(32767, 200));
@@ -153,7 +153,7 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jPanel4.add(card2);
 
-        jPanel6.add(jPanel4);
+        dashboard.add(jPanel4);
 
         jScrollPane1.setForeground(new java.awt.Color(153, 0, 255));
 
@@ -193,11 +193,11 @@ public class DashboardUI extends javax.swing.JFrame {
             transaction_table.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        jPanel6.add(jScrollPane1);
+        dashboard.add(jScrollPane1);
 
-        jTabbedPane2.addTab("Dashboard", jPanel6);
+        jTabbedPane2.addTab("Dashboard", dashboard);
 
-        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.Y_AXIS));
+        require.setLayout(new javax.swing.BoxLayout(require, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel3.setMaximumSize(new java.awt.Dimension(32767, 120));
         jPanel3.setMinimumSize(new java.awt.Dimension(379, 20));
@@ -220,7 +220,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jButton1.setPreferredSize(new java.awt.Dimension(72, 40));
         jPanel3.add(jButton1);
 
-        jPanel7.add(jPanel3);
+        require.add(jPanel3);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,22 +255,22 @@ public class DashboardUI extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel7.add(jScrollPane2);
+        require.add(jScrollPane2);
 
-        jTabbedPane2.addTab("Permintaan", jPanel7);
+        jTabbedPane2.addTab("Permintaan", require);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout supplyLayout = new javax.swing.GroupLayout(supply);
+        supply.setLayout(supplyLayout);
+        supplyLayout.setHorizontalGroup(
+            supplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1182, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        supplyLayout.setVerticalGroup(
+            supplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 748, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Persediaan", jPanel1);
+        jTabbedPane2.addTab("Persediaan", supply);
 
         pengiriman.setLayout(new javax.swing.BoxLayout(pengiriman, javax.swing.BoxLayout.Y_AXIS));
 
@@ -408,6 +408,217 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Pengiriman", pengiriman);
 
+        setting.setLayout(new javax.swing.BoxLayout(setting, javax.swing.BoxLayout.Y_AXIS));
+
+        jSeparator1.setMaximumSize(new java.awt.Dimension(32767, 100));
+        jSeparator1.setMinimumSize(new java.awt.Dimension(0, 100));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 50));
+        setting.add(jSeparator1);
+
+        title_container.setMaximumSize(new java.awt.Dimension(32767, 100));
+        title_container.setPreferredSize(new java.awt.Dimension(1182, 100));
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 173, 181));
+        jLabel1.setText("Pengaturan");
+        title_container.add(jLabel1);
+
+        setting.add(title_container);
+
+        company_data.setMaximumSize(new java.awt.Dimension(700, 50));
+        company_data.setPreferredSize(new java.awt.Dimension(1182, 200));
+        company_data.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel9.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel9.setText("Data Perusahaan");
+        company_data.add(jLabel9);
+
+        setting.add(company_data);
+
+        company_name.setMaximumSize(new java.awt.Dimension(700, 50));
+        company_name.setMinimumSize(new java.awt.Dimension(110, 50));
+        company_name.setPreferredSize(new java.awt.Dimension(1182, 50));
+        company_name.setLayout(new javax.swing.BoxLayout(company_name, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel2.setText("Nama Perusahaan");
+        jLabel2.setMaximumSize(new java.awt.Dimension(200, 26));
+        jLabel2.setMinimumSize(new java.awt.Dimension(200, 26));
+        jLabel2.setPreferredSize(new java.awt.Dimension(200, 26));
+        company_name.add(jLabel2);
+
+        jSeparator2.setForeground(new java.awt.Color(242, 242, 242));
+        jSeparator2.setMaximumSize(new java.awt.Dimension(200, 32767));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(200, 10));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(100, 10));
+        company_name.add(jSeparator2);
+
+        jTextField2.setEditable(false);
+        jTextField2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jTextField2.setText("PT. Pencari Berkah");
+        jTextField2.setMaximumSize(new java.awt.Dimension(500, 2147483647));
+        jTextField2.setMinimumSize(new java.awt.Dimension(500, 24));
+        jTextField2.setPreferredSize(new java.awt.Dimension(300, 24));
+        company_name.add(jTextField2);
+
+        setting.add(company_name);
+
+        company_address.setMaximumSize(new java.awt.Dimension(700, 50));
+        company_address.setMinimumSize(new java.awt.Dimension(110, 50));
+        company_address.setPreferredSize(new java.awt.Dimension(1182, 50));
+        company_address.setLayout(new javax.swing.BoxLayout(company_address, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel4.setText("Alamat");
+        jLabel4.setMaximumSize(new java.awt.Dimension(200, 26));
+        jLabel4.setMinimumSize(new java.awt.Dimension(200, 26));
+        jLabel4.setPreferredSize(new java.awt.Dimension(200, 26));
+        company_address.add(jLabel4);
+
+        jSeparator4.setForeground(new java.awt.Color(242, 242, 242));
+        jSeparator4.setMaximumSize(new java.awt.Dimension(200, 32767));
+        jSeparator4.setMinimumSize(new java.awt.Dimension(200, 10));
+        jSeparator4.setPreferredSize(new java.awt.Dimension(100, 10));
+        company_address.add(jSeparator4);
+
+        jTextField4.setEditable(false);
+        jTextField4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jTextField4.setText("Jl. Kemarau panjang No.2");
+        jTextField4.setMaximumSize(new java.awt.Dimension(500, 2147483647));
+        jTextField4.setMinimumSize(new java.awt.Dimension(500, 24));
+        jTextField4.setPreferredSize(new java.awt.Dimension(300, 24));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        company_address.add(jTextField4);
+
+        setting.add(company_address);
+
+        company_number.setMaximumSize(new java.awt.Dimension(700, 50));
+        company_number.setMinimumSize(new java.awt.Dimension(110, 50));
+        company_number.setPreferredSize(new java.awt.Dimension(1182, 50));
+        company_number.setLayout(new javax.swing.BoxLayout(company_number, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel6.setText("No. Telp");
+        jLabel6.setMaximumSize(new java.awt.Dimension(200, 26));
+        jLabel6.setMinimumSize(new java.awt.Dimension(200, 26));
+        jLabel6.setPreferredSize(new java.awt.Dimension(200, 26));
+        company_number.add(jLabel6);
+
+        jSeparator5.setForeground(new java.awt.Color(242, 242, 242));
+        jSeparator5.setMaximumSize(new java.awt.Dimension(200, 32767));
+        jSeparator5.setMinimumSize(new java.awt.Dimension(200, 10));
+        jSeparator5.setPreferredSize(new java.awt.Dimension(100, 10));
+        company_number.add(jSeparator5);
+
+        jTextField5.setEditable(false);
+        jTextField5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jTextField5.setText("082271449714");
+        jTextField5.setMaximumSize(new java.awt.Dimension(500, 2147483647));
+        jTextField5.setMinimumSize(new java.awt.Dimension(500, 24));
+        jTextField5.setPreferredSize(new java.awt.Dimension(300, 24));
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        company_number.add(jTextField5);
+
+        setting.add(company_number);
+
+        company_email.setMaximumSize(new java.awt.Dimension(700, 50));
+        company_email.setMinimumSize(new java.awt.Dimension(110, 50));
+        company_email.setPreferredSize(new java.awt.Dimension(1182, 50));
+        company_email.setLayout(new javax.swing.BoxLayout(company_email, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel8.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel8.setText("Email");
+        jLabel8.setMaximumSize(new java.awt.Dimension(200, 26));
+        jLabel8.setMinimumSize(new java.awt.Dimension(200, 26));
+        jLabel8.setPreferredSize(new java.awt.Dimension(200, 26));
+        company_email.add(jLabel8);
+
+        jSeparator6.setForeground(new java.awt.Color(242, 242, 242));
+        jSeparator6.setMaximumSize(new java.awt.Dimension(200, 32767));
+        jSeparator6.setMinimumSize(new java.awt.Dimension(200, 10));
+        jSeparator6.setPreferredSize(new java.awt.Dimension(100, 10));
+        company_email.add(jSeparator6);
+
+        jTextField6.setEditable(false);
+        jTextField6.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jTextField6.setText("pencariberkah123@gmail.com");
+        jTextField6.setMaximumSize(new java.awt.Dimension(500, 2147483647));
+        jTextField6.setMinimumSize(new java.awt.Dimension(500, 24));
+        jTextField6.setPreferredSize(new java.awt.Dimension(300, 24));
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        company_email.add(jTextField6);
+
+        setting.add(company_email);
+
+        company_email1.setMaximumSize(new java.awt.Dimension(700, 50));
+        company_email1.setMinimumSize(new java.awt.Dimension(110, 50));
+        company_email1.setPreferredSize(new java.awt.Dimension(1182, 50));
+        company_email1.setLayout(new javax.swing.BoxLayout(company_email1, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel10.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel10.setText("Website");
+        jLabel10.setMaximumSize(new java.awt.Dimension(200, 26));
+        jLabel10.setMinimumSize(new java.awt.Dimension(200, 26));
+        jLabel10.setPreferredSize(new java.awt.Dimension(200, 26));
+        company_email1.add(jLabel10);
+
+        jSeparator7.setForeground(new java.awt.Color(242, 242, 242));
+        jSeparator7.setMaximumSize(new java.awt.Dimension(200, 32767));
+        jSeparator7.setMinimumSize(new java.awt.Dimension(200, 10));
+        jSeparator7.setPreferredSize(new java.awt.Dimension(100, 10));
+        company_email1.add(jSeparator7);
+
+        jTextField7.setEditable(false);
+        jTextField7.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jTextField7.setText("www.pencariberkah.com");
+        jTextField7.setMaximumSize(new java.awt.Dimension(500, 2147483647));
+        jTextField7.setMinimumSize(new java.awt.Dimension(500, 24));
+        jTextField7.setPreferredSize(new java.awt.Dimension(300, 24));
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
+        company_email1.add(jTextField7);
+
+        setting.add(company_email1);
+
+        button_container.setMaximumSize(new java.awt.Dimension(700, 80));
+        button_container.setPreferredSize(new java.awt.Dimension(700, 100));
+        button_container.setLayout(new java.awt.BorderLayout());
+
+        jSeparator3.setForeground(new java.awt.Color(242, 242, 242));
+        jSeparator3.setMaximumSize(new java.awt.Dimension(32767, 50));
+        jSeparator3.setMinimumSize(new java.awt.Dimension(50, 50));
+        jSeparator3.setPreferredSize(new java.awt.Dimension(50, 30));
+        button_container.add(jSeparator3, java.awt.BorderLayout.PAGE_START);
+
+        btn_logout.setBackground(new java.awt.Color(255, 51, 51));
+        btn_logout.setForeground(new java.awt.Color(255, 255, 255));
+        btn_logout.setText("Keluar");
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        button_container.add(btn_logout, java.awt.BorderLayout.CENTER);
+
+        setting.add(button_container);
+
+        jTabbedPane2.addTab("Setting", setting);
+
         getContentPane().add(jTabbedPane2, "card2");
 
         pack();
@@ -426,30 +637,78 @@ public class DashboardUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.windowManager.showLoginForm();
+
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addnew;
     private javax.swing.JButton btn_add;
+    private javax.swing.JButton btn_logout;
+    private javax.swing.JPanel button_container;
     private javax.swing.JPanel card;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel card2;
+    private javax.swing.JPanel company_address;
+    private javax.swing.JPanel company_data;
+    private javax.swing.JPanel company_email;
+    private javax.swing.JPanel company_email1;
+    private javax.swing.JPanel company_name;
+    private javax.swing.JPanel company_number;
+    private javax.swing.JPanel dashboard;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private java.awt.Label kirim1;
     private java.awt.Label kirim2;
     private java.awt.Label kirim3;
@@ -460,14 +719,18 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel pengiriman;
     private javax.swing.JLabel product_title;
     private javax.swing.JLabel request_title;
+    private javax.swing.JPanel require;
     private javax.swing.JLabel send_title;
     private javax.swing.JTable table_pengiriman;
+    private javax.swing.JPanel setting;
+    private javax.swing.JPanel supply;
     private javax.swing.JTextField text1;
     private javax.swing.JTextField text2;
     private javax.swing.JTextField text3;
     private javax.swing.JTextField text5;
     private javax.swing.JTextField text6;
     private java.awt.Label title;
+    private javax.swing.JPanel title_container;
     private javax.swing.JTable transaction_table;
     // End of variables declaration//GEN-END:variables
 }
