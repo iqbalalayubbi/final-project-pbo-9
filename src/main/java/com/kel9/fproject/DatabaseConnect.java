@@ -114,4 +114,21 @@ public class DatabaseConnect {
 
         return model;
     }
+    
+    public static boolean authenticate(String username, String password) {
+        String query = "SELECT * FROM data_user WHERE username = ? AND password = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            return false;
+        }
+    }
 }
