@@ -114,4 +114,69 @@ public class DatabaseConnect {
 
         return model;
     }
+    
+    public static DefaultTableModel populatePermintaanTable() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("No");
+        model.addColumn("Kode Pemesanan");
+        model.addColumn("Tanggal Pemesanan");
+        model.addColumn("Jenis Produk");
+        model.addColumn("Pelanggan");
+        model.addColumn("Jumlah Pesanan");
+        model.addColumn("Status Pemesanan");
+
+        // SQL query to select all records from the permintaan table
+        String query = "SELECT * FROM permintaan";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getInt("nomor"));
+                row.add(rs.getString("kode_pemesanan"));
+                row.add(rs.getDate("tanggal_pemesanan"));
+                row.add(rs.getString("jenis_produk"));
+                row.add(rs.getString("pelanggan"));
+                row.add(rs.getInt("jumlah_pesanan"));
+                row.add(rs.getString("status_pemesanan"));
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
+    }
+    
+    public static boolean insertPengirimanRecord(String kodePemesanan, String pelanggan, String jenisProduk, String biayaKirim, String jasaKirim, String tanggalKirim) {
+        String query = "INSERT INTO pengiriman (kode_pemesanan, pelanggan, jenis_produk, biaya_kirim, jasa_kirim, tanggal_kirim) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, kodePemesanan);
+            pstmt.setString(2, pelanggan);
+            pstmt.setString(3, jenisProduk);
+            pstmt.setString(4, biayaKirim);
+            pstmt.setString(5, jasaKirim);
+            pstmt.setString(6, tanggalKirim);
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("A new record has been inserted into the pengiriman table.");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to insert data into the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
 }
