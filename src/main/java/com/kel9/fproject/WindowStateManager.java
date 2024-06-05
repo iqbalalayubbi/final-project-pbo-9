@@ -13,7 +13,7 @@ public class WindowStateManager {
 
     public static void main(String[] args){
         WindowStateManager windowManager = new WindowStateManager();
-//        windowManager.showLoginForm();
+        // windowManager.showLoginForm();
         windowManager.showLoginForm();
         DatabaseConnect.getConnection();
     }
