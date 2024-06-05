@@ -425,17 +425,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         pengiriman.add(addnew);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "No", "Kode Pemesanan", "Pelanggan", "Jenis Produk", "Biaya Kirim", "Jasa Kirim", "Tanggal Kirim"
-            }
-        ));
+        jTable2.setModel(DatabaseConnect.populatePengirimanTable()
+        );
         listitem.setViewportView(jTable2);
 
         pengiriman.add(listitem);
