@@ -8,8 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 
 public class DatabaseConnect {
     private static String URL;
@@ -51,5 +57,22 @@ public class DatabaseConnect {
             System.out.println("Connection failed!");
         }
         return connection;
+    }
+    
+    public static boolean authenticate(String username, String password) {
+        String query = "SELECT * FROM data_user WHERE username = ? AND password = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            return false;
+        }
     }
 }
