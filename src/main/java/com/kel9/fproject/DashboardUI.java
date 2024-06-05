@@ -722,6 +722,8 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel require;
     private javax.swing.JLabel send_title;
     private javax.swing.JTable table_pengiriman;
+    private javax.swing.JPanel setting;
+    private javax.swing.JPanel supply;
     private javax.swing.JTextField text1;
     private javax.swing.JTextField text2;
     private javax.swing.JTextField text3;
