@@ -14,7 +14,7 @@ public class WindowStateManager {
     public static void main(String[] args){
         WindowStateManager windowManager = new WindowStateManager();
 //        windowManager.showLoginForm();
-        windowManager.showDashboardUI();
+        windowManager.showLoginForm();
         DatabaseConnect.getConnection();
     }
     
@@ -49,5 +49,6 @@ public class WindowStateManager {
         // Tampilkan dashboardUI
         dashboardUI.setVisible(true);
     }
+    
 }
 

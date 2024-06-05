@@ -11,6 +11,8 @@ package com.kel9.fproject;
 public class LoginForm extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
     private String username = "";
+    private String pword;
+    private String uname;
     /**
      * Creates new form LoginForm
      * @param windowManager
@@ -19,7 +21,10 @@ public class LoginForm extends javax.swing.JFrame {
         this.windowManager = windowManager;
         initComponents();               
     }
-
+    private static final String DEFAULT_USERNAME_TEXT = "Username";
+    private static final String DEFAULT_PASSWORD_TEXT = "Password";
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +92,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
 
         username_input.setForeground(new java.awt.Color(153, 153, 153));
-        username_input.setText("Username");
+        username_input.setText(DEFAULT_USERNAME_TEXT);
         username_input.setPreferredSize(new java.awt.Dimension(300, 40));
         username_input.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -95,6 +100,11 @@ public class LoginForm extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 lostFocusUsername(evt);
+            }
+        });
+        username_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                username_inputActionPerformed(evt);
             }
         });
         username_input.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -105,14 +115,32 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.add(username_input);
 
         password_input.setForeground(new java.awt.Color(153, 153, 153));
-        password_input.setText("Password");
+        password_input.setText(DEFAULT_PASSWORD_TEXT);
         password_input.setPreferredSize(new java.awt.Dimension(300, 40));
+        password_input.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                password_inputFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                password_inputFocusLost(evt);
+            }
+        });
+        password_input.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                password_inputKeyTyped(evt);
+            }
+        });
         jPanel2.add(password_input);
 
         jButton1.setBackground(new java.awt.Color(0, 173, 181));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
         jButton1.setPreferredSize(new java.awt.Dimension(300, 40));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         getContentPane().add(jPanel2);
@@ -121,29 +149,82 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void focusPassword(java.awt.event.FocusEvent evt) {
+        if (new String(password_input.getPassword()).equals(DEFAULT_PASSWORD_TEXT)) {
+            password_input.setText("");
+            password_input.setEchoChar('*'); // Mask password
+            password_input.setForeground(new java.awt.Color(0, 0, 0));
+        }
+    }
+    
+    private void lostFocusPassword(java.awt.event.FocusEvent evt) {
+        if (new String(password_input.getPassword()).isEmpty()) {
+            password_input.setForeground(new java.awt.Color(153, 153, 153));
+            password_input.setText(DEFAULT_PASSWORD_TEXT);
+            password_input.setEchoChar((char) 0); // Show text instead of dots
+        } else {
+            pword = new String(password_input.getPassword());
+        }
+    }
+    
     private void focusUsername(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusUsername
         // TODO add your handling code here:       
-        if (this.username.equals("")){
-            this.username_input.setText("");                                   
-        }else{
-            this.username_input.setText(username);
-        }                 
+        if (username_input.getText().equals(DEFAULT_USERNAME_TEXT)) {
+            username_input.setText("");
+            username_input.setForeground(new java.awt.Color(0, 0, 0));
+        }               
     }//GEN-LAST:event_focusUsername
 
     private void lostFocusUsername(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lostFocusUsername
-        // TODO add your handling code here:        
-        if (this.username.equals("")){
-            this.username_input.setText("Username");
-        }else{
-            this.username = this.username_input.getText();
-            this.username_input.setText(username);          
+        if (username_input.getText().isEmpty()) {
+            username_input.setForeground(new java.awt.Color(153, 153, 153));
+            username_input.setText(DEFAULT_USERNAME_TEXT);
+        } else {
+            username = username_input.getText();
         }
     }//GEN-LAST:event_lostFocusUsername
 
     private void typeUsername(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_typeUsername
         // TODO add your handling code here:
-        this.username = this.username_input.getText();
+        uname = this.username_input.getText();
     }//GEN-LAST:event_typeUsername
+
+    private void password_inputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_password_inputKeyTyped
+        // TODO add your handling code here:
+        char[] passwordChars = password_input.getPassword();
+        pword = new String(passwordChars);
+    }//GEN-LAST:event_password_inputKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String uname = username_input.getText();
+        String pword = new String(password_input.getPassword());
+
+        if (uname.equals(DEFAULT_USERNAME_TEXT)) {
+            uname = "";
+        }
+
+        if (pword.equals(DEFAULT_PASSWORD_TEXT)) {
+            pword = "";
+        }
+
+        if (DatabaseConnect.authenticate(uname, pword)) {
+            windowManager.showDashboardUI();
+        } else {
+            System.out.println("USERNAME/PASSWORD SALAH");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void username_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_username_inputActionPerformed
+
+    private void password_inputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_inputFocusGained
+        focusPassword(evt);
+    }//GEN-LAST:event_password_inputFocusGained
+
+    private void password_inputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_inputFocusLost
+        lostFocusPassword(evt);
+    }//GEN-LAST:event_password_inputFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -159,4 +240,8 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel title;
     private javax.swing.JTextField username_input;
     // End of variables declaration//GEN-END:variables
+
+    private void print(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
