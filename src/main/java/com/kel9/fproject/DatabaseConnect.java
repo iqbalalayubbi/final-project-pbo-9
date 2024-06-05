@@ -131,4 +131,43 @@ public class DatabaseConnect {
             return false;
         }
     }
+    
+    public static DefaultTableModel populatePengirimanTable() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("No");
+        model.addColumn("Kode Pemesanan");
+        model.addColumn("Pelanggan");
+        model.addColumn("Jenis Produk");
+        model.addColumn("Biaya Kirim");
+        model.addColumn("Jasa Kirim");
+        model.addColumn("Tanggal Kirim");
+
+        // SQL query to select all records from the pengiriman table
+        String query = "SELECT * FROM pengiriman";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getInt("nomor"));
+                row.add(rs.getString("kode_pemesanan"));
+                row.add(rs.getString("pelanggan"));
+                row.add(rs.getString("jenis_produk"));
+                row.add(rs.getDouble("biaya_kirim"));
+                row.add(rs.getString("jasa_kirim"));
+                row.add(rs.getDate("tanggal_kirim"));
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
+    }
 }

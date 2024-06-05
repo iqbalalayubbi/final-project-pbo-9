@@ -78,7 +78,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         listitem = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table_pengiriman = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UPN Warehouse Management");
@@ -721,6 +721,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JLabel request_title;
     private javax.swing.JPanel require;
     private javax.swing.JLabel send_title;
+    private javax.swing.JTable table_pengiriman;
     private javax.swing.JTextField text1;
     private javax.swing.JTextField text2;
     private javax.swing.JTextField text3;
