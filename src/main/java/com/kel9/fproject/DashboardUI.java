@@ -6,6 +6,10 @@ import javax.swing.Popup;
 import javax.swing.PopupFactory;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 import com.kel9.fproject.Permintaan;
 
@@ -21,6 +25,8 @@ import com.kel9.fproject.Permintaan;
 public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
     private Permintaan requestForm;
+    private Timer timer;
+
     /**
      * Creates new form dashboardUI
      * @param windowManager
@@ -233,6 +239,11 @@ public class DashboardUI extends javax.swing.JFrame {
         jPanel3.setMaximumSize(new java.awt.Dimension(32767, 120));
         jPanel3.setMinimumSize(new java.awt.Dimension(379, 20));
         jPanel3.setPreferredSize(new java.awt.Dimension(1182, 150));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+        });
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 50));
 
         btn_add.setText("Tambah Permintaan");
@@ -629,6 +640,7 @@ public class DashboardUI extends javax.swing.JFrame {
         requestForm.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
 
+    
     private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jenis_pengiriman_fieldActionPerformed
@@ -661,6 +673,28 @@ public class DashboardUI extends javax.swing.JFrame {
         insertPengirimanRecord();
         jTable2.setModel(DatabaseConnect.populatePengirimanTable());
     }//GEN-LAST:event_tambah_pengiriman_buttonActionPerformed
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+        startTimer();
+    }//GEN-LAST:event_jPanel3MouseEntered
+    
+    private void startTimer(){
+        // Create a timer that triggers every 1 second
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the function to update the table model
+                updateTableModel();
+            }
+        });
+        // Start the timer
+        timer.start();
+    }
+    
+    private void updateTableModel() {
+        // Set the table model using the DatabaseConnect.populatePermintaanTable() method
+        jTable1.setModel(DatabaseConnect.populatePermintaanTable());
+    }
     
     private void insertPengirimanRecord() {
         // Get input data

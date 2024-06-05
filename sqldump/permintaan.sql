@@ -24,51 +24,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengiriman`
+-- Table structure for table `permintaan`
 --
 
-CREATE TABLE `pengiriman` (
+CREATE TABLE `permintaan` (
   `nomor` int(11) NOT NULL,
   `kode_pemesanan` varchar(50) NOT NULL,
-  `pelanggan` varchar(100) NOT NULL,
+  `tanggal_pemesanan` date NOT NULL,
   `jenis_produk` varchar(50) NOT NULL,
-  `biaya_kirim` decimal(10,2) NOT NULL,
-  `jasa_kirim` varchar(50) NOT NULL,
-  `tanggal_kirim` date NOT NULL
+  `pelanggan` varchar(100) NOT NULL,
+  `jumlah_pesanan` int(11) NOT NULL,
+  `status_pemesanan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
--- Dumping data for table `pengiriman`
+-- Dumping data for table `permintaan`
 --
 
-INSERT INTO `pengiriman` (`nomor`, `kode_pemesanan`, `pelanggan`, `jenis_produk`, `biaya_kirim`, `jasa_kirim`, `tanggal_kirim`) VALUES
-(1, 'ORD001', 'John Doe', 'Electronics', 50.00, 'DHL', '2024-06-01'),
-(2, 'ORD002', 'Jane Smith', 'Books', 20.50, 'FedEx', '2024-06-02'),
-(3, 'ORD003', 'Alice Johnson', 'Clothing', 15.75, 'UPS', '2024-06-03'),
-(4, 'ORD004', 'Bob Brown', 'Furniture', 200.00, 'TNT', '2024-06-04'),
-(5, 'ORD005', 'Charlie Davis', 'Toys', 10.00, 'USPS', '2024-06-05'),
-(6, 'ORD006', 'John Smith', 'deterjeen', 12000.00, 'Cepat', '2024-06-30');
+INSERT INTO `permintaan` (`nomor`, `kode_pemesanan`, `tanggal_pemesanan`, `jenis_produk`, `pelanggan`, `jumlah_pesanan`, `status_pemesanan`) VALUES
+(1, 'ORD001', '2024-06-01', 'Electronics', 'John Doe', 5, 'Pending'),
+(2, 'ORD002', '2024-06-02', 'Books', 'Jane Smith', 3, 'Completed'),
+(3, 'ORD003', '2024-06-03', 'Clothing', 'Alice Johnson', 7, 'Processing'),
+(4, 'ORD004', '2024-06-04', 'Furniture', 'Bob Brown', 1, 'Cancelled'),
+(5, 'ORD005', '2024-06-05', 'Toys', 'Charlie Davis', 10, 'Shipped');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `pengiriman`
+-- Indexes for table `permintaan`
 --
-ALTER TABLE `pengiriman`
+ALTER TABLE `permintaan`
   ADD PRIMARY KEY (`nomor`),
-  ADD KEY `kode_pengiriman` (`nomor`);
+  ADD KEY `nomor` (`nomor`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `pengiriman`
+-- AUTO_INCREMENT for table `permintaan`
 --
-ALTER TABLE `pengiriman`
-  MODIFY `nomor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `permintaan`
+  MODIFY `nomor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

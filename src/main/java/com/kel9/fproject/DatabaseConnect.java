@@ -117,7 +117,7 @@ public class DatabaseConnect {
     
     public static DefaultTableModel populatePermintaanTable() {
         DefaultTableModel model = new DefaultTableModel();
-
+        
         // Add columns to the table model
         model.addColumn("No");
         model.addColumn("Kode Pemesanan");
@@ -179,4 +179,32 @@ public class DatabaseConnect {
 
         return false;
     }
+    
+    public static boolean insertPermintaanRecord(String kodePemesanan, String tanggalPemesanan, String jenisProduk, String pelanggan, int jumlahPesanan, String statusPemesanan) {
+        String query = "INSERT INTO permintaan (kode_pemesanan, tanggal_pemesanan, jenis_produk, pelanggan, jumlah_pesanan, status_pemesanan) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, kodePemesanan);
+            pstmt.setString(2, tanggalPemesanan);
+            pstmt.setString(3, jenisProduk);
+            pstmt.setString(4, pelanggan);
+            pstmt.setInt(5, jumlahPesanan);
+            pstmt.setString(6, statusPemesanan);
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("A new record has been inserted into the permintaan table.");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to insert data into the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
+    
+    
 }
