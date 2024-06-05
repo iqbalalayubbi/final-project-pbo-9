@@ -1,5 +1,12 @@
 package com.kel9.fproject;
 
+import javax.swing.JFrame;
+import javax.swing.JPopupMenu;
+import javax.swing.Popup;
+import javax.swing.PopupFactory;
+
+import com.kel9.fproject.Permintaan;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,6 +18,7 @@ package com.kel9.fproject;
  */
 public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
+    private Permintaan requestForm;
     /**
      * Creates new form dashboardUI
      * @param windowManager
@@ -46,7 +54,7 @@ public class DashboardUI extends javax.swing.JFrame {
         transaction_table = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btn_add = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -196,14 +204,14 @@ public class DashboardUI extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(1182, 150));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 50));
 
-        jButton2.setText("Tambah Permintaan");
-        jButton2.setPreferredSize(new java.awt.Dimension(163, 40));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_add.setText("Tambah Permintaan");
+        btn_add.setPreferredSize(new java.awt.Dimension(163, 40));
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_addActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2);
+        jPanel3.add(btn_add);
 
         jTextField1.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel3.add(jTextField1);
@@ -411,9 +419,13 @@ public class DashboardUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        requestForm = new Permintaan();        
+        requestForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        requestForm.setLocationRelativeTo(null);
+        requestForm.setVisible(true);
+    }//GEN-LAST:event_btn_addActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -422,12 +434,12 @@ public class DashboardUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addnew;
+    private javax.swing.JButton btn_add;
     private javax.swing.JPanel card;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel card2;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
