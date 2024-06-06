@@ -153,6 +153,45 @@ public class DatabaseConnect {
 
         return model;
     }
+
+    public static DefaultTableModel populatePersediaanTable() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("Nomor");
+        model.addColumn("ID Barang");
+        model.addColumn("Nama Barang");
+        model.addColumn("Kategori");
+        model.addColumn("Lokasi");
+        model.addColumn("Exp Date");
+        model.addColumn("Jumlah");
+
+        // SQL query to select all records from the persediaan table
+        String query = "SELECT * FROM persediaan";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getInt("nomor"));
+                row.add(rs.getString("id_barang"));
+                row.add(rs.getString("nama_barang"));
+                row.add(rs.getString("kategori"));
+                row.add(rs.getString("lokasi"));
+                row.add(rs.getDate("exp_date"));
+                row.add(rs.getInt("jumlah"));
+                model.addRow(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
+    }    
     
     public static boolean insertPengirimanRecord(String kodePemesanan, String pelanggan, String jenisProduk, String biayaKirim, String jasaKirim, String tanggalKirim) {
         String query = "INSERT INTO pengiriman (kode_pemesanan, pelanggan, jenis_produk, biaya_kirim, jasa_kirim, tanggal_kirim) VALUES (?, ?, ?, ?, ?, ?)";
@@ -206,5 +245,31 @@ public class DatabaseConnect {
         return false;
     }
     
+    public static boolean insertPersediaanRecord(String idBarang, String namaBarang, String kategori, String lokasi, String expDate, int jumlah) {
+        String query = "INSERT INTO persediaan (id_barang, nama_barang, kategori, lokasi, exp_date, jumlah) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, idBarang);
+            pstmt.setString(2, namaBarang);
+            pstmt.setString(3, kategori);
+            pstmt.setString(4, lokasi);
+            pstmt.setString(5, expDate);
+            pstmt.setInt(6, jumlah);
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("A new record has been inserted into the persediaan table.");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to insert data into the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
     
+
 }
