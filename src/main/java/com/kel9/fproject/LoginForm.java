@@ -11,6 +11,8 @@ package com.kel9.fproject;
 public class LoginForm extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
     private String username = "";
+    private String pword;
+    private String uname;
     /**
      * Creates new form LoginForm
      * @param windowManager
@@ -19,6 +21,9 @@ public class LoginForm extends javax.swing.JFrame {
         this.windowManager = windowManager;
         initComponents();               
     }
+    
+    private static final String DEFAULT_USERNAME_TEXT = "Username";
+    private static final String DEFAULT_PASSWORD_TEXT = "Password";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,12 +112,25 @@ public class LoginForm extends javax.swing.JFrame {
         password_input.setForeground(new java.awt.Color(153, 153, 153));
         password_input.setText("Password");
         password_input.setPreferredSize(new java.awt.Dimension(300, 40));
+        password_input.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                password_inputFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                password_inputFocusLost(evt);
+            }
+        });
         jPanel2.add(password_input);
 
         jButton1.setBackground(new java.awt.Color(0, 173, 181));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
         jButton1.setPreferredSize(new java.awt.Dimension(300, 40));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         getContentPane().add(jPanel2);
@@ -121,6 +139,24 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void focusPassword(java.awt.event.FocusEvent evt) {
+        if (new String(password_input.getPassword()).equals(DEFAULT_PASSWORD_TEXT)) {
+            password_input.setText("");
+            password_input.setEchoChar('*'); // Mask password
+            password_input.setForeground(new java.awt.Color(0, 0, 0));
+        }
+    }
+    
+    private void lostFocusPassword(java.awt.event.FocusEvent evt) {
+        if (new String(password_input.getPassword()).isEmpty()) {
+            password_input.setForeground(new java.awt.Color(153, 153, 153));
+            password_input.setText(DEFAULT_PASSWORD_TEXT);
+            password_input.setEchoChar((char) 0); // Show text instead of dots
+        } else {
+            pword = new String(password_input.getPassword());
+        }
+    }
+    
     private void focusUsername(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusUsername
         // TODO add your handling code here:       
         if (this.username.equals("")){
@@ -144,6 +180,33 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.username = this.username_input.getText();
     }//GEN-LAST:event_typeUsername
+
+    private void password_inputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_inputFocusGained
+        focusPassword(evt);
+    }//GEN-LAST:event_password_inputFocusGained
+
+    private void password_inputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_inputFocusLost
+        lostFocusPassword(evt);
+    }//GEN-LAST:event_password_inputFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String uname = username_input.getText();
+        String pword = new String(password_input.getPassword());
+        
+        if (uname.equals(DEFAULT_USERNAME_TEXT)) {
+            uname = "";
+        }
+
+        if (pword.equals(DEFAULT_PASSWORD_TEXT)) {
+            pword = "";
+        }
+
+        if (DatabaseConnect.authenticate(uname, pword)) {
+            windowManager.showDashboardUI();
+        } else {
+            System.out.println("USERNAME/PASSWORD SALAH");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

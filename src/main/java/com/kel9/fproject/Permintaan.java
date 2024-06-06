@@ -4,17 +4,27 @@
  */
 package com.kel9.fproject;
 
+import java.text.SimpleDateFormat;
+
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author acer
  */
 public class Permintaan extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Permintaan
      */
-    public Permintaan() {        
+    // local var
+    private DashboardUI parentForm;
+
+    public Permintaan(DashboardUI parentForm) {    
         initComponents();
+        this.parentForm = parentForm;        
     }
 
     /**
@@ -33,22 +43,32 @@ public class Permintaan extends javax.swing.JFrame {
         code_input = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         gap2 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        kode_pemesanan_field = new javax.swing.JTextField();
         gap6 = new javax.swing.JSeparator();
+        code_input5 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        gap10 = new javax.swing.JSeparator();
+        tanggal_pemesanan_field = new com.toedter.calendar.JDateChooser();
+        gap13 = new javax.swing.JSeparator();
         code_input1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         gap3 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        jenis_produk_field = new javax.swing.JTextField();
         gap7 = new javax.swing.JSeparator();
+        code_input6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        gap11 = new javax.swing.JSeparator();
+        pelanggan_field = new javax.swing.JTextField();
+        gap12 = new javax.swing.JSeparator();
         code_input2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         gap4 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        jumlah_pesanan_field = new javax.swing.JTextField();
         gap8 = new javax.swing.JSeparator();
         code_input3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         gap5 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        status_pemesanan_field = new javax.swing.JComboBox<>();
         gap9 = new javax.swing.JSeparator();
         code_input4 = new javax.swing.JPanel();
         add_btn = new javax.swing.JButton();
@@ -86,15 +106,15 @@ public class Permintaan extends javax.swing.JFrame {
         gap2.setRequestFocusEnabled(false);
         code_input.add(gap2);
 
-        jTextField1.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jTextField1.setMinimumSize(new java.awt.Dimension(300, 24));
-        jTextField1.setPreferredSize(new java.awt.Dimension(300, 20));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        kode_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        kode_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        kode_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        kode_pemesanan_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                kode_pemesanan_fieldActionPerformed(evt);
             }
         });
-        code_input.add(jTextField1);
+        code_input.add(kode_pemesanan_field);
 
         jPanel1.add(code_input);
 
@@ -102,27 +122,50 @@ public class Permintaan extends javax.swing.JFrame {
         gap6.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel1.add(gap6);
 
+        code_input5.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input5.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input5.setLayout(new javax.swing.BoxLayout(code_input5, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Tanggal Pemesanan");
+        code_input5.add(jLabel10);
+
+        gap10.setPreferredSize(new java.awt.Dimension(50, 20));
+        gap10.setRequestFocusEnabled(false);
+        code_input5.add(gap10);
+
+        tanggal_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        tanggal_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        tanggal_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        code_input5.add(tanggal_pemesanan_field);
+
+        jPanel1.add(code_input5);
+
+        gap13.setMaximumSize(new java.awt.Dimension(32767, 30));
+        gap13.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap13);
+
         code_input1.setMaximumSize(new java.awt.Dimension(600, 30));
         code_input1.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input1.setLayout(new javax.swing.BoxLayout(code_input1, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Tanggal Pemesanan");
+        jLabel7.setText("Jenis Produk");
         code_input1.add(jLabel7);
 
         gap3.setPreferredSize(new java.awt.Dimension(50, 20));
         gap3.setRequestFocusEnabled(false);
         code_input1.add(gap3);
 
-        jTextField2.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jTextField2.setMinimumSize(new java.awt.Dimension(300, 24));
-        jTextField2.setPreferredSize(new java.awt.Dimension(300, 20));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jenis_produk_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jenis_produk_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        jenis_produk_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        jenis_produk_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jenis_produk_fieldActionPerformed(evt);
             }
         });
-        code_input1.add(jTextField2);
+        code_input1.add(jenis_produk_field);
 
         jPanel1.add(code_input1);
 
@@ -130,27 +173,55 @@ public class Permintaan extends javax.swing.JFrame {
         gap7.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel1.add(gap7);
 
+        code_input6.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input6.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input6.setLayout(new javax.swing.BoxLayout(code_input6, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Pelanggan");
+        code_input6.add(jLabel11);
+
+        gap11.setPreferredSize(new java.awt.Dimension(50, 20));
+        gap11.setRequestFocusEnabled(false);
+        code_input6.add(gap11);
+
+        pelanggan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        pelanggan_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        pelanggan_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pelanggan_fieldActionPerformed(evt);
+            }
+        });
+        code_input6.add(pelanggan_field);
+
+        jPanel1.add(code_input6);
+
+        gap12.setMaximumSize(new java.awt.Dimension(32767, 30));
+        gap12.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel1.add(gap12);
+
         code_input2.setMaximumSize(new java.awt.Dimension(600, 30));
         code_input2.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input2.setLayout(new javax.swing.BoxLayout(code_input2, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Jumlah Pemesanan");
+        jLabel8.setText("Jumlah Pesanan");
         code_input2.add(jLabel8);
 
         gap4.setPreferredSize(new java.awt.Dimension(50, 20));
         gap4.setRequestFocusEnabled(false);
         code_input2.add(gap4);
 
-        jTextField3.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jTextField3.setMinimumSize(new java.awt.Dimension(300, 24));
-        jTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jumlah_pesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jumlah_pesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        jumlah_pesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        jumlah_pesanan_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jumlah_pesanan_fieldActionPerformed(evt);
             }
         });
-        code_input2.add(jTextField3);
+        code_input2.add(jumlah_pesanan_field);
 
         jPanel1.add(code_input2);
 
@@ -170,16 +241,16 @@ public class Permintaan extends javax.swing.JFrame {
         gap5.setRequestFocusEnabled(false);
         code_input3.add(gap5);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diajukan", "Selesai", "Dibatalkan" }));
-        jComboBox1.setLightWeightPopupEnabled(false);
-        jComboBox1.setMaximumSize(new java.awt.Dimension(300, 32767));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(300, 24));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        status_pemesanan_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diajukan", "Selesai", "Dibatalkan" }));
+        status_pemesanan_field.setLightWeightPopupEnabled(false);
+        status_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 32767));
+        status_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        status_pemesanan_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                status_pemesanan_fieldActionPerformed(evt);
             }
         });
-        code_input3.add(jComboBox1);
+        code_input3.add(status_pemesanan_field);
 
         jPanel1.add(code_input3);
 
@@ -224,59 +295,94 @@ public class Permintaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-        // TODO add your handling code here:
+        insertPermintaanRecord();        
+        this.parentForm.updateTableModel();
     }//GEN-LAST:event_add_btnActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void kode_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pemesanan_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_kode_pemesanan_fieldActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void status_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status_pemesanan_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_status_pemesanan_fieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jumlah_pesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jumlah_pesanan_fieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void pelanggan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelanggan_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_pelanggan_fieldActionPerformed
 
+    private void jenis_produk_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_produk_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jenis_produk_fieldActionPerformed
+
+    private void insertPermintaanRecord() {
+        // Get input data
+        String kodePemesanan = kode_pemesanan_field.getText();
+        String pelanggan = pelanggan_field.getText();
+        String jenisProduk = jenis_produk_field.getText();
+        int jumlahPemesanan = Integer.parseInt(jumlah_pesanan_field.getText());
+        String statusPemesanan = (String) status_pemesanan_field.getSelectedItem();
+
+        // Get the selected date from the JDateChooser
+        java.util.Date rawDate = tanggal_pemesanan_field.getDate();
+
+        //Optionally, you can format the date as needed
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String tanggalPemesanan = dateFormat.format(rawDate);
+
+
+        //? update require table
+        // DefaultTableModel model = (DefaultTableModel) this.requestTable.getModel();
+        // model.addRow(new Object[]{"1", kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan});
+        // Check if any field is empty
+        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
+        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        //    return;
+        // }
+
+        // Send data to query function
+        boolean success = DatabaseConnect.insertPermintaanRecord(kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan);
+
+        // Reset fields if insertion is successful
+        if (success) {
+            kode_pemesanan_field.setText("");
+            pelanggan_field.setText("");
+            jenis_produk_field.setText("");
+            jumlah_pesanan_field.setText("");
+            tanggal_pemesanan_field.setDate(null); // Clear the date chooser
+        }
+    }
+    
+    private boolean sendToQueryFunction(String kodePemesanan, String pelanggan, String jenisProduk, String tanggalPemesanan, String jumlahPemesanan, String statusPemesanan) {
+        // Simulate database insertion
+        try {
+            // Perform the database insertion logic here
+            // For demonstration purposes, we'll print the values instead of actual database operations
+            System.out.println("Inserting into database:");
+            System.out.println("Kode Pemesanan: " + kodePemesanan);
+            System.out.println("Pelanggan: " + pelanggan);
+            System.out.println("Jenis Produk: " + jenisProduk);
+            System.out.println("Tanggal Pemesanan: " + tanggalPemesanan);
+            System.out.println("Jumlah Pemesanan: " + jumlahPemesanan);
+            System.out.println("Status Pemesanan: " + statusPemesanan);
+
+            // Simulate successful insertion
+            return true;
+        } catch (Exception e) {
+            // Log any exceptions that occur during database insertion
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Permintaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Permintaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Permintaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Permintaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Permintaan().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_btn;
@@ -285,7 +391,13 @@ public class Permintaan extends javax.swing.JFrame {
     private javax.swing.JPanel code_input2;
     private javax.swing.JPanel code_input3;
     private javax.swing.JPanel code_input4;
+    private javax.swing.JPanel code_input5;
+    private javax.swing.JPanel code_input6;
     private javax.swing.JSeparator gap1;
+    private javax.swing.JSeparator gap10;
+    private javax.swing.JSeparator gap11;
+    private javax.swing.JSeparator gap12;
+    private javax.swing.JSeparator gap13;
     private javax.swing.JSeparator gap2;
     private javax.swing.JSeparator gap3;
     private javax.swing.JSeparator gap4;
@@ -294,16 +406,20 @@ public class Permintaan extends javax.swing.JFrame {
     private javax.swing.JSeparator gap7;
     private javax.swing.JSeparator gap8;
     private javax.swing.JSeparator gap9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jenis_produk_field;
+    private javax.swing.JTextField jumlah_pesanan_field;
+    private javax.swing.JTextField kode_pemesanan_field;
+    private javax.swing.JTextField pelanggan_field;
+    private javax.swing.JComboBox<String> status_pemesanan_field;
+    private com.toedter.calendar.JDateChooser tanggal_pemesanan_field;
     private javax.swing.JPanel title_container;
     // End of variables declaration//GEN-END:variables
 }

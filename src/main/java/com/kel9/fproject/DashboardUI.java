@@ -4,6 +4,14 @@ import javax.swing.JFrame;
 import javax.swing.JPopupMenu;
 import javax.swing.Popup;
 import javax.swing.PopupFactory;
+import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 import com.kel9.fproject.Permintaan;
 
@@ -19,13 +27,15 @@ import com.kel9.fproject.Permintaan;
 public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
     private Permintaan requestForm;
+    private Timer timer;
+
     /**
      * Creates new form dashboardUI
      * @param windowManager
      */
     public DashboardUI(WindowStateManager windowManager) {
         this.windowManager = windowManager;
-        initComponents();
+        initComponents();        
     }
 
     /**
@@ -58,25 +68,25 @@ public class DashboardUI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        require_table = new javax.swing.JTable();
         supply = new javax.swing.JPanel();
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
         kirim1 = new java.awt.Label();
-        text1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        tambah_pengiriman_button = new javax.swing.JButton();
+        pelanggan_field = new javax.swing.JTextField();
         kirim2 = new java.awt.Label();
-        text2 = new javax.swing.JTextField();
+        jenis_produk_field = new javax.swing.JTextField();
         kirim3 = new java.awt.Label();
-        text3 = new javax.swing.JTextField();
+        biaya_pengiriman_field = new javax.swing.JTextField();
         kirim4 = new java.awt.Label();
         kirim5 = new java.awt.Label();
-        text5 = new javax.swing.JTextField();
         kirim6 = new java.awt.Label();
-        text6 = new javax.swing.JTextField();
+        kode_pemesanan_field = new javax.swing.JTextField();
         title = new java.awt.Label();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jenis_pengiriman_field = new javax.swing.JComboBox<>();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        tanggal_pengiriman_field = new com.toedter.calendar.JDateChooser();
         listitem = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         setting = new javax.swing.JPanel();
@@ -231,6 +241,11 @@ public class DashboardUI extends javax.swing.JFrame {
         jPanel3.setMaximumSize(new java.awt.Dimension(32767, 120));
         jPanel3.setMinimumSize(new java.awt.Dimension(379, 20));
         jPanel3.setPreferredSize(new java.awt.Dimension(1182, 150));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+        });
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 50));
 
         btn_add.setText("Tambah Permintaan");
@@ -251,38 +266,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         require.add(jPanel3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Kode Pemesanan", "Tanggal Pemesanan", "Jenis Produk", "Pelanggan", "Jumlah Pemesanan", "Status Pemesanan"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        require_table.setModel(DatabaseConnect.populatePermintaanTable());
+        jScrollPane2.setViewportView(require_table);
 
         require.add(jScrollPane2);
 
@@ -316,22 +301,27 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim1, gridBagConstraints);
 
-        text1.setPreferredSize(new java.awt.Dimension(300, 30));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(text1, gridBagConstraints);
-
-        jButton4.setText("TAMBAH");
-        jButton4.setAlignmentX(0.5F);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
+        tambah_pengiriman_button.setText("TAMBAH");
+        tambah_pengiriman_button.setAlignmentX(0.5F);
+        tambah_pengiriman_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button.setPreferredSize(new java.awt.Dimension(100, 40));
+        tambah_pengiriman_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambah_pengiriman_buttonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(jButton4, gridBagConstraints);
+        addnew.add(tambah_pengiriman_button, gridBagConstraints);
+
+        pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(pelanggan_field, gridBagConstraints);
 
         kirim2.setText("Jenis Produk");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -340,12 +330,12 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim2, gridBagConstraints);
 
-        text2.setPreferredSize(new java.awt.Dimension(300, 30));
+        jenis_produk_field.setPreferredSize(new java.awt.Dimension(300, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(text2, gridBagConstraints);
+        addnew.add(jenis_produk_field, gridBagConstraints);
 
         kirim3.setText("Biaya Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -354,12 +344,12 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim3, gridBagConstraints);
 
-        text3.setPreferredSize(new java.awt.Dimension(300, 30));
+        biaya_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(text3, gridBagConstraints);
+        addnew.add(biaya_pengiriman_field, gridBagConstraints);
 
         kirim4.setText("Jenis Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -375,13 +365,6 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim5, gridBagConstraints);
 
-        text5.setPreferredSize(new java.awt.Dimension(300, 30));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(text5, gridBagConstraints);
-
         kirim6.setText("Kode Pemesanan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -389,12 +372,12 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim6, gridBagConstraints);
 
-        text6.setPreferredSize(new java.awt.Dimension(300, 30));
+        kode_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(text6, gridBagConstraints);
+        addnew.add(kode_pemesanan_field, gridBagConstraints);
 
         title.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         title.setText("Tambah Data Pengiriman Baru");
@@ -405,37 +388,36 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew.add(title, gridBagConstraints);
         title.getAccessibleContext().setAccessibleName("");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(300, 30));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jenis_pengiriman_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
+        jenis_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        jenis_pengiriman_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jenis_pengiriman_fieldActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(jComboBox1, gridBagConstraints);
+        addnew.add(jenis_pengiriman_field, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         addnew.add(filler2, gridBagConstraints);
 
+        tanggal_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        tanggal_pengiriman_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        tanggal_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        addnew.add(tanggal_pengiriman_field, gridBagConstraints);
+
         pengiriman.add(addnew);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "No", "Kode Pemesanan", "Pelanggan", "Jenis Produk", "Biaya Kirim", "Jasa Kirim", "Tanggal Kirim"
-            }
-        ));
+        jTable2.setModel(DatabaseConnect.populatePengirimanTable()
+        );
         listitem.setViewportView(jTable2);
 
         pengiriman.add(listitem);
@@ -653,6 +635,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Setting", setting);
 
+        jTabbedPane2.setSelectedIndex(1);
+
         getContentPane().add(jTabbedPane2, "card2");
 
         pack();
@@ -660,16 +644,17 @@ public class DashboardUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-        // TODO add your handling code here:
-        requestForm = new Permintaan();        
+        // show require form:
+        requestForm = new Permintaan(this);
         requestForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         requestForm.setLocationRelativeTo(null);
         requestForm.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    
+    private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jenis_pengiriman_fieldActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
@@ -694,9 +679,93 @@ public class DashboardUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_logoutActionPerformed
 
+    private void tambah_pengiriman_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_buttonActionPerformed
+        // TODO add your handling code here:
+        insertPengirimanRecord();
+        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
+    }//GEN-LAST:event_tambah_pengiriman_buttonActionPerformed
 
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+        // startTimer();
+    }//GEN-LAST:event_jPanel3MouseEntered
+    
+    private void startTimer(){
+        // Create a timer that triggers every 1 second
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the function to update the table model
+                updateTableModel();
+            }
+        });
+        // Start the timer
+        timer.start();
+    }
+    
+    public void updateTableModel() {
+        // Set the table model using the DatabaseConnect.populatePermintaanTable() method
+        require_table.setModel(DatabaseConnect.populatePermintaanTable());
+    }
+    
+    private void insertPengirimanRecord() {
+        // Get input data
+        String kodePemesanan = kode_pemesanan_field.getText();
+        String pelanggan = pelanggan_field.getText();
+        String jenisProduk = jenis_produk_field.getText();
+        String biayaKirim = biaya_pengiriman_field.getText();
+        String jasaKirim = (String) jenis_pengiriman_field.getSelectedItem();
+
+        // Get the selected date from the JDateChooser
+        java.util.Date rawDate = tanggal_pengiriman_field.getDate();
+
+        //Optionally, you can format the date as needed
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String tanggalKirim = dateFormat.format(rawDate);
+
+        // Check if any field is empty
+        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
+        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        //    return;
+        // }
+
+        // Send data to query function
+        boolean success = DatabaseConnect.insertPengirimanRecord(kodePemesanan, pelanggan, jenisProduk, biayaKirim, jasaKirim, tanggalKirim);
+
+        // Reset fields if insertion is successful
+        if (success) {
+            kode_pemesanan_field.setText("");
+            pelanggan_field.setText("");
+            jenis_produk_field.setText("");
+            biaya_pengiriman_field.setText("");
+            tanggal_pengiriman_field.setDate(null); // Clear the date chooser
+        }
+    }
+
+    private boolean sendToQueryFunction(String kodePemesanan, String pelanggan, String jenisProduk, String biayaKirim, String jasaKirim, String tanggalKirim) {
+        // Simulate database insertion
+        try {
+            // Perform the database insertion logic here
+            // For demonstration purposes, we'll print the values instead of actual database operations
+            System.out.println("Inserting into database:");
+            System.out.println("Kode Pemesanan: " + kodePemesanan);
+            System.out.println("Pelanggan: " + pelanggan);
+            System.out.println("Jenis Produk: " + jenisProduk);
+            System.out.println("Biaya Kirim: " + biayaKirim);
+            System.out.println("Jasa Kirim: " + jasaKirim);
+            System.out.println("Tanggal Kirim: " + tanggalKirim);
+
+            // Simulate successful insertion
+            return true;
+        } catch (Exception e) {
+            // Log any exceptions that occur during database insertion
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addnew;
+    private javax.swing.JTextField biaya_pengiriman_field;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_logout;
     private javax.swing.JPanel button_container;
@@ -712,8 +781,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel dashboard;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -736,7 +803,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -744,25 +810,27 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JComboBox<String> jenis_pengiriman_field;
+    private javax.swing.JTextField jenis_produk_field;
     private java.awt.Label kirim1;
     private java.awt.Label kirim2;
     private java.awt.Label kirim3;
     private java.awt.Label kirim4;
     private java.awt.Label kirim5;
     private java.awt.Label kirim6;
+    private javax.swing.JTextField kode_pemesanan_field;
     private javax.swing.JScrollPane listitem;
+    private javax.swing.JTextField pelanggan_field;
     private javax.swing.JPanel pengiriman;
     private javax.swing.JLabel product_title;
     private javax.swing.JLabel request_title;
     private javax.swing.JPanel require;
+    private javax.swing.JTable require_table;
     private javax.swing.JLabel send_title;
     private javax.swing.JPanel setting;
     private javax.swing.JPanel supply;
-    private javax.swing.JTextField text1;
-    private javax.swing.JTextField text2;
-    private javax.swing.JTextField text3;
-    private javax.swing.JTextField text5;
-    private javax.swing.JTextField text6;
+    private javax.swing.JButton tambah_pengiriman_button;
+    private com.toedter.calendar.JDateChooser tanggal_pengiriman_field;
     private java.awt.Label title;
     private javax.swing.JPanel title_container;
     private javax.swing.JTable transaction_table;
