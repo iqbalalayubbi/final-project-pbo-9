@@ -1,0 +1,6 @@
+com\mycompany\pbopersediaan\Persediaan.class
+com\mycompany\pbopersediaan\Barang.class
+com\mycompany\pbopersediaan\BarangModelTabel.class
+com\mycompany\pbopersediaan\PBOPersediaan.class
+com\mycompany\pbopersediaan\Pengingat.class
+com\mycompany\pbopersediaan\Pemantauan.class
