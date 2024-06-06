@@ -26,6 +26,7 @@ import java.sql.Date;
 public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
     private Permintaan requestForm;
+    private PersediaanUbah persediaanUbah;
     private Timer timer;
 
     /**
@@ -150,6 +151,11 @@ public class DashboardUI extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(238, 238, 238));
         jPanel4.setMaximumSize(new java.awt.Dimension(32767, 200));
         jPanel4.setPreferredSize(new java.awt.Dimension(1270, 200));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+        });
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 50));
 
         card1.setBackground(new java.awt.Color(255, 255, 255));
@@ -299,6 +305,11 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew1.setMaximumSize(new java.awt.Dimension(32767, 120));
         addnew1.setMinimumSize(new java.awt.Dimension(379, 20));
         addnew1.setPreferredSize(new java.awt.Dimension(1182, 400));
+        addnew1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addnew1MouseEntered(evt);
+            }
+        });
         addnew1.setLayout(new java.awt.GridBagLayout());
 
         kirim7.setText("Nama Barang");
@@ -426,6 +437,11 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew1.add(jSeparator8, gridBagConstraints);
 
         ubah_persediaan_button.setText("UBAH");
+        ubah_persediaan_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubah_persediaan_buttonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
@@ -847,7 +863,7 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tambah_pengiriman_buttonActionPerformed
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-        startTimer();
+        //startTimer();
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void tambah_pengiriman_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button1ActionPerformed
@@ -893,10 +909,25 @@ public class DashboardUI extends javax.swing.JFrame {
     private void jumlah_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jumlah_fieldActionPerformed
+
+    private void ubah_persediaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_persediaan_buttonActionPerformed
+        persediaanUbah = new PersediaanUbah();
+        persediaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        persediaanUbah.setLocationRelativeTo(null);
+        persediaanUbah.setVisible(true);
+    }//GEN-LAST:event_ubah_persediaan_buttonActionPerformed
+
+    private void addnew1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew1MouseEntered
+        //startTimer();
+    }//GEN-LAST:event_addnew1MouseEntered
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        startTimer();// TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseEntered
     
     private void startTimer(){
-        // Create a timer that triggers every 1 second
-        timer = new Timer(1000, new ActionListener() {
+        // Create a timer that triggers every 2 second
+        timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Call the function to update the table model
@@ -910,7 +941,10 @@ public class DashboardUI extends javax.swing.JFrame {
     private void updateTableModel() {
         // Set the table model using the DatabaseConnect.populatePermintaanTable() method
         jTable1.setModel(DatabaseConnect.populatePermintaanTable());
+        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
+        jTable3.setModel(DatabaseConnect.populatePersediaanTable());
     }
+    
     
     private void insertPengirimanRecord() {
         // Get input data

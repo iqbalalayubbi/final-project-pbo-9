@@ -218,7 +218,7 @@ public class DatabaseConnect {
 
         return false;
     }
-    
+   
     public static boolean insertPermintaanRecord(String kodePemesanan, String tanggalPemesanan, String jenisProduk, String pelanggan, int jumlahPesanan, String statusPemesanan) {
         String query = "INSERT INTO permintaan (kode_pemesanan, tanggal_pemesanan, jenis_produk, pelanggan, jumlah_pesanan, status_pemesanan) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -271,5 +271,82 @@ public class DatabaseConnect {
         return false;
     }
     
+    public static boolean modifyPersediaanRecord(String idBarang, String namaBarang, String kategori, String lokasi, String expDate, Integer jumlah) {
+        if (idBarang == null || idBarang.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ID Barang is mandatory.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        StringBuilder query = new StringBuilder("UPDATE persediaan SET ");
+        boolean hasPrevious = false;
+
+        if (namaBarang != null && !namaBarang.isEmpty()) {
+            query.append("nama_barang = ?, ");
+            hasPrevious = true;
+        }
+        if (kategori != null && !kategori.isEmpty()) {
+            query.append("kategori = ?, ");
+            hasPrevious = true;
+        }
+        if (lokasi != null && !lokasi.isEmpty()) {
+            query.append("lokasi = ?, ");
+            hasPrevious = true;
+        }
+        if (expDate != null && !expDate.isEmpty()) {
+            query.append("exp_date = ?, ");
+            hasPrevious = true;
+        }
+        if (jumlah != null) {
+            query.append("jumlah = ?, ");
+            hasPrevious = true;
+        }
+
+        // Remove the last comma and space
+        if (hasPrevious) {
+            query.setLength(query.length() - 2);
+        } else {
+            JOptionPane.showMessageDialog(null, "No fields to update.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        query.append(" WHERE id_barang = ?");
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query.toString())) {
+
+            int index = 1;
+
+            if (namaBarang != null && !namaBarang.isEmpty()) {
+                pstmt.setString(index++, namaBarang);
+            }
+            if (kategori != null && !kategori.isEmpty()) {
+                pstmt.setString(index++, kategori);
+            }
+            if (lokasi != null && !lokasi.isEmpty()) {
+                pstmt.setString(index++, lokasi);
+            }
+            if (expDate != null && !expDate.isEmpty()) {
+                pstmt.setString(index++, expDate);
+            }
+            if (jumlah != null) {
+                pstmt.setInt(index++, jumlah);
+            }
+
+            pstmt.setString(index, idBarang);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Record updated successfully in the persediaan table.");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "No record found with the provided ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to update the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
 
 }

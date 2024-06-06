@@ -4,6 +4,13 @@
  */
 package com.kel9.fproject;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author x1nx3r
@@ -33,32 +40,32 @@ public class PersediaanUbah extends javax.swing.JFrame {
         code_input = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         gap2 = new javax.swing.JSeparator();
-        kode_pemesanan_field = new javax.swing.JTextField();
+        id_barang_field = new javax.swing.JTextField();
         gap6 = new javax.swing.JSeparator();
         code_input5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         gap10 = new javax.swing.JSeparator();
-        pelanggan_field = new javax.swing.JTextField();
+        nama_barang_field = new javax.swing.JTextField();
         gap13 = new javax.swing.JSeparator();
         code_input1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         gap3 = new javax.swing.JSeparator();
-        jenis_produk_field = new javax.swing.JTextField();
+        kategori_field = new javax.swing.JTextField();
         gap7 = new javax.swing.JSeparator();
         code_input6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         gap11 = new javax.swing.JSeparator();
-        jumlah_pesanan_field = new javax.swing.JTextField();
+        lokasi_field = new javax.swing.JTextField();
         gap12 = new javax.swing.JSeparator();
         code_input2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         gap4 = new javax.swing.JSeparator();
-        jumlah_pesanan_field1 = new javax.swing.JTextField();
+        jumlah_field = new javax.swing.JTextField();
         gap8 = new javax.swing.JSeparator();
         code_input3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         gap5 = new javax.swing.JSeparator();
-        tanggal_pemesanan_field = new com.toedter.calendar.JDateChooser();
+        exp_date_field = new com.toedter.calendar.JDateChooser();
         gap9 = new javax.swing.JSeparator();
         code_input4 = new javax.swing.JPanel();
         add_btn = new javax.swing.JButton();
@@ -95,15 +102,15 @@ public class PersediaanUbah extends javax.swing.JFrame {
         gap2.setRequestFocusEnabled(false);
         code_input.add(gap2);
 
-        kode_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        kode_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        kode_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
-        kode_pemesanan_field.addActionListener(new java.awt.event.ActionListener() {
+        id_barang_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        id_barang_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        id_barang_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        id_barang_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kode_pemesanan_fieldActionPerformed(evt);
+                id_barang_fieldActionPerformed(evt);
             }
         });
-        code_input.add(kode_pemesanan_field);
+        code_input.add(id_barang_field);
 
         jPanel1.add(code_input);
 
@@ -123,15 +130,15 @@ public class PersediaanUbah extends javax.swing.JFrame {
         gap10.setRequestFocusEnabled(false);
         code_input5.add(gap10);
 
-        pelanggan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        pelanggan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 20));
-        pelanggan_field.addActionListener(new java.awt.event.ActionListener() {
+        nama_barang_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        nama_barang_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        nama_barang_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        nama_barang_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pelanggan_fieldActionPerformed(evt);
+                nama_barang_fieldActionPerformed(evt);
             }
         });
-        code_input5.add(pelanggan_field);
+        code_input5.add(nama_barang_field);
 
         jPanel1.add(code_input5);
 
@@ -151,15 +158,15 @@ public class PersediaanUbah extends javax.swing.JFrame {
         gap3.setRequestFocusEnabled(false);
         code_input1.add(gap3);
 
-        jenis_produk_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jenis_produk_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        jenis_produk_field.setPreferredSize(new java.awt.Dimension(300, 20));
-        jenis_produk_field.addActionListener(new java.awt.event.ActionListener() {
+        kategori_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        kategori_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        kategori_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        kategori_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jenis_produk_fieldActionPerformed(evt);
+                kategori_fieldActionPerformed(evt);
             }
         });
-        code_input1.add(jenis_produk_field);
+        code_input1.add(kategori_field);
 
         jPanel1.add(code_input1);
 
@@ -179,15 +186,15 @@ public class PersediaanUbah extends javax.swing.JFrame {
         gap11.setRequestFocusEnabled(false);
         code_input6.add(gap11);
 
-        jumlah_pesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jumlah_pesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        jumlah_pesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
-        jumlah_pesanan_field.addActionListener(new java.awt.event.ActionListener() {
+        lokasi_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        lokasi_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        lokasi_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        lokasi_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jumlah_pesanan_fieldActionPerformed(evt);
+                lokasi_fieldActionPerformed(evt);
             }
         });
-        code_input6.add(jumlah_pesanan_field);
+        code_input6.add(lokasi_field);
 
         jPanel1.add(code_input6);
 
@@ -207,15 +214,15 @@ public class PersediaanUbah extends javax.swing.JFrame {
         gap4.setRequestFocusEnabled(false);
         code_input2.add(gap4);
 
-        jumlah_pesanan_field1.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jumlah_pesanan_field1.setMinimumSize(new java.awt.Dimension(300, 24));
-        jumlah_pesanan_field1.setPreferredSize(new java.awt.Dimension(300, 20));
-        jumlah_pesanan_field1.addActionListener(new java.awt.event.ActionListener() {
+        jumlah_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jumlah_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        jumlah_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        jumlah_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jumlah_pesanan_field1ActionPerformed(evt);
+                jumlah_fieldActionPerformed(evt);
             }
         });
-        code_input2.add(jumlah_pesanan_field1);
+        code_input2.add(jumlah_field);
 
         jPanel1.add(code_input2);
 
@@ -235,10 +242,10 @@ public class PersediaanUbah extends javax.swing.JFrame {
         gap5.setRequestFocusEnabled(false);
         code_input3.add(gap5);
 
-        tanggal_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        tanggal_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        tanggal_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 24));
-        code_input3.add(tanggal_pemesanan_field);
+        exp_date_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        exp_date_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        exp_date_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        code_input3.add(exp_date_field);
 
         jPanel1.add(code_input3);
 
@@ -282,65 +289,79 @@ public class PersediaanUbah extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kode_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pemesanan_fieldActionPerformed
+    private void id_barang_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_barang_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kode_pemesanan_fieldActionPerformed
+    }//GEN-LAST:event_id_barang_fieldActionPerformed
 
-    private void jenis_produk_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_produk_fieldActionPerformed
+    private void kategori_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategori_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jenis_produk_fieldActionPerformed
+    }//GEN-LAST:event_kategori_fieldActionPerformed
 
-    private void pelanggan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelanggan_fieldActionPerformed
+    private void nama_barang_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_barang_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pelanggan_fieldActionPerformed
+    }//GEN-LAST:event_nama_barang_fieldActionPerformed
 
-    private void jumlah_pesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_fieldActionPerformed
+    private void lokasi_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lokasi_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jumlah_pesanan_fieldActionPerformed
+    }//GEN-LAST:event_lokasi_fieldActionPerformed
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-        // insertPermintaanRecord();
+        modifyPersediaanRecord();
     }//GEN-LAST:event_add_btnActionPerformed
 
-    private void jumlah_pesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_field1ActionPerformed
+    private void jumlah_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jumlah_pesanan_field1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PersediaanUbah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PersediaanUbah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PersediaanUbah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PersediaanUbah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }//GEN-LAST:event_jumlah_fieldActionPerformed
+    
+    private void modifyPersediaanRecord() {
+        // Get input data from form fields
+        String idBarang = id_barang_field.getText();
+        String namaBarang = nama_barang_field.getText();
+        String kategori = kategori_field.getText();
+        String lokasi = lokasi_field.getText();
+        
+        java.util.Date rawDate = exp_date_field.getDate();
+        String expDate = null;
+        if (rawDate != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            expDate = dateFormat.format(rawDate);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PersediaanUbah().setVisible(true);
+        String jumlahText = jumlah_field.getText();
+        Integer jumlah = null;
+        if (!jumlahText.isEmpty()) {
+            try {
+                jumlah = Integer.parseInt(jumlahText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid input for jumlah. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
-        });
+        }
+
+        // Call the database modify function
+        boolean success = DatabaseConnect.modifyPersediaanRecord(idBarang, namaBarang, kategori, lokasi, expDate, jumlah);
+
+        // Show success or failure message
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Record updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update the record.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        // Reset fields if insertion is successful
+        if (success) {
+            id_barang_field.setText("");
+            nama_barang_field.setText("");
+            kategori_field.setText("");
+            lokasi_field.setText("");
+            exp_date_field.setDate(null); // Clear the date chooser
+            jumlah_field.setText("");
+        }
     }
 
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_btn;
     private javax.swing.JPanel code_input;
@@ -350,6 +371,7 @@ public class PersediaanUbah extends javax.swing.JFrame {
     private javax.swing.JPanel code_input4;
     private javax.swing.JPanel code_input5;
     private javax.swing.JPanel code_input6;
+    private com.toedter.calendar.JDateChooser exp_date_field;
     private javax.swing.JSeparator gap1;
     private javax.swing.JSeparator gap10;
     private javax.swing.JSeparator gap11;
@@ -363,6 +385,7 @@ public class PersediaanUbah extends javax.swing.JFrame {
     private javax.swing.JSeparator gap7;
     private javax.swing.JSeparator gap8;
     private javax.swing.JSeparator gap9;
+    private javax.swing.JTextField id_barang_field;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -371,12 +394,10 @@ public class PersediaanUbah extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jenis_produk_field;
-    private javax.swing.JTextField jumlah_pesanan_field;
-    private javax.swing.JTextField jumlah_pesanan_field1;
-    private javax.swing.JTextField kode_pemesanan_field;
-    private javax.swing.JTextField pelanggan_field;
-    private com.toedter.calendar.JDateChooser tanggal_pemesanan_field;
+    private javax.swing.JTextField jumlah_field;
+    private javax.swing.JTextField kategori_field;
+    private javax.swing.JTextField lokasi_field;
+    private javax.swing.JTextField nama_barang_field;
     private javax.swing.JPanel title_container;
     // End of variables declaration//GEN-END:variables
 
