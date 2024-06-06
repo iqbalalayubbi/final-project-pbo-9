@@ -11,11 +11,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import java.util.Vector;
+
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class DatabaseConnect {
     private static String URL;
@@ -135,9 +136,10 @@ public class DatabaseConnect {
              ResultSet rs = stmt.executeQuery(query)) {
 
             // Populate the table model with data from the ResultSet
+            int i = 1;
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getInt("nomor"));
+                row.add(i);
                 row.add(rs.getString("kode_pemesanan"));
                 row.add(rs.getDate("tanggal_pemesanan"));
                 row.add(rs.getString("jenis_produk"));
@@ -145,6 +147,7 @@ public class DatabaseConnect {
                 row.add(rs.getInt("jumlah_pesanan"));
                 row.add(rs.getString("status_pemesanan"));
                 model.addRow(row);
+                i++;
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -7,6 +7,8 @@ import javax.swing.PopupFactory;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,7 +35,7 @@ public class DashboardUI extends javax.swing.JFrame {
      */
     public DashboardUI(WindowStateManager windowManager) {
         this.windowManager = windowManager;
-        initComponents();
+        initComponents();        
     }
 
     /**
@@ -66,7 +68,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        require_table = new javax.swing.JTable();
         supply = new javax.swing.JPanel();
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
@@ -264,8 +266,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         require.add(jPanel3);
 
-        jTable1.setModel(DatabaseConnect.populatePermintaanTable());
-        jScrollPane2.setViewportView(jTable1);
+        require_table.setModel(DatabaseConnect.populatePermintaanTable());
+        jScrollPane2.setViewportView(require_table);
 
         require.add(jScrollPane2);
 
@@ -633,6 +635,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Setting", setting);
 
+        jTabbedPane2.setSelectedIndex(1);
+
         getContentPane().add(jTabbedPane2, "card2");
 
         pack();
@@ -640,8 +644,8 @@ public class DashboardUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-        // TODO add your handling code here:
-        requestForm = new Permintaan();
+        // show require form:
+        requestForm = new Permintaan(this);
         requestForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         requestForm.setLocationRelativeTo(null);
         requestForm.setVisible(true);
@@ -682,7 +686,7 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tambah_pengiriman_buttonActionPerformed
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-        startTimer();
+        // startTimer();
     }//GEN-LAST:event_jPanel3MouseEntered
     
     private void startTimer(){
@@ -698,9 +702,9 @@ public class DashboardUI extends javax.swing.JFrame {
         timer.start();
     }
     
-    private void updateTableModel() {
+    public void updateTableModel() {
         // Set the table model using the DatabaseConnect.populatePermintaanTable() method
-        jTable1.setModel(DatabaseConnect.populatePermintaanTable());
+        require_table.setModel(DatabaseConnect.populatePermintaanTable());
     }
     
     private void insertPengirimanRecord() {
@@ -799,7 +803,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -822,6 +825,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JLabel product_title;
     private javax.swing.JLabel request_title;
     private javax.swing.JPanel require;
+    private javax.swing.JTable require_table;
     private javax.swing.JLabel send_title;
     private javax.swing.JPanel setting;
     private javax.swing.JPanel supply;

@@ -6,17 +6,25 @@ package com.kel9.fproject;
 
 import java.text.SimpleDateFormat;
 
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author acer
  */
 public class Permintaan extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Permintaan
      */
-    public Permintaan() {        
+    // local var
+    private DashboardUI parentForm;
+
+    public Permintaan(DashboardUI parentForm) {    
         initComponents();
+        this.parentForm = parentForm;        
     }
 
     /**
@@ -287,7 +295,8 @@ public class Permintaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-        insertPermintaanRecord();
+        insertPermintaanRecord();        
+        this.parentForm.updateTableModel();
     }//GEN-LAST:event_add_btnActionPerformed
 
     private void kode_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pemesanan_fieldActionPerformed
@@ -325,6 +334,10 @@ public class Permintaan extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String tanggalPemesanan = dateFormat.format(rawDate);
 
+
+        //? update require table
+        // DefaultTableModel model = (DefaultTableModel) this.requestTable.getModel();
+        // model.addRow(new Object[]{"1", kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan});
         // Check if any field is empty
         // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
         //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
