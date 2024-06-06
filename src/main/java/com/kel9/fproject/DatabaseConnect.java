@@ -413,5 +413,70 @@ public class DatabaseConnect {
 
         return false;
     }
+    
+    public static boolean modifyPengirimanRecord(String kodePemesanan, String pelanggan, String jenisProduk, String biayaKirim, String jasaKirim, String tanggalKirim) {
+        StringBuilder queryBuilder = new StringBuilder("UPDATE pengiriman SET ");
+        boolean first = true;
+
+        if (pelanggan != null && !pelanggan.isEmpty()) {
+            queryBuilder.append("pelanggan = ?");
+            first = false;
+        }
+        if (jenisProduk != null && !jenisProduk.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("jenis_produk = ?");
+            first = false;
+        }
+        if (biayaKirim != null && !biayaKirim.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("biaya_kirim = ?");
+            first = false;
+        }
+        if (jasaKirim != null && !jasaKirim.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("jasa_kirim = ?");
+            first = false;
+        }
+        if (tanggalKirim != null && !tanggalKirim.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("tanggal_kirim = ?");
+        }
+
+        queryBuilder.append(" WHERE kode_pemesanan = ?");
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(queryBuilder.toString())) {
+
+            int paramIndex = 1;
+            if (pelanggan != null && !pelanggan.isEmpty()) {
+                pstmt.setString(paramIndex++, pelanggan);
+            }
+            if (jenisProduk != null && !jenisProduk.isEmpty()) {
+                pstmt.setString(paramIndex++, jenisProduk);
+            }
+            if (biayaKirim != null && !biayaKirim.isEmpty()) {
+                pstmt.setString(paramIndex++, biayaKirim);
+            }
+            if (jasaKirim != null && !jasaKirim.isEmpty()) {
+                pstmt.setString(paramIndex++, jasaKirim);
+            }
+            if (tanggalKirim != null && !tanggalKirim.isEmpty()) {
+                pstmt.setString(paramIndex++, tanggalKirim);
+            }
+
+            pstmt.setString(paramIndex, kodePemesanan);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("The record has been updated in the pengiriman table.");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to update data in the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
 
 }

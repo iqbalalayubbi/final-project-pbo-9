@@ -27,6 +27,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
     private PermintaanUbah permintaanUbah;
     private PersediaanUbah persediaanUbah;
+    private PengirimanUbah pengirimanUbah;
     private Timer timer;
 
     /**
@@ -107,7 +108,7 @@ public class DashboardUI extends javax.swing.JFrame {
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
         kirim1 = new java.awt.Label();
-        tambah_pengiriman_button = new javax.swing.JButton();
+        ubah_pengiriman_button = new javax.swing.JButton();
         pelanggan_field = new javax.swing.JTextField();
         kirim2 = new java.awt.Label();
         jenis_produk_field = new javax.swing.JTextField();
@@ -122,6 +123,7 @@ public class DashboardUI extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         tanggal_pengiriman_field = new com.toedter.calendar.JDateChooser();
         jSeparator9 = new javax.swing.JSeparator();
+        tambah_pengiriman_button3 = new javax.swing.JButton();
         listitem = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         setting = new javax.swing.JPanel();
@@ -621,20 +623,20 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim1, gridBagConstraints);
 
-        tambah_pengiriman_button.setText("TAMBAH");
-        tambah_pengiriman_button.setAlignmentX(0.5F);
-        tambah_pengiriman_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tambah_pengiriman_button.setPreferredSize(new java.awt.Dimension(100, 40));
-        tambah_pengiriman_button.addActionListener(new java.awt.event.ActionListener() {
+        ubah_pengiriman_button.setText("UBAH");
+        ubah_pengiriman_button.setAlignmentX(0.5F);
+        ubah_pengiriman_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ubah_pengiriman_button.setPreferredSize(new java.awt.Dimension(100, 40));
+        ubah_pengiriman_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambah_pengiriman_buttonActionPerformed(evt);
+                ubah_pengiriman_buttonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(tambah_pengiriman_button, gridBagConstraints);
+        addnew.add(ubah_pengiriman_button, gridBagConstraints);
 
         pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -739,6 +741,21 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         addnew.add(jSeparator9, gridBagConstraints);
+
+        tambah_pengiriman_button3.setText("TAMBAH");
+        tambah_pengiriman_button3.setAlignmentX(0.5F);
+        tambah_pengiriman_button3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button3.setPreferredSize(new java.awt.Dimension(100, 40));
+        tambah_pengiriman_button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambah_pengiriman_button3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(tambah_pengiriman_button3, gridBagConstraints);
 
         pengiriman.add(addnew);
 
@@ -995,11 +1012,12 @@ public class DashboardUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_logoutActionPerformed
 
-    private void tambah_pengiriman_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_buttonActionPerformed
-        // TODO add your handling code here:
-        insertPengirimanRecord();
-        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
-    }//GEN-LAST:event_tambah_pengiriman_buttonActionPerformed
+    private void ubah_pengiriman_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_pengiriman_buttonActionPerformed
+        pengirimanUbah = new PengirimanUbah();
+        pengirimanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pengirimanUbah.setLocationRelativeTo(null);
+        pengirimanUbah.setVisible(true);
+    }//GEN-LAST:event_ubah_pengiriman_buttonActionPerformed
 
     private void tambah_pengiriman_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button1ActionPerformed
         insertPersediaanRecord();
@@ -1082,6 +1100,11 @@ public class DashboardUI extends javax.swing.JFrame {
     private void status_pemesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status_pemesanan_field1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_status_pemesanan_field1ActionPerformed
+
+    private void tambah_pengiriman_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button3ActionPerformed
+        insertPengirimanRecord();
+        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
+    }//GEN-LAST:event_tambah_pengiriman_button3ActionPerformed
     
     private void startTimer(){
         // Create a timer that triggers every 2 second
@@ -1287,9 +1310,9 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel setting;
     private javax.swing.JComboBox<String> status_pemesanan_field1;
     private javax.swing.JPanel supply;
-    private javax.swing.JButton tambah_pengiriman_button;
     private javax.swing.JButton tambah_pengiriman_button1;
     private javax.swing.JButton tambah_pengiriman_button2;
+    private javax.swing.JButton tambah_pengiriman_button3;
     private com.toedter.calendar.JDateChooser tanggal_pengiriman_field;
     private com.toedter.calendar.JDateChooser tanggal_pesanan_field1;
     private java.awt.Label title;
@@ -1297,6 +1320,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private java.awt.Label title2;
     private javax.swing.JPanel title_container;
     private javax.swing.JTable transaction_table;
+    private javax.swing.JButton ubah_pengiriman_button;
     private javax.swing.JButton ubah_permintaan_button;
     private javax.swing.JButton ubah_persediaan_button;
     // End of variables declaration//GEN-END:variables
