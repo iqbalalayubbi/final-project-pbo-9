@@ -403,7 +403,14 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         addnew.add(filler2, gridBagConstraints);
-        addnew.add(tanggal_pengiriman_field, new java.awt.GridBagConstraints());
+
+        tanggal_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        tanggal_pengiriman_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        tanggal_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        addnew.add(tanggal_pengiriman_field, gridBagConstraints);
 
         pengiriman.add(addnew);
 

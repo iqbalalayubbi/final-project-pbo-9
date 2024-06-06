@@ -172,6 +172,17 @@
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="tanggal_pemesanan_field">
+              <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[300, 2147483647]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[300, 24]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[300, 24]"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
