@@ -5,17 +5,18 @@
 package com.kel9.fproject;
 
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author acer
  */
-public class Permintaan extends javax.swing.JFrame {
+public class PermintaanUbah extends javax.swing.JFrame {
 
     /**
      * Creates new form Permintaan
      */
-    public Permintaan() {        
+    public PermintaanUbah() {        
         initComponents();
     }
 
@@ -79,7 +80,7 @@ public class Permintaan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 173, 181));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PERMINTAAN");
+        jLabel1.setText("UBAH DATA PERMINTAAN");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         title_container.add(jLabel1);
@@ -254,7 +255,7 @@ public class Permintaan extends javax.swing.JFrame {
         code_input4.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input4.setLayout(new java.awt.CardLayout());
 
-        add_btn.setText("Tambah");
+        add_btn.setText("Ubah");
         add_btn.setMaximumSize(new java.awt.Dimension(200, 50));
         add_btn.setPreferredSize(new java.awt.Dimension(100, 24));
         add_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +288,7 @@ public class Permintaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-        insertPermintaanRecord();
+        modifyPermintaanRecord();
     }//GEN-LAST:event_add_btnActionPerformed
 
     private void kode_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pemesanan_fieldActionPerformed
@@ -310,37 +311,33 @@ public class Permintaan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jenis_produk_fieldActionPerformed
 
-    private void insertPermintaanRecord() {
+    private void modifyPermintaanRecord() {
         // Get input data
         String kodePemesanan = kode_pemesanan_field.getText();
         String pelanggan = pelanggan_field.getText();
         String jenisProduk = jenis_produk_field.getText();
-        int jumlahPemesanan = Integer.parseInt(jumlah_pesanan_field.getText());
+        Integer jumlahPemesanan = null;
+        if (!jumlah_pesanan_field.getText().isEmpty()) {
+            jumlahPemesanan = Integer.parseInt(jumlah_pesanan_field.getText());
+        }
         String statusPemesanan = (String) status_pemesanan_field.getSelectedItem();
 
         // Get the selected date from the JDateChooser
         java.util.Date rawDate = tanggal_pemesanan_field.getDate();
+        String tanggalPemesanan = null;
+        if (rawDate != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            tanggalPemesanan = dateFormat.format(rawDate);
+        }
 
-        //Optionally, you can format the date as needed
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String tanggalPemesanan = dateFormat.format(rawDate);
+        // Call the database modify function
+        boolean success = DatabaseConnect.modifyPermintaanRecord(kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan);
 
-        // Check if any field is empty
-        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
-        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        //    return;
-        // }
-
-        // Send data to query function
-        boolean success = DatabaseConnect.insertPermintaanRecord(kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan);
-
-        // Reset fields if insertion is successful
+        // Show success or failure message
         if (success) {
-            kode_pemesanan_field.setText("");
-            pelanggan_field.setText("");
-            jenis_produk_field.setText("");
-            jumlah_pesanan_field.setText("");
-            tanggal_pemesanan_field.setDate(null); // Clear the date chooser
+            JOptionPane.showMessageDialog(this, "Record updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update the record.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

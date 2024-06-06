@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-import com.kel9.fproject.Permintaan;
+import com.kel9.fproject.PermintaanUbah;
 import java.sql.Date;
 
 /*
@@ -25,7 +25,7 @@ import java.sql.Date;
  */
 public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
-    private Permintaan requestForm;
+    private PermintaanUbah permintaanUbah;
     private PersediaanUbah persediaanUbah;
     private Timer timer;
 
@@ -78,7 +78,7 @@ public class DashboardUI extends javax.swing.JFrame {
         pelanggan_field1 = new javax.swing.JTextField();
         jumlah_pesanan_field1 = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
-        ubah_persediaan_button1 = new javax.swing.JButton();
+        ubah_permintaan_button = new javax.swing.JButton();
         kirim19 = new java.awt.Label();
         status_pemesanan_field1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -401,10 +401,10 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         addnew2.add(jSeparator10, gridBagConstraints);
 
-        ubah_persediaan_button1.setText("UBAH");
-        ubah_persediaan_button1.addActionListener(new java.awt.event.ActionListener() {
+        ubah_permintaan_button.setText("UBAH");
+        ubah_permintaan_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ubah_persediaan_button1ActionPerformed(evt);
+                ubah_permintaan_buttonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -412,7 +412,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        addnew2.add(ubah_persediaan_button1, gridBagConstraints);
+        addnew2.add(ubah_permintaan_button, gridBagConstraints);
 
         kirim19.setText("Jenis Produk");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -434,7 +434,6 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 7;
         gridBagConstraints.ipady = 7;
         addnew2.add(status_pemesanan_field1, gridBagConstraints);
 
@@ -1047,10 +1046,10 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jumlah_fieldActionPerformed
 
     private void ubah_persediaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_persediaan_buttonActionPerformed
-        persediaanUbah = new PersediaanUbah();
-        persediaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        persediaanUbah.setLocationRelativeTo(null);
-        persediaanUbah.setVisible(true);
+        permintaanUbah = new PermintaanUbah();
+        permintaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        permintaanUbah.setLocationRelativeTo(null);
+        permintaanUbah.setVisible(true);
     }//GEN-LAST:event_ubah_persediaan_buttonActionPerformed
 
     private void addnew1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew1MouseEntered
@@ -1066,12 +1065,15 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tambah_pengiriman_button2ActionPerformed
 
     private void jumlah_pesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_field1ActionPerformed
-        // TODO add your handling code here:
+        //
     }//GEN-LAST:event_jumlah_pesanan_field1ActionPerformed
 
-    private void ubah_persediaan_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_persediaan_button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ubah_persediaan_button1ActionPerformed
+    private void ubah_permintaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_permintaan_buttonActionPerformed
+        permintaanUbah = new PermintaanUbah();
+        permintaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        permintaanUbah.setLocationRelativeTo(null);
+        permintaanUbah.setVisible(true);
+    }//GEN-LAST:event_ubah_permintaan_buttonActionPerformed
 
     private void addnew2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew2MouseEntered
         // TODO add your handling code here:
@@ -1295,7 +1297,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private java.awt.Label title2;
     private javax.swing.JPanel title_container;
     private javax.swing.JTable transaction_table;
+    private javax.swing.JButton ubah_permintaan_button;
     private javax.swing.JButton ubah_persediaan_button;
-    private javax.swing.JButton ubah_persediaan_button1;
     // End of variables declaration//GEN-END:variables
 }

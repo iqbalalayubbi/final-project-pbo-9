@@ -348,5 +348,70 @@ public class DatabaseConnect {
 
         return false;
     }
+    
+    public static boolean modifyPermintaanRecord(String kodePemesanan, String tanggalPemesanan, String jenisProduk, String pelanggan, Integer jumlahPesanan, String statusPemesanan) {
+        StringBuilder queryBuilder = new StringBuilder("UPDATE permintaan SET ");
+        boolean first = true;
+
+        if (tanggalPemesanan != null && !tanggalPemesanan.isEmpty()) {
+            queryBuilder.append("tanggal_pemesanan = ?");
+            first = false;
+        }
+        if (jenisProduk != null && !jenisProduk.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("jenis_produk = ?");
+            first = false;
+        }
+        if (pelanggan != null && !pelanggan.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("pelanggan = ?");
+            first = false;
+        }
+        if (jumlahPesanan != null) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("jumlah_pesanan = ?");
+            first = false;
+        }
+        if (statusPemesanan != null && !statusPemesanan.isEmpty()) {
+            if (!first) queryBuilder.append(", ");
+            queryBuilder.append("status_pemesanan = ?");
+        }
+
+        queryBuilder.append(" WHERE kode_pemesanan = ?");
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(queryBuilder.toString())) {
+
+            int paramIndex = 1;
+            if (tanggalPemesanan != null && !tanggalPemesanan.isEmpty()) {
+                pstmt.setString(paramIndex++, tanggalPemesanan);
+            }
+            if (jenisProduk != null && !jenisProduk.isEmpty()) {
+                pstmt.setString(paramIndex++, jenisProduk);
+            }
+            if (pelanggan != null && !pelanggan.isEmpty()) {
+                pstmt.setString(paramIndex++, pelanggan);
+            }
+            if (jumlahPesanan != null) {
+                pstmt.setInt(paramIndex++, jumlahPesanan);
+            }
+            if (statusPemesanan != null && !statusPemesanan.isEmpty()) {
+                pstmt.setString(paramIndex++, statusPemesanan);
+            }
+
+            pstmt.setString(paramIndex, kodePemesanan);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("The record has been updated in the permintaan table.");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to update data in the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
 
 }
