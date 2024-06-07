@@ -34,7 +34,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private Permintaan requestForm;
 
     // row id each table cell
-    private int idSelected;
+    private int idSelected = 0;
 
     /**
      * Creates new form dashboardUI
@@ -321,46 +321,55 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(tambah_pengiriman_button2, gridBagConstraints);
 
+        kirim14.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim14.setText("Status Pemesanan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim14, gridBagConstraints);
 
         jenis_produk_field1.setPreferredSize(new java.awt.Dimension(300, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(jenis_produk_field1, gridBagConstraints);
 
+        kirim15.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim15.setText("Pelanggan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim15, gridBagConstraints);
 
+        kirim16.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim16.setText("Jumlah Pesanan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim16, gridBagConstraints);
 
+        kirim17.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim17.setText("Tanggal Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim17, gridBagConstraints);
 
+        kirim18.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim18.setText("Kode Pemesanan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim18, gridBagConstraints);
 
@@ -368,7 +377,6 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kode_pesanan_field, gridBagConstraints);
 
@@ -377,6 +385,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(title2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -419,6 +428,7 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew2.add(jSeparator10, gridBagConstraints);
 
         ubah_permintaan_button.setText("UBAH");
+        ubah_permintaan_button.setPreferredSize(new java.awt.Dimension(100, 40));
         ubah_permintaan_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ubah_permintaan_buttonActionPerformed(evt);
@@ -428,19 +438,22 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(ubah_permintaan_button, gridBagConstraints);
 
+        kirim19.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim19.setText("Jenis Produk");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim19, gridBagConstraints);
 
         status_pemesanan_field1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diajukan", "Selesai", "Dibatalkan" }));
         status_pemesanan_field1.setLightWeightPopupEnabled(false);
         status_pemesanan_field1.setMaximumSize(new java.awt.Dimension(300, 32767));
+        status_pemesanan_field1.setMinimumSize(new java.awt.Dimension(300, 24));
         status_pemesanan_field1.setPreferredSize(new java.awt.Dimension(300, 24));
         status_pemesanan_field1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -450,13 +463,15 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(status_pemesanan_field1, gridBagConstraints);
 
         require.add(addnew2);
 
+        request_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         request_table.setModel(DatabaseConnect.populatePermintaanTable());
+        request_table.setRowHeight(25);
         request_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 request_tableMouseClicked(evt);
@@ -481,10 +496,12 @@ public class DashboardUI extends javax.swing.JFrame {
         });
         addnew1.setLayout(new java.awt.GridBagLayout());
 
+        kirim7.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim7.setText("Nama Barang");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim7, gridBagConstraints);
 
@@ -510,10 +527,12 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(nama_barang_field, gridBagConstraints);
 
+        kirim8.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim8.setText("Kategori");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim8, gridBagConstraints);
 
@@ -524,31 +543,39 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kategori_field, gridBagConstraints);
 
+        kirim9.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim9.setText("Lokasi");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim9, gridBagConstraints);
 
+        kirim10.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim10.setText("Jumlah Barang");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim10, gridBagConstraints);
 
+        kirim11.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim11.setText("Tanggal Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim11, gridBagConstraints);
 
+        kirim12.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim12.setText("ID Barang");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim12, gridBagConstraints);
 
@@ -564,6 +591,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(title1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -606,6 +634,7 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew1.add(jSeparator8, gridBagConstraints);
 
         ubah_persediaan_button.setText("UBAH");
+        ubah_persediaan_button.setPreferredSize(new java.awt.Dimension(100, 40));
         ubah_persediaan_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ubah_persediaan_buttonActionPerformed(evt);
@@ -615,13 +644,15 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(ubah_persediaan_button, gridBagConstraints);
 
         supply.add(addnew1);
 
+        supply_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         supply_table.setModel(DatabaseConnect.populatePersediaanTable()
         );
+        supply_table.setRowHeight(25);
         supply_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 supply_tableMouseClicked(evt);
@@ -641,10 +672,12 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew.setPreferredSize(new java.awt.Dimension(1182, 400));
         addnew.setLayout(new java.awt.GridBagLayout());
 
+        kirim1.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim1.setText("Pelanggan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim1, gridBagConstraints);
 
@@ -660,6 +693,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(ubah_pengiriman_button, gridBagConstraints);
 
@@ -670,10 +704,12 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(pelanggan_field, gridBagConstraints);
 
+        kirim2.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim2.setText("Jenis Produk");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim2, gridBagConstraints);
 
@@ -684,10 +720,12 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(jenis_produk_field, gridBagConstraints);
 
+        kirim3.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim3.setText("Biaya Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim3, gridBagConstraints);
 
@@ -698,24 +736,30 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(biaya_pengiriman_field, gridBagConstraints);
 
+        kirim4.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim4.setText("Jenis Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim4, gridBagConstraints);
 
+        kirim5.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim5.setText("Tanggal Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim5, gridBagConstraints);
 
+        kirim6.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         kirim6.setText("Kode Pemesanan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim6, gridBagConstraints);
 
@@ -731,6 +775,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(title, gridBagConstraints);
         title.getAccessibleContext().setAccessibleName("");
@@ -784,8 +829,10 @@ public class DashboardUI extends javax.swing.JFrame {
 
         pengiriman.add(addnew);
 
+        delivery_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         delivery_table.setModel(DatabaseConnect.populatePengirimanTable()
         );
+        delivery_table.setRowHeight(25);
         delivery_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 delivery_tableMouseClicked(evt);

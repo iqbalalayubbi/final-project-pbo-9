@@ -29,6 +29,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
         initComponents();
         this.parentUI = parentUI;  
         Map<String, String> valuesRow = parentUI.getDataRowSelected(requestTable, idSelected);
+        this.idSelected = valuesRow.get("Kode Pemesanan");
         this.fillTextInput(valuesRow);
     }
 
@@ -99,6 +100,9 @@ public class PermintaanUbah extends javax.swing.JFrame {
         gap9 = new javax.swing.JSeparator();
         code_input4 = new javax.swing.JPanel();
         add_btn = new javax.swing.JButton();
+        gap14 = new javax.swing.JSeparator();
+        code_input7 = new javax.swing.JPanel();
+        delete_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 209));
@@ -289,9 +293,14 @@ public class PermintaanUbah extends javax.swing.JFrame {
         code_input4.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input4.setLayout(new java.awt.CardLayout());
 
+        add_btn.setBackground(new java.awt.Color(0, 173, 181));
+        add_btn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        add_btn.setForeground(new java.awt.Color(255, 255, 255));
         add_btn.setText("Ubah");
-        add_btn.setMaximumSize(new java.awt.Dimension(200, 50));
-        add_btn.setPreferredSize(new java.awt.Dimension(100, 24));
+        add_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        add_btn.setMaximumSize(new java.awt.Dimension(200, 60));
+        add_btn.setMinimumSize(new java.awt.Dimension(45, 60));
+        add_btn.setPreferredSize(new java.awt.Dimension(100, 60));
         add_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_btnActionPerformed(evt);
@@ -300,6 +309,31 @@ public class PermintaanUbah extends javax.swing.JFrame {
         code_input4.add(add_btn, "card2");
 
         jPanel1.add(code_input4);
+
+        gap14.setMaximumSize(new java.awt.Dimension(32767, 20));
+        gap14.setPreferredSize(new java.awt.Dimension(50, 30));
+        jPanel1.add(gap14);
+
+        code_input7.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input7.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input7.setLayout(new java.awt.CardLayout());
+
+        delete_btn.setBackground(new java.awt.Color(255, 0, 51));
+        delete_btn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        delete_btn.setForeground(new java.awt.Color(255, 255, 255));
+        delete_btn.setText("Hapus");
+        delete_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        delete_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        delete_btn.setMaximumSize(new java.awt.Dimension(200, 50));
+        delete_btn.setPreferredSize(new java.awt.Dimension(100, 40));
+        delete_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btnActionPerformed(evt);
+            }
+        });
+        code_input7.add(delete_btn, "card2");
+
+        jPanel1.add(code_input7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,6 +380,22 @@ public class PermintaanUbah extends javax.swing.JFrame {
     private void jenis_produk_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_produk_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jenis_produk_fieldActionPerformed
+
+    private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
+        // TODO add your handling code here:
+        deletePermintaanRecord();
+        this.parentUI.updateTableModel();
+        this.setVisible(false);
+    }//GEN-LAST:event_delete_btnActionPerformed
+
+    private void deletePermintaanRecord(){
+        boolean success = DatabaseConnect.deleteItemTable(this.idSelected, "permintaan", "kode_pemesanan");
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to delete the record.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     private void modifyPermintaanRecord() {
         // Get input data
@@ -413,11 +463,14 @@ public class PermintaanUbah extends javax.swing.JFrame {
     private javax.swing.JPanel code_input4;
     private javax.swing.JPanel code_input5;
     private javax.swing.JPanel code_input6;
+    private javax.swing.JPanel code_input7;
+    private javax.swing.JButton delete_btn;
     private javax.swing.JSeparator gap1;
     private javax.swing.JSeparator gap10;
     private javax.swing.JSeparator gap11;
     private javax.swing.JSeparator gap12;
     private javax.swing.JSeparator gap13;
+    private javax.swing.JSeparator gap14;
     private javax.swing.JSeparator gap2;
     private javax.swing.JSeparator gap3;
     private javax.swing.JSeparator gap4;

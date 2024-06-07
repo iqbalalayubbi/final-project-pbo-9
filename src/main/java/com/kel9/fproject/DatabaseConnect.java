@@ -11,11 +11,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import java.util.Vector;
+
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class DatabaseConnect {
     private static String URL;
@@ -469,6 +470,27 @@ public class DatabaseConnect {
             int rowsUpdated = pstmt.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("The record has been updated in the pengiriman table.");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to update data in the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return false;
+    }
+
+    public static boolean deleteItemTable(String kodeItem, String tableName, String columnName) {
+        // System.out.println();
+
+        StringBuilder queryBuilder = new StringBuilder("DELETE FROM " + tableName + " WHERE "+columnName+" = ?");
+
+        try (Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(queryBuilder.toString())) {
+            pstmt.setString(1, kodeItem);
+            int rowsUpdated = pstmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("The record has been deleted in the "+ tableName +" table.");
                 return true;
             }
         } catch (SQLException e) {
