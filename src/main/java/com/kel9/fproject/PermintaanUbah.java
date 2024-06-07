@@ -4,8 +4,15 @@
  */
 package com.kel9.fproject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -13,13 +20,40 @@ import javax.swing.JOptionPane;
  */
 public class PermintaanUbah extends javax.swing.JFrame {
 
+    private DashboardUI parentUI;
+    private String idSelected;
     /**
      * Creates new form Permintaan
      */
-    public PermintaanUbah() {        
+    public PermintaanUbah(DashboardUI parentUI, int idSelected, JTable requestTable)  {
         initComponents();
+        this.parentUI = parentUI;  
+        Map<String, String> valuesRow = parentUI.getDataRowSelected(requestTable, idSelected);
+        this.fillTextInput(valuesRow);
     }
 
+
+    private void fillTextInput(Map<String, String> valuesRow) {
+        try {
+
+
+            //? kode pemesanan
+            this.kode_pemesanan_field.setText(valuesRow.get("Kode Pemesanan"));
+            
+            //? date chooser
+            String dateValue = valuesRow.get("Tanggal Pemesanan");
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            this.tanggal_pemesanan_field.setDate(date);
+            
+            this.jenis_produk_field.setText(valuesRow.get("Jenis Produk"));
+            this.pelanggan_field.setText(valuesRow.get("Pelanggan"));
+            this.jumlah_pesanan_field.setText(valuesRow.get("Jumlah Pesanan"));
+            this.status_pemesanan_field.setSelectedItem(valuesRow.get("Status Pemesanan"));
+       
+        } catch (ParseException ex) {
+            Logger.getLogger(PermintaanUbah.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -289,6 +323,8 @@ public class PermintaanUbah extends javax.swing.JFrame {
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
         modifyPermintaanRecord();
+        this.parentUI.updateTableModel();
+        this.setVisible(false);
     }//GEN-LAST:event_add_btnActionPerformed
 
     private void kode_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pemesanan_fieldActionPerformed

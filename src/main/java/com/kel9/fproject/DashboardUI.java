@@ -6,7 +6,10 @@ import javax.swing.Popup;
 import javax.swing.PopupFactory;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
-import javax.swing.Timer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,7 +31,10 @@ public class DashboardUI extends javax.swing.JFrame {
     private PermintaanUbah permintaanUbah;
     private PersediaanUbah persediaanUbah;
     private PengirimanUbah pengirimanUbah;
-    private Timer timer;
+    private Permintaan requestForm;
+
+    // row id each table cell
+    private int idSelected;
 
     /**
      * Creates new form dashboardUI
@@ -37,6 +43,7 @@ public class DashboardUI extends javax.swing.JFrame {
     public DashboardUI(WindowStateManager windowManager) {
         this.windowManager = windowManager;
         initComponents();
+        System.out.println(this.transaction_table.getSelectedRow());
     }
 
     /**
@@ -83,7 +90,7 @@ public class DashboardUI extends javax.swing.JFrame {
         kirim19 = new java.awt.Label();
         status_pemesanan_field1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        request_table = new javax.swing.JTable();
         supply = new javax.swing.JPanel();
         addnew1 = new javax.swing.JPanel();
         kirim7 = new java.awt.Label();
@@ -104,7 +111,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         ubah_persediaan_button = new javax.swing.JButton();
         listitem1 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        supply_table = new javax.swing.JTable();
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
         kirim1 = new java.awt.Label();
@@ -125,7 +132,7 @@ public class DashboardUI extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         tambah_pengiriman_button3 = new javax.swing.JButton();
         listitem = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        delivery_table = new javax.swing.JTable();
         setting = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         title_container = new javax.swing.JPanel();
@@ -241,6 +248,9 @@ public class DashboardUI extends javax.swing.JFrame {
         transaction_table.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         transaction_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
@@ -263,6 +273,11 @@ public class DashboardUI extends javax.swing.JFrame {
             }
         });
         transaction_table.setRowHeight(25);
+        transaction_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transaction_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(transaction_table);
         if (transaction_table.getColumnModel().getColumnCount() > 0) {
             transaction_table.getColumnModel().getColumn(0).setResizable(false);
@@ -441,8 +456,13 @@ public class DashboardUI extends javax.swing.JFrame {
 
         require.add(addnew2);
 
-        jTable1.setModel(DatabaseConnect.populatePermintaanTable());
-        jScrollPane2.setViewportView(jTable1);
+        request_table.setModel(DatabaseConnect.populatePermintaanTable());
+        request_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                request_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(request_table);
 
         require.add(jScrollPane2);
 
@@ -600,9 +620,14 @@ public class DashboardUI extends javax.swing.JFrame {
 
         supply.add(addnew1);
 
-        jTable3.setModel(DatabaseConnect.populatePersediaanTable()
+        supply_table.setModel(DatabaseConnect.populatePersediaanTable()
         );
-        listitem1.setViewportView(jTable3);
+        supply_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                supply_tableMouseClicked(evt);
+            }
+        });
+        listitem1.setViewportView(supply_table);
 
         supply.add(listitem1);
 
@@ -759,9 +784,14 @@ public class DashboardUI extends javax.swing.JFrame {
 
         pengiriman.add(addnew);
 
-        jTable2.setModel(DatabaseConnect.populatePengirimanTable()
+        delivery_table.setModel(DatabaseConnect.populatePengirimanTable()
         );
-        listitem.setViewportView(jTable2);
+        delivery_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delivery_tableMouseClicked(evt);
+            }
+        });
+        listitem.setViewportView(delivery_table);
 
         pengiriman.add(listitem);
 
@@ -978,6 +1008,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Setting", setting);
 
+        jTabbedPane2.setSelectedIndex(1);
+
         getContentPane().add(jTabbedPane2, "card2");
 
         pack();
@@ -1013,7 +1045,7 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void ubah_pengiriman_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_pengiriman_buttonActionPerformed
-        pengirimanUbah = new PengirimanUbah();
+        pengirimanUbah = new PengirimanUbah(this, this.idSelected, this.delivery_table);
         pengirimanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pengirimanUbah.setLocationRelativeTo(null);
         pengirimanUbah.setVisible(true);
@@ -1021,7 +1053,7 @@ public class DashboardUI extends javax.swing.JFrame {
 
     private void tambah_pengiriman_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button1ActionPerformed
         insertPersediaanRecord();
-        jTable3.setModel(DatabaseConnect.populatePersediaanTable());
+        supply_table.setModel(DatabaseConnect.populatePersediaanTable());
     }//GEN-LAST:event_tambah_pengiriman_button1ActionPerformed
 
     private void insertPersediaanRecord() {
@@ -1064,22 +1096,21 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jumlah_fieldActionPerformed
 
     private void ubah_persediaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_persediaan_buttonActionPerformed
-        permintaanUbah = new PermintaanUbah();
-        permintaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        permintaanUbah.setLocationRelativeTo(null);
-        permintaanUbah.setVisible(true);
+        persediaanUbah = new PersediaanUbah(this, this.idSelected, this.supply_table);
+        persediaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        persediaanUbah.setLocationRelativeTo(null);
+        persediaanUbah.setVisible(true);
     }//GEN-LAST:event_ubah_persediaan_buttonActionPerformed
 
     private void addnew1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew1MouseEntered
-        //startTimer();
     }//GEN-LAST:event_addnew1MouseEntered
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        startTimer();// TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MouseEntered
 
     private void tambah_pengiriman_button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button2ActionPerformed
         insertPermintaanRecord();
+        this.updateTableModel();
     }//GEN-LAST:event_tambah_pengiriman_button2ActionPerformed
 
     private void jumlah_pesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_field1ActionPerformed
@@ -1087,11 +1118,29 @@ public class DashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jumlah_pesanan_field1ActionPerformed
 
     private void ubah_permintaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_permintaan_buttonActionPerformed
-        permintaanUbah = new PermintaanUbah();
+        permintaanUbah = new PermintaanUbah(this, this.idSelected, this.request_table);
         permintaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         permintaanUbah.setLocationRelativeTo(null);
         permintaanUbah.setVisible(true);
     }//GEN-LAST:event_ubah_permintaan_buttonActionPerformed
+
+    public Map<String, String> getDataRowSelected(javax.swing.JTable table, int idSelected){
+        // int idSelected = Integer.parseInt(this.idSelected);
+        // String requestId = table.getValueAt(idSelected, 1).toString();
+        int rowSelected = idSelected;
+        int columnCount = table.getColumnCount();
+        // String[] valuesRow = new String[columnCount];
+        Map<String, String> valuesRow = new HashMap<>();
+
+        for (int i = 0; i < columnCount; i++) {    
+            
+            String columnName = table.getColumnName(i);
+            String columnValue = table.getValueAt(rowSelected, i).toString();
+            valuesRow.put(columnName, columnValue);
+        }
+
+        return valuesRow;
+    }
 
     private void addnew2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew2MouseEntered
         // TODO add your handling code here:
@@ -1103,27 +1152,37 @@ public class DashboardUI extends javax.swing.JFrame {
 
     private void tambah_pengiriman_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button3ActionPerformed
         insertPengirimanRecord();
-        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
+        delivery_table.setModel(DatabaseConnect.populatePengirimanTable());
     }//GEN-LAST:event_tambah_pengiriman_button3ActionPerformed
+
+    private void transaction_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transaction_tableMouseClicked
+        // TODO add your handling code here:
+        this.idSelected = this.transaction_table.getSelectedRow();
+    }//GEN-LAST:event_transaction_tableMouseClicked
+
+    private void request_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_request_tableMouseClicked
+        // TODO add your handling code here:
+        // int idx = /
+        this.idSelected = this.request_table.getSelectedRow();
+        // getDataRowSelected(this.request_table);
+
+    }//GEN-LAST:event_request_tableMouseClicked
+
+    private void supply_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supply_tableMouseClicked
+        // TODO add your handling code here:
+        this.idSelected = this.supply_table.getSelectedRow();
+    }//GEN-LAST:event_supply_tableMouseClicked
+
+    private void delivery_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delivery_tableMouseClicked
+        // TODO add your handling code here:
+        this.idSelected = this.delivery_table.getSelectedRow();
+    }//GEN-LAST:event_delivery_tableMouseClicked
     
-    private void startTimer(){
-        // Create a timer that triggers every 2 second
-        timer = new Timer(2000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Call the function to update the table model
-                updateTableModel();
-            }
-        });
-        // Start the timer
-        timer.start();
-    }
-    
-    private void updateTableModel() {
+    public void updateTableModel() {
         // Set the table model using the DatabaseConnect.populatePermintaanTable() method
-        jTable1.setModel(DatabaseConnect.populatePermintaanTable());
-        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
-        jTable3.setModel(DatabaseConnect.populatePersediaanTable());
+        request_table.setModel(DatabaseConnect.populatePermintaanTable());
+        delivery_table.setModel(DatabaseConnect.populatePengirimanTable());
+        supply_table.setModel(DatabaseConnect.populatePersediaanTable());
     }
     
     private void insertPermintaanRecord() {
@@ -1233,6 +1292,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel company_name;
     private javax.swing.JPanel company_number;
     private javax.swing.JPanel dashboard;
+    private javax.swing.JTable delivery_table;
     private com.toedter.calendar.JDateChooser exp_date_field;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
@@ -1262,9 +1322,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -1304,12 +1361,14 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JTextField pelanggan_field1;
     private javax.swing.JPanel pengiriman;
     private javax.swing.JLabel product_title;
+    private javax.swing.JTable request_table;
     private javax.swing.JLabel request_title;
     private javax.swing.JPanel require;
     private javax.swing.JLabel send_title;
     private javax.swing.JPanel setting;
     private javax.swing.JComboBox<String> status_pemesanan_field1;
     private javax.swing.JPanel supply;
+    private javax.swing.JTable supply_table;
     private javax.swing.JButton tambah_pengiriman_button1;
     private javax.swing.JButton tambah_pengiriman_button2;
     private javax.swing.JButton tambah_pengiriman_button3;

@@ -7,8 +7,12 @@ package com.kel9.fproject;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
+import java.util.Date;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -17,11 +21,42 @@ import javax.swing.JOptionPane;
  */
 public class PersediaanUbah extends javax.swing.JFrame {
 
+
+    private DashboardUI parentUI;
+    private String idSelected;
     /**
      * Creates new form PersediaanUbah
      */
-    public PersediaanUbah() {
+    public PersediaanUbah(DashboardUI parentUI, int idSelected, JTable requestTable) {
         initComponents();
+        this.parentUI = parentUI;  
+        Map<String, String> valuesRow = parentUI.getDataRowSelected(requestTable, idSelected);
+        this.fillTextInput(valuesRow);
+        // Nomor, ID Barang, Nama Barang, Kategori, Lokasi, Exp Date, Jumlah
+    }
+
+
+    private void fillTextInput(Map<String, String> valuesRow) {
+        try {
+
+            //? kode pemesanan
+            this.id_barang_field.setText(valuesRow.get("ID Barang"));
+            //? nama barang
+            this.nama_barang_field.setText(valuesRow.get("Nama Barang"));
+            //? kategori barang
+            this.kategori_field.setText(valuesRow.get("Kategori"));
+            //? lokasi
+            this.lokasi_field.setText(valuesRow.get("Lokasi"));
+            //? exp date
+            String dateValue = valuesRow.get("Exp Date");
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            this.exp_date_field.setDate(date);
+            //? jumlah
+            this.jumlah_field.setText(valuesRow.get("Jumlah"));
+
+        } catch (ParseException ex) {
+            Logger.getLogger(PermintaanUbah.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -307,6 +342,8 @@ public class PersediaanUbah extends javax.swing.JFrame {
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
         modifyPersediaanRecord();
+        this.parentUI.updateTableModel();
+        this.setVisible(false);
     }//GEN-LAST:event_add_btnActionPerformed
 
     private void jumlah_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_fieldActionPerformed
