@@ -133,10 +133,6 @@ public class Permintaan extends javax.swing.JFrame {
         gap10.setPreferredSize(new java.awt.Dimension(50, 20));
         gap10.setRequestFocusEnabled(false);
         code_input5.add(gap10);
-
-        tanggal_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        tanggal_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        tanggal_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 24));
         code_input5.add(tanggal_pemesanan_field);
 
         jPanel1.add(code_input5);
