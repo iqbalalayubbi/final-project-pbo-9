@@ -289,14 +289,14 @@ public class PermintaanUbah extends javax.swing.JFrame {
         gap9.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel1.add(gap9);
 
-        code_input4.setMaximumSize(new java.awt.Dimension(600, 30));
-        code_input4.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input4.setMaximumSize(new java.awt.Dimension(600, 40));
+        code_input4.setPreferredSize(new java.awt.Dimension(1197, 60));
         code_input4.setLayout(new java.awt.CardLayout());
 
         add_btn.setBackground(new java.awt.Color(0, 173, 181));
         add_btn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         add_btn.setForeground(new java.awt.Color(255, 255, 255));
-        add_btn.setText("Ubah");
+        add_btn.setText("UBAH");
         add_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         add_btn.setMaximumSize(new java.awt.Dimension(200, 60));
         add_btn.setMinimumSize(new java.awt.Dimension(45, 60));
@@ -314,14 +314,14 @@ public class PermintaanUbah extends javax.swing.JFrame {
         gap14.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap14);
 
-        code_input7.setMaximumSize(new java.awt.Dimension(600, 30));
-        code_input7.setPreferredSize(new java.awt.Dimension(1197, 40));
+        code_input7.setMaximumSize(new java.awt.Dimension(600, 40));
+        code_input7.setPreferredSize(new java.awt.Dimension(1197, 60));
         code_input7.setLayout(new java.awt.CardLayout());
 
         delete_btn.setBackground(new java.awt.Color(255, 0, 51));
         delete_btn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         delete_btn.setForeground(new java.awt.Color(255, 255, 255));
-        delete_btn.setText("Hapus");
+        delete_btn.setText("HAPUS");
         delete_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         delete_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         delete_btn.setMaximumSize(new java.awt.Dimension(200, 50));
@@ -348,7 +348,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

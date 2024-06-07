@@ -29,6 +29,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         initComponents();
         this.parentUI = parentUI;  
         Map<String, String> valuesRow = parentUI.getDataRowSelected(deliveryTable, idSelected);
+        this.idSelected = valuesRow.get("Kode Pemesanan");
         this.fillTextInput(valuesRow);
         // No, Kode Pemesanan, Pelanggan, Jenis Produk, Biaya Kirim, Jasa Kirim, Tanggal Kirim
     }
@@ -104,6 +105,9 @@ public class PengirimanUbah extends javax.swing.JFrame {
         gap9 = new javax.swing.JSeparator();
         code_input4 = new javax.swing.JPanel();
         add_btn = new javax.swing.JButton();
+        gap14 = new javax.swing.JSeparator();
+        code_input7 = new javax.swing.JPanel();
+        delete_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,7 +154,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         jPanel1.add(code_input);
 
         gap6.setMaximumSize(new java.awt.Dimension(32767, 30));
-        gap6.setPreferredSize(new java.awt.Dimension(50, 50));
+        gap6.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap6);
 
         code_input5.setMaximumSize(new java.awt.Dimension(600, 30));
@@ -178,7 +182,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         jPanel1.add(code_input5);
 
         gap13.setMaximumSize(new java.awt.Dimension(32767, 30));
-        gap13.setPreferredSize(new java.awt.Dimension(50, 50));
+        gap13.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap13);
 
         code_input1.setMaximumSize(new java.awt.Dimension(600, 30));
@@ -206,7 +210,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         jPanel1.add(code_input1);
 
         gap7.setMaximumSize(new java.awt.Dimension(32767, 30));
-        gap7.setPreferredSize(new java.awt.Dimension(50, 50));
+        gap7.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap7);
 
         code_input6.setMaximumSize(new java.awt.Dimension(600, 30));
@@ -234,7 +238,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         jPanel1.add(code_input6);
 
         gap12.setMaximumSize(new java.awt.Dimension(32767, 30));
-        gap12.setPreferredSize(new java.awt.Dimension(50, 50));
+        gap12.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap12);
 
         code_input2.setMaximumSize(new java.awt.Dimension(600, 30));
@@ -257,7 +261,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         jPanel1.add(code_input2);
 
         gap8.setMaximumSize(new java.awt.Dimension(32767, 30));
-        gap8.setPreferredSize(new java.awt.Dimension(50, 50));
+        gap8.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap8);
 
         code_input3.setMaximumSize(new java.awt.Dimension(600, 30));
@@ -286,14 +290,18 @@ public class PengirimanUbah extends javax.swing.JFrame {
         jPanel1.add(code_input3);
 
         gap9.setMaximumSize(new java.awt.Dimension(32767, 30));
-        gap9.setPreferredSize(new java.awt.Dimension(50, 50));
+        gap9.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap9);
 
-        code_input4.setMaximumSize(new java.awt.Dimension(600, 30));
+        code_input4.setMaximumSize(new java.awt.Dimension(600, 40));
         code_input4.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input4.setLayout(new java.awt.CardLayout());
 
-        add_btn.setText("Ubah");
+        add_btn.setBackground(new java.awt.Color(0, 173, 181));
+        add_btn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        add_btn.setForeground(new java.awt.Color(255, 255, 255));
+        add_btn.setText("UBAH");
+        add_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         add_btn.setMaximumSize(new java.awt.Dimension(200, 50));
         add_btn.setPreferredSize(new java.awt.Dimension(100, 24));
         add_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -304,6 +312,31 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input4.add(add_btn, "card2");
 
         jPanel1.add(code_input4);
+
+        gap14.setMaximumSize(new java.awt.Dimension(32767, 20));
+        gap14.setPreferredSize(new java.awt.Dimension(50, 30));
+        jPanel1.add(gap14);
+
+        code_input7.setMaximumSize(new java.awt.Dimension(600, 40));
+        code_input7.setPreferredSize(new java.awt.Dimension(1197, 60));
+        code_input7.setLayout(new java.awt.CardLayout());
+
+        delete_btn.setBackground(new java.awt.Color(255, 0, 51));
+        delete_btn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        delete_btn.setForeground(new java.awt.Color(255, 255, 255));
+        delete_btn.setText("HAPUS");
+        delete_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        delete_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        delete_btn.setMaximumSize(new java.awt.Dimension(200, 50));
+        delete_btn.setPreferredSize(new java.awt.Dimension(100, 40));
+        delete_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btnActionPerformed(evt);
+            }
+        });
+        code_input7.add(delete_btn, "card2");
+
+        jPanel1.add(code_input7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -318,7 +351,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -350,6 +383,23 @@ public class PengirimanUbah extends javax.swing.JFrame {
     private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jenis_pengiriman_fieldActionPerformed
+
+    private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
+        // TODO add your handling code here:
+        deletePengirimanRecord();
+        this.parentUI.updateTableModel();
+        this.setVisible(false);
+    }//GEN-LAST:event_delete_btnActionPerformed
+
+    private void deletePengirimanRecord(){
+        boolean success = DatabaseConnect.deleteItemTable(this.idSelected, "pengiriman", "kode_pemesanan");
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to delete the record.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void modifyPengirimanRecord() {
         // Get input data
         String kodePemesanan = kode_pemesanan_field.getText();
@@ -397,11 +447,14 @@ public class PengirimanUbah extends javax.swing.JFrame {
     private javax.swing.JPanel code_input4;
     private javax.swing.JPanel code_input5;
     private javax.swing.JPanel code_input6;
+    private javax.swing.JPanel code_input7;
+    private javax.swing.JButton delete_btn;
     private javax.swing.JSeparator gap1;
     private javax.swing.JSeparator gap10;
     private javax.swing.JSeparator gap11;
     private javax.swing.JSeparator gap12;
     private javax.swing.JSeparator gap13;
+    private javax.swing.JSeparator gap14;
     private javax.swing.JSeparator gap2;
     private javax.swing.JSeparator gap3;
     private javax.swing.JSeparator gap4;

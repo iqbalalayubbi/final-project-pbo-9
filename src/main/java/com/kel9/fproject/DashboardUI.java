@@ -43,7 +43,15 @@ public class DashboardUI extends javax.swing.JFrame {
     public DashboardUI(WindowStateManager windowManager) {
         this.windowManager = windowManager;
         initComponents();
-        System.out.println(this.transaction_table.getSelectedRow());
+        showDashboardInformation();
+    }
+
+    private void showDashboardInformation(){
+        int[] tablesRowCount = DatabaseConnect.dashboardInformation();
+        this.request_value.setText(Integer.toString(tablesRowCount[0]));
+        this.supply_value.setText(Integer.toString(tablesRowCount[1]));
+        this.delivery_value.setText(Integer.toString(tablesRowCount[2]));
+
     }
 
     /**
@@ -60,13 +68,13 @@ public class DashboardUI extends javax.swing.JFrame {
         dashboard = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         card1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        request_value = new javax.swing.JLabel();
         request_title = new javax.swing.JLabel();
         card = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        supply_value = new javax.swing.JLabel();
         send_title = new javax.swing.JLabel();
         card2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        delivery_value = new javax.swing.JLabel();
         product_title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         transaction_table = new javax.swing.JTable();
@@ -187,11 +195,11 @@ public class DashboardUI extends javax.swing.JFrame {
         card1.setPreferredSize(new java.awt.Dimension(200, 100));
         card1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 173, 181));
-        jLabel5.setText("300");
-        jLabel5.setPreferredSize(new java.awt.Dimension(100, 18));
-        card1.add(jLabel5);
+        request_value.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        request_value.setForeground(new java.awt.Color(0, 173, 181));
+        request_value.setText("300");
+        request_value.setPreferredSize(new java.awt.Dimension(100, 18));
+        card1.add(request_value);
 
         request_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         request_title.setForeground(new java.awt.Color(57, 62, 70));
@@ -207,15 +215,15 @@ public class DashboardUI extends javax.swing.JFrame {
         card.setPreferredSize(new java.awt.Dimension(200, 100));
         card.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 173, 181));
-        jLabel3.setText("250");
-        jLabel3.setPreferredSize(new java.awt.Dimension(100, 18));
-        card.add(jLabel3);
+        supply_value.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        supply_value.setForeground(new java.awt.Color(0, 173, 181));
+        supply_value.setText("250");
+        supply_value.setPreferredSize(new java.awt.Dimension(100, 18));
+        card.add(supply_value);
 
         send_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         send_title.setForeground(new java.awt.Color(57, 62, 70));
-        send_title.setText("Terkirim");
+        send_title.setText("Persediaan");
         send_title.setPreferredSize(new java.awt.Dimension(100, 18));
         card.add(send_title);
 
@@ -227,15 +235,15 @@ public class DashboardUI extends javax.swing.JFrame {
         card2.setPreferredSize(new java.awt.Dimension(200, 100));
         card2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 173, 181));
-        jLabel7.setText("500");
-        jLabel7.setPreferredSize(new java.awt.Dimension(100, 18));
-        card2.add(jLabel7);
+        delivery_value.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        delivery_value.setForeground(new java.awt.Color(0, 173, 181));
+        delivery_value.setText("500");
+        delivery_value.setPreferredSize(new java.awt.Dimension(100, 18));
+        card2.add(delivery_value);
 
         product_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         product_title.setForeground(new java.awt.Color(57, 62, 70));
-        product_title.setText("Barang");
+        product_title.setText("Pengiriman");
         product_title.setPreferredSize(new java.awt.Dimension(100, 18));
         card2.add(product_title);
 
@@ -1055,8 +1063,6 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Setting", setting);
 
-        jTabbedPane2.setSelectedIndex(1);
-
         getContentPane().add(jTabbedPane2, "card2");
 
         pack();
@@ -1340,6 +1346,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel company_number;
     private javax.swing.JPanel dashboard;
     private javax.swing.JTable delivery_table;
+    private javax.swing.JLabel delivery_value;
     private com.toedter.calendar.JDateChooser exp_date_field;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
@@ -1348,11 +1355,8 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel4;
@@ -1410,12 +1414,14 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JLabel product_title;
     private javax.swing.JTable request_table;
     private javax.swing.JLabel request_title;
+    private javax.swing.JLabel request_value;
     private javax.swing.JPanel require;
     private javax.swing.JLabel send_title;
     private javax.swing.JPanel setting;
     private javax.swing.JComboBox<String> status_pemesanan_field1;
     private javax.swing.JPanel supply;
     private javax.swing.JTable supply_table;
+    private javax.swing.JLabel supply_value;
     private javax.swing.JButton tambah_pengiriman_button1;
     private javax.swing.JButton tambah_pengiriman_button2;
     private javax.swing.JButton tambah_pengiriman_button3;

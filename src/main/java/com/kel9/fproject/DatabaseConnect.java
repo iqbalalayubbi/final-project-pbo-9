@@ -501,4 +501,37 @@ public class DatabaseConnect {
         return false;
     }
 
+    public static int[] dashboardInformation(){
+        String query = "SELECT (SELECT COUNT(pengiriman.kode_pemesanan) FROM pengiriman) AS count_pengiriman, (SELECT COUNT(permintaan.kode_pemesanan) FROM permintaan) AS count_permintaan, (SELECT COUNT(persediaan.id_barang) FROM persediaan) AS count_persediaan; ";
+
+        try {
+            Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            int[] tablesRowCount = new int[3];
+
+            if (rs.next()){
+                int pengirimanRowCount = rs.getInt(1);
+                int permintaanRowCount = rs.getInt(2);
+                int persediaanRowCount = rs.getInt(3);
+                tablesRowCount[0] = permintaanRowCount;
+                tablesRowCount[1] = persediaanRowCount;
+                tablesRowCount[2] = pengirimanRowCount;
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return tablesRowCount;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return null;
+    }
+
 }
