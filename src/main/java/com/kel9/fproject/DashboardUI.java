@@ -653,6 +653,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         addnew2.add(filler4, gridBagConstraints);
 
+        tanggal_pesanan_field1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tanggal_pesanan_field1.setMaximumSize(new java.awt.Dimension(350, 24));
         tanggal_pesanan_field1.setMinimumSize(new java.awt.Dimension(350, 24));
         tanggal_pesanan_field1.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -910,6 +911,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         addnew1.add(filler3, gridBagConstraints);
 
+        exp_date_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         exp_date_field.setMaximumSize(new java.awt.Dimension(400, 24));
         exp_date_field.setMinimumSize(new java.awt.Dimension(400, 24));
         exp_date_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -1161,6 +1163,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         addnew.add(filler2, gridBagConstraints);
 
+        tanggal_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tanggal_pengiriman_field.setMaximumSize(new java.awt.Dimension(350, 24));
         tanggal_pengiriman_field.setMinimumSize(new java.awt.Dimension(350, 24));
         tanggal_pengiriman_field.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -1443,8 +1446,9 @@ public class DashboardUI extends javax.swing.JFrame {
         button_container.add(jSeparator3, java.awt.BorderLayout.PAGE_START);
 
         btn_logout.setBackground(new java.awt.Color(255, 51, 51));
+        btn_logout.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btn_logout.setForeground(new java.awt.Color(255, 255, 255));
-        btn_logout.setText("Keluar");
+        btn_logout.setText("KELUAR");
         btn_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_logoutActionPerformed(evt);

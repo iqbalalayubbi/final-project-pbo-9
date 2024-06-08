@@ -133,14 +133,16 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input.setLayout(new javax.swing.BoxLayout(code_input, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Kode Pemesanan");
         code_input.add(jLabel3);
 
+        gap2.setForeground(new java.awt.Color(242, 242, 242));
         gap2.setPreferredSize(new java.awt.Dimension(50, 20));
         gap2.setRequestFocusEnabled(false);
         code_input.add(gap2);
 
+        kode_pemesanan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         kode_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         kode_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
         kode_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
@@ -153,6 +155,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input);
 
+        gap6.setForeground(new java.awt.Color(242, 242, 242));
         gap6.setMaximumSize(new java.awt.Dimension(32767, 30));
         gap6.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap6);
@@ -161,14 +164,16 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input5.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input5.setLayout(new javax.swing.BoxLayout(code_input5, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Pelanggan");
         code_input5.add(jLabel8);
 
+        gap10.setForeground(new java.awt.Color(242, 242, 242));
         gap10.setPreferredSize(new java.awt.Dimension(50, 20));
         gap10.setRequestFocusEnabled(false);
         code_input5.add(gap10);
 
+        pelanggan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         pelanggan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         pelanggan_field.setMinimumSize(new java.awt.Dimension(300, 24));
         pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 20));
@@ -181,6 +186,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input5);
 
+        gap13.setForeground(new java.awt.Color(242, 242, 242));
         gap13.setMaximumSize(new java.awt.Dimension(32767, 30));
         gap13.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap13);
@@ -189,14 +195,16 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input1.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input1.setLayout(new javax.swing.BoxLayout(code_input1, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Jenis Produk");
         code_input1.add(jLabel7);
 
+        gap3.setForeground(new java.awt.Color(242, 242, 242));
         gap3.setPreferredSize(new java.awt.Dimension(50, 20));
         gap3.setRequestFocusEnabled(false);
         code_input1.add(gap3);
 
+        jenis_produk_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jenis_produk_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         jenis_produk_field.setMinimumSize(new java.awt.Dimension(300, 24));
         jenis_produk_field.setPreferredSize(new java.awt.Dimension(300, 20));
@@ -209,6 +217,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input1);
 
+        gap7.setForeground(new java.awt.Color(242, 242, 242));
         gap7.setMaximumSize(new java.awt.Dimension(32767, 30));
         gap7.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap7);
@@ -217,14 +226,16 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input6.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input6.setLayout(new javax.swing.BoxLayout(code_input6, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Biaya Kirim");
         code_input6.add(jLabel11);
 
+        gap11.setForeground(new java.awt.Color(242, 242, 242));
         gap11.setPreferredSize(new java.awt.Dimension(50, 20));
         gap11.setRequestFocusEnabled(false);
         code_input6.add(gap11);
 
+        biaya_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         biaya_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         biaya_pengiriman_field.setMinimumSize(new java.awt.Dimension(300, 24));
         biaya_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 20));
@@ -237,6 +248,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input6);
 
+        gap12.setForeground(new java.awt.Color(242, 242, 242));
         gap12.setMaximumSize(new java.awt.Dimension(32767, 30));
         gap12.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap12);
@@ -245,14 +257,16 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input2.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input2.setLayout(new javax.swing.BoxLayout(code_input2, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Tanggal Pengiriman");
         code_input2.add(jLabel10);
 
+        gap4.setForeground(new java.awt.Color(242, 242, 242));
         gap4.setPreferredSize(new java.awt.Dimension(50, 20));
         gap4.setRequestFocusEnabled(false);
         code_input2.add(gap4);
 
+        tanggal_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tanggal_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         tanggal_pengiriman_field.setMinimumSize(new java.awt.Dimension(300, 24));
         tanggal_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -260,6 +274,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input2);
 
+        gap8.setForeground(new java.awt.Color(242, 242, 242));
         gap8.setMaximumSize(new java.awt.Dimension(32767, 30));
         gap8.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap8);
@@ -268,14 +283,16 @@ public class PengirimanUbah extends javax.swing.JFrame {
         code_input3.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input3.setLayout(new javax.swing.BoxLayout(code_input3, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Jasa Kirim");
         code_input3.add(jLabel9);
 
+        gap5.setForeground(new java.awt.Color(242, 242, 242));
         gap5.setPreferredSize(new java.awt.Dimension(50, 20));
         gap5.setRequestFocusEnabled(false);
         code_input3.add(gap5);
 
+        jenis_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jenis_pengiriman_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
         jenis_pengiriman_field.setLightWeightPopupEnabled(false);
         jenis_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 32767));
@@ -289,6 +306,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input3);
 
+        gap9.setForeground(new java.awt.Color(242, 242, 242));
         gap9.setMaximumSize(new java.awt.Dimension(32767, 30));
         gap9.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap9);
@@ -313,6 +331,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
 
         jPanel1.add(code_input4);
 
+        gap14.setForeground(new java.awt.Color(242, 242, 242));
         gap14.setMaximumSize(new java.awt.Dimension(32767, 20));
         gap14.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel1.add(gap14);
