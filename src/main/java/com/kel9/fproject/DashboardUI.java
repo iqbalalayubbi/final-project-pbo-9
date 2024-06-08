@@ -1,15 +1,30 @@
 package com.kel9.fproject;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.Popup;
 import javax.swing.PopupFactory;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,6 +59,46 @@ public class DashboardUI extends javax.swing.JFrame {
         this.windowManager = windowManager;
         initComponents();
         showDashboardInformation();
+        setTable(this.request_table);
+        setTable(this.supply_table);
+        setTable(this.delivery_table);
+        setTable(this.transaction_table);
+    }
+
+    private void setTable(JTable tableName) {
+        String defaultFont = "Liberation Sans";
+
+        //? header
+        JTableHeader header = tableName.getTableHeader();
+        Dimension headerSize = header.getPreferredSize();
+        header.setFont(new Font(defaultFont, Font.BOLD, 18));     
+        header.setPreferredSize(new Dimension(headerSize.width, 40));
+        header.setBorder(null);
+        header.setBackground(Color.decode("#00ADB5"));
+        header.setForeground(Color.WHITE);
+
+        //? column
+
+        //? set center
+        final TableColumnModel columnModel = tableName.getColumnModel();    
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        columnModel.getColumn(0).setCellRenderer(centerRenderer);
+
+        for (int column = 1; column < tableName.getColumnCount(); column++) {
+            int width = 15; // Min width
+            for (int row = 0; row < tableName.getRowCount(); row++) {
+                TableCellRenderer renderer = tableName.getCellRenderer(row, column);
+                Component comp = tableName.prepareRenderer(renderer, row, column);
+                width = Math.max(comp.getPreferredSize().width +1 , width);
+            }
+            if(width > 300)
+                width=300;
+            columnModel.getColumn(column).setPreferredWidth(width);
+        }
+
+        columnModel.getColumn(0).setMaxWidth(80);
+        columnModel.getColumn(0).setPreferredWidth(80);
     }
 
     private void showDashboardInformation(){
@@ -251,9 +306,10 @@ public class DashboardUI extends javax.swing.JFrame {
 
         dashboard.add(jPanel4);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setForeground(new java.awt.Color(153, 0, 255));
 
-        transaction_table.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        transaction_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         transaction_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -280,7 +336,8 @@ public class DashboardUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        transaction_table.setRowHeight(25);
+        transaction_table.setGridColor(new java.awt.Color(255, 255, 255));
+        transaction_table.setRowHeight(35);
         transaction_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 transaction_tableMouseClicked(evt);
@@ -314,9 +371,15 @@ public class DashboardUI extends javax.swing.JFrame {
         });
         addnew2.setLayout(new java.awt.GridBagLayout());
 
+        tambah_pengiriman_button2.setBackground(new java.awt.Color(0, 173, 181));
+        tambah_pengiriman_button2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        tambah_pengiriman_button2.setForeground(new java.awt.Color(255, 255, 255));
+        tambah_pengiriman_button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plus.png"))); // NOI18N
         tambah_pengiriman_button2.setText("TAMBAH");
         tambah_pengiriman_button2.setAlignmentX(0.5F);
-        tambah_pengiriman_button2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        tambah_pengiriman_button2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tambah_pengiriman_button2.setIconTextGap(10);
         tambah_pengiriman_button2.setPreferredSize(new java.awt.Dimension(100, 40));
         tambah_pengiriman_button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,6 +389,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(tambah_pengiriman_button2, gridBagConstraints);
 
@@ -334,7 +398,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim14, gridBagConstraints);
 
@@ -350,7 +414,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim15, gridBagConstraints);
 
@@ -359,7 +423,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim16, gridBagConstraints);
 
@@ -368,7 +432,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim17, gridBagConstraints);
 
@@ -377,7 +441,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim18, gridBagConstraints);
 
@@ -435,7 +499,13 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         addnew2.add(jSeparator10, gridBagConstraints);
 
+        ubah_permintaan_button.setBackground(new java.awt.Color(102, 102, 255));
+        ubah_permintaan_button.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        ubah_permintaan_button.setForeground(new java.awt.Color(255, 255, 255));
+        ubah_permintaan_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update.png"))); // NOI18N
         ubah_permintaan_button.setText("UBAH");
+        ubah_permintaan_button.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        ubah_permintaan_button.setIconTextGap(10);
         ubah_permintaan_button.setPreferredSize(new java.awt.Dimension(100, 40));
         ubah_permintaan_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,6 +516,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(ubah_permintaan_button, gridBagConstraints);
 
@@ -454,7 +525,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew2.add(kirim19, gridBagConstraints);
 
@@ -477,9 +548,14 @@ public class DashboardUI extends javax.swing.JFrame {
 
         require.add(addnew2);
 
+        jScrollPane2.setBorder(null);
+
         request_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         request_table.setModel(DatabaseConnect.populatePermintaanTable());
-        request_table.setRowHeight(25);
+        request_table.setGridColor(new java.awt.Color(255, 255, 255));
+        request_table.setRowHeight(35);
+        request_table.setRowMargin(5);
+        request_table.setShowGrid(false);
         request_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 request_tableMouseClicked(evt);
@@ -509,13 +585,19 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim7, gridBagConstraints);
 
+        tambah_pengiriman_button1.setBackground(new java.awt.Color(0, 173, 181));
+        tambah_pengiriman_button1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        tambah_pengiriman_button1.setForeground(new java.awt.Color(255, 255, 255));
+        tambah_pengiriman_button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plus.png"))); // NOI18N
         tambah_pengiriman_button1.setText("TAMBAH");
         tambah_pengiriman_button1.setAlignmentX(0.5F);
-        tambah_pengiriman_button1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        tambah_pengiriman_button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tambah_pengiriman_button1.setIconTextGap(10);
         tambah_pengiriman_button1.setPreferredSize(new java.awt.Dimension(100, 40));
         tambah_pengiriman_button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -525,6 +607,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(tambah_pengiriman_button1, gridBagConstraints);
 
@@ -540,7 +623,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim8, gridBagConstraints);
 
@@ -556,7 +639,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim9, gridBagConstraints);
 
@@ -565,7 +648,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim10, gridBagConstraints);
 
@@ -574,7 +657,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim11, gridBagConstraints);
 
@@ -583,7 +666,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim12, gridBagConstraints);
 
@@ -641,7 +724,14 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         addnew1.add(jSeparator8, gridBagConstraints);
 
+        ubah_persediaan_button.setBackground(new java.awt.Color(102, 102, 255));
+        ubah_persediaan_button.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        ubah_persediaan_button.setForeground(new java.awt.Color(255, 255, 255));
+        ubah_persediaan_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update.png"))); // NOI18N
         ubah_persediaan_button.setText("UBAH");
+        ubah_persediaan_button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        ubah_persediaan_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ubah_persediaan_button.setIconTextGap(10);
         ubah_persediaan_button.setPreferredSize(new java.awt.Dimension(100, 40));
         ubah_persediaan_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -652,6 +742,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(ubah_persediaan_button, gridBagConstraints);
 
@@ -660,7 +751,8 @@ public class DashboardUI extends javax.swing.JFrame {
         supply_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         supply_table.setModel(DatabaseConnect.populatePersediaanTable()
         );
-        supply_table.setRowHeight(25);
+        supply_table.setGridColor(new java.awt.Color(255, 255, 255));
+        supply_table.setRowHeight(35);
         supply_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 supply_tableMouseClicked(evt);
@@ -685,13 +777,19 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim1, gridBagConstraints);
 
+        ubah_pengiriman_button.setBackground(new java.awt.Color(102, 102, 255));
+        ubah_pengiriman_button.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        ubah_pengiriman_button.setForeground(new java.awt.Color(255, 255, 255));
+        ubah_pengiriman_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update.png"))); // NOI18N
         ubah_pengiriman_button.setText("UBAH");
         ubah_pengiriman_button.setAlignmentX(0.5F);
+        ubah_pengiriman_button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         ubah_pengiriman_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ubah_pengiriman_button.setIconTextGap(10);
         ubah_pengiriman_button.setPreferredSize(new java.awt.Dimension(100, 40));
         ubah_pengiriman_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -702,6 +800,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(ubah_pengiriman_button, gridBagConstraints);
 
@@ -717,7 +816,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim2, gridBagConstraints);
 
@@ -733,7 +832,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim3, gridBagConstraints);
 
@@ -749,7 +848,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim4, gridBagConstraints);
 
@@ -758,7 +857,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim5, gridBagConstraints);
 
@@ -767,7 +866,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 10;
+        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim6, gridBagConstraints);
 
@@ -820,9 +919,15 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         addnew.add(jSeparator9, gridBagConstraints);
 
+        tambah_pengiriman_button3.setBackground(new java.awt.Color(0, 173, 181));
+        tambah_pengiriman_button3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        tambah_pengiriman_button3.setForeground(new java.awt.Color(255, 255, 255));
+        tambah_pengiriman_button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plus.png"))); // NOI18N
         tambah_pengiriman_button3.setText("TAMBAH");
         tambah_pengiriman_button3.setAlignmentX(0.5F);
+        tambah_pengiriman_button3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         tambah_pengiriman_button3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button3.setIconTextGap(10);
         tambah_pengiriman_button3.setPreferredSize(new java.awt.Dimension(100, 40));
         tambah_pengiriman_button3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -832,6 +937,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(tambah_pengiriman_button3, gridBagConstraints);
 
@@ -840,7 +946,8 @@ public class DashboardUI extends javax.swing.JFrame {
         delivery_table.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         delivery_table.setModel(DatabaseConnect.populatePengirimanTable()
         );
-        delivery_table.setRowHeight(25);
+        delivery_table.setGridColor(new java.awt.Color(255, 255, 255));
+        delivery_table.setRowHeight(35);
         delivery_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 delivery_tableMouseClicked(evt);
@@ -1062,6 +1169,8 @@ public class DashboardUI extends javax.swing.JFrame {
         setting.add(button_container);
 
         jTabbedPane2.addTab("Setting", setting);
+
+        jTabbedPane2.setSelectedIndex(1);
 
         getContentPane().add(jTabbedPane2, "card2");
 

@@ -97,9 +97,10 @@ public class DatabaseConnect {
              ResultSet rs = stmt.executeQuery(query)) {
 
             // Populate the table model with data from the ResultSet
+            int i = 1;
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getInt("nomor"));
+                row.add(i);
                 row.add(rs.getString("kode_pemesanan"));
                 row.add(rs.getString("pelanggan"));
                 row.add(rs.getString("jenis_produk"));
@@ -107,6 +108,7 @@ public class DatabaseConnect {
                 row.add(rs.getString("jasa_kirim"));
                 row.add(rs.getDate("tanggal_kirim"));
                 model.addRow(row);
+                i++;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,9 +138,10 @@ public class DatabaseConnect {
              ResultSet rs = stmt.executeQuery(query)) {
 
             // Populate the table model with data from the ResultSet
+            int i = 1;
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getInt("nomor"));
+                row.add(i);
                 row.add(rs.getString("kode_pemesanan"));
                 row.add(rs.getDate("tanggal_pemesanan"));
                 row.add(rs.getString("jenis_produk"));
@@ -146,6 +149,7 @@ public class DatabaseConnect {
                 row.add(rs.getInt("jumlah_pesanan"));
                 row.add(rs.getString("status_pemesanan"));
                 model.addRow(row);
+                i++;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -159,7 +163,7 @@ public class DatabaseConnect {
         DefaultTableModel model = new DefaultTableModel();
 
         // Add columns to the table model
-        model.addColumn("Nomor");
+        model.addColumn("No");
         model.addColumn("ID Barang");
         model.addColumn("Nama Barang");
         model.addColumn("Kategori");
@@ -175,9 +179,10 @@ public class DatabaseConnect {
              ResultSet rs = stmt.executeQuery(query)) {
 
             // Populate the table model with data from the ResultSet
+            int i = 1;
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getInt("nomor"));
+                row.add(i);
                 row.add(rs.getString("id_barang"));
                 row.add(rs.getString("nama_barang"));
                 row.add(rs.getString("kategori"));
@@ -185,6 +190,7 @@ public class DatabaseConnect {
                 row.add(rs.getDate("exp_date"));
                 row.add(rs.getInt("jumlah"));
                 model.addRow(row);
+                i++;
             }
         } catch (SQLException e) {
             e.printStackTrace();
