@@ -540,4 +540,28 @@ public class DatabaseConnect {
         return null;
     }
 
+    public static String lastRowTable(){
+        String query = "SELECT kode_pemesanan FROM permintaan ORDER BY kode_pemesanan DESC LIMIT 1";
+        try {
+            Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            String lastData = "";
+            if (rs.next()) lastData = rs.getString(1);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return lastData;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return null;
+    }
+
 }
