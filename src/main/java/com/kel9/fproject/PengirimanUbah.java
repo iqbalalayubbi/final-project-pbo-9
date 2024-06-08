@@ -377,7 +377,8 @@ public class PengirimanUbah extends javax.swing.JFrame {
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
         modifyPengirimanRecord();
         this.parentUI.updateTableModel();
-        this.setVisible(false);
+        this.parentUI.setAllTable();
+        this.setVisible(false);      
     }//GEN-LAST:event_add_btnActionPerformed
 
     private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
@@ -388,6 +389,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         // TODO add your handling code here:
         deletePengirimanRecord();
         this.parentUI.updateTableModel();
+        this.parentUI.setAllTable();
         this.setVisible(false);
     }//GEN-LAST:event_delete_btnActionPerformed
 

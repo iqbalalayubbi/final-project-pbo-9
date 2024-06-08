@@ -59,24 +59,30 @@ public class DashboardUI extends javax.swing.JFrame {
         this.windowManager = windowManager;
         initComponents();
         showDashboardInformation();
-        setAllTable();
-        updateDashboardInformation();
-        
+        updateDashboardTable();
+        this.setAllTable();
     }
 
-    private void updateDashboardInformation() {
+    private void updateDashboardTable() {
         this.permintaan_table_dashboard.setModel(DatabaseConnect.permintaanTableDashboard());
         this.persediaan_table_dashboard.setModel(DatabaseConnect.persediaanTableDashboard());
         this.pengiriman_table_dashboard.setModel(DatabaseConnect.pengirimanTableDashboard());
+        this.showDashboardInformation();
     }
 
-    private void setAllTable(){
+    public void setAllTable(){
         setTable(this.request_table,0);
         setTable(this.supply_table,0);
-        setTable(this.delivery_table,0);
+        setTable(this.delivery_table,0);        
         setTable(this.permintaan_table_dashboard,1);
         setTable(this.persediaan_table_dashboard,2);
-        setTable(this.pengiriman_table_dashboard,-1);    
+        setTable(this.pengiriman_table_dashboard,-1); 
+    }
+
+    public void setTableDashboard(){
+        setTable(this.permintaan_table_dashboard,1);
+        setTable(this.persediaan_table_dashboard,2);
+        setTable(this.pengiriman_table_dashboard,-1); 
     }
     private void setTable(JTable tableName, int columnNumber) {
         String defaultFont = "Liberation Sans";
@@ -1618,8 +1624,12 @@ public class DashboardUI extends javax.swing.JFrame {
 
     private void container_tabStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_container_tabStateChanged
         // TODO add your handling code here:
-        // int selectedIndex = this.container_tab.getSelectedIndex();
-        this.setAllTable();
+        int selectedTab = this.container_tab.getSelectedIndex();
+        if (selectedTab == 0) {
+            this.setTableDashboard();
+            System.out.println("dashboard updated");
+            this.updateDashboardTable();
+        }else this.setAllTable();
         fillInputCode();
 
 
@@ -1655,11 +1665,6 @@ public class DashboardUI extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String tanggalPemesanan = dateFormat.format(rawDate);
 
-        // Check if any field is empty
-        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
-        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        //    return;
-        // }
 
         // Send data to query function
         boolean success = DatabaseConnect.insertPermintaanRecord(kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan);
@@ -1688,12 +1693,6 @@ public class DashboardUI extends javax.swing.JFrame {
         //Optionally, you can format the date as needed
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String tanggalKirim = dateFormat.format(rawDate);
-
-        // Check if any field is empty
-        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
-        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        //    return;
-        // }
 
         // Send data to query function
         boolean success = DatabaseConnect.insertPengirimanRecord(kodePemesanan, pelanggan, jenisProduk, biayaKirim, jasaKirim, tanggalKirim);

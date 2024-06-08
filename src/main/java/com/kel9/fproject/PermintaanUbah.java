@@ -358,6 +358,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
         modifyPermintaanRecord();
         this.parentUI.updateTableModel();
+        this.parentUI.setAllTable();
         this.setVisible(false);
     }//GEN-LAST:event_add_btnActionPerformed
 
@@ -385,6 +386,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
         // TODO add your handling code here:
         deletePermintaanRecord();
         this.parentUI.updateTableModel();
+        this.parentUI.setAllTable();
         this.setVisible(false);
     }//GEN-LAST:event_delete_btnActionPerformed
 
