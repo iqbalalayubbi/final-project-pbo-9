@@ -1,10 +1,10 @@
 package com.kel9.fproject;
 
 public class Controller {
-    public static  String generateCode(){
-        String getLastData = DatabaseConnect.lastRowTable();
+    public static  String generateCode(String columnName, String tableName, String formatCode){
+        String getLastData = DatabaseConnect.lastRowTable(columnName
+        , tableName);
         int lastDatanumber = Integer.parseInt(getLastData.substring(3))+1;
-        System.out.println(lastDatanumber);
-        return String.format("ORD%06d", lastDatanumber);
+        return String.format(formatCode+"%06d", lastDatanumber);
     }
 }

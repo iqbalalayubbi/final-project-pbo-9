@@ -59,16 +59,25 @@ public class DashboardUI extends javax.swing.JFrame {
         this.windowManager = windowManager;
         initComponents();
         showDashboardInformation();
+        setAllTable();
+        updateDashboardInformation();
+        
+    }
+
+    private void updateDashboardInformation() {
+        this.permintaan_table_dashboard.setModel(DatabaseConnect.permintaanTableDashboard());
+        this.persediaan_table_dashboard.setModel(DatabaseConnect.persediaanTableDashboard());
+        this.pengiriman_table_dashboard.setModel(DatabaseConnect.pengirimanTableDashboard());
+    }
+
+    private void setAllTable(){
         setTable(this.request_table,0);
         setTable(this.supply_table,0);
         setTable(this.delivery_table,0);
         setTable(this.permintaan_table_dashboard,1);
-        setTable(this.persediaan_table_dashboard,-1);
-        setTable(this.pengiriman_table_dashboard,-1);
-        // String lastData = DatabaseConnect.lastRowTable();
-        System.out.println(Controller.generateCode());
+        setTable(this.persediaan_table_dashboard,2);
+        setTable(this.pengiriman_table_dashboard,-1);    
     }
-
     private void setTable(JTable tableName, int columnNumber) {
         String defaultFont = "Liberation Sans";
 
@@ -105,6 +114,7 @@ public class DashboardUI extends javax.swing.JFrame {
             columnModel.getColumn(columnNumber).setMaxWidth(80);
             columnModel.getColumn(columnNumber).setPreferredWidth(80);
         }
+
     }
 
     private void showDashboardInformation(){
@@ -142,10 +152,12 @@ public class DashboardUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         permintaan_table_dashboard = new javax.swing.JTable();
+        jSeparator11 = new javax.swing.JSeparator();
         permintaan_container1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         persediaan_table_dashboard = new javax.swing.JTable();
+        jSeparator12 = new javax.swing.JSeparator();
         permintaan_container2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -245,9 +257,11 @@ public class DashboardUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UPN Warehouse Management");
+        setPreferredSize(new java.awt.Dimension(1500, 900));
         getContentPane().setLayout(new java.awt.CardLayout());
 
         container_tab.setBackground(new java.awt.Color(246, 246, 246));
+        container_tab.setFocusable(false);
         container_tab.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         container_tab.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -268,61 +282,62 @@ public class DashboardUI extends javax.swing.JFrame {
         cards_contianer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 50));
 
         card1.setBackground(new java.awt.Color(255, 255, 255));
-        card1.setMaximumSize(new java.awt.Dimension(200, 32767));
+        card1.setMaximumSize(new java.awt.Dimension(500, 32767));
         card1.setMinimumSize(new java.awt.Dimension(200, 56));
-        card1.setPreferredSize(new java.awt.Dimension(200, 100));
+        card1.setPreferredSize(new java.awt.Dimension(300, 200));
+        card1.setRequestFocusEnabled(false);
         card1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        request_value.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        request_value.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         request_value.setForeground(new java.awt.Color(0, 173, 181));
         request_value.setText("300");
-        request_value.setPreferredSize(new java.awt.Dimension(100, 18));
+        request_value.setPreferredSize(new java.awt.Dimension(200, 50));
         card1.add(request_value);
 
-        request_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        request_title.setForeground(new java.awt.Color(57, 62, 70));
+        request_title.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        request_title.setForeground(new java.awt.Color(153, 153, 153));
         request_title.setText("Permintaan");
-        request_title.setPreferredSize(new java.awt.Dimension(100, 18));
+        request_title.setPreferredSize(new java.awt.Dimension(200, 18));
         card1.add(request_title);
 
         cards_contianer.add(card1);
 
         card.setBackground(new java.awt.Color(255, 255, 255));
-        card.setMaximumSize(new java.awt.Dimension(200, 32767));
+        card.setMaximumSize(new java.awt.Dimension(500, 32767));
         card.setMinimumSize(new java.awt.Dimension(200, 56));
-        card.setPreferredSize(new java.awt.Dimension(200, 100));
+        card.setPreferredSize(new java.awt.Dimension(300, 200));
         card.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        supply_value.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        supply_value.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         supply_value.setForeground(new java.awt.Color(0, 173, 181));
         supply_value.setText("250");
-        supply_value.setPreferredSize(new java.awt.Dimension(100, 18));
+        supply_value.setPreferredSize(new java.awt.Dimension(200, 40));
         card.add(supply_value);
 
-        send_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        send_title.setForeground(new java.awt.Color(57, 62, 70));
+        send_title.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        send_title.setForeground(new java.awt.Color(153, 153, 153));
         send_title.setText("Persediaan");
-        send_title.setPreferredSize(new java.awt.Dimension(100, 18));
+        send_title.setPreferredSize(new java.awt.Dimension(200, 18));
         card.add(send_title);
 
         cards_contianer.add(card);
 
         card2.setBackground(new java.awt.Color(255, 255, 255));
-        card2.setMaximumSize(new java.awt.Dimension(200, 32767));
+        card2.setMaximumSize(new java.awt.Dimension(500, 32767));
         card2.setMinimumSize(new java.awt.Dimension(200, 56));
-        card2.setPreferredSize(new java.awt.Dimension(200, 100));
+        card2.setPreferredSize(new java.awt.Dimension(300, 200));
         card2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        delivery_value.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        delivery_value.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         delivery_value.setForeground(new java.awt.Color(0, 173, 181));
         delivery_value.setText("500");
-        delivery_value.setPreferredSize(new java.awt.Dimension(100, 18));
+        delivery_value.setPreferredSize(new java.awt.Dimension(200, 40));
         card2.add(delivery_value);
 
-        product_title.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        product_title.setForeground(new java.awt.Color(57, 62, 70));
+        product_title.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        product_title.setForeground(new java.awt.Color(153, 153, 153));
         product_title.setText("Pengiriman");
-        product_title.setPreferredSize(new java.awt.Dimension(100, 18));
+        product_title.setPreferredSize(new java.awt.Dimension(200, 18));
         card2.add(product_title);
 
         cards_contianer.add(card2);
@@ -331,6 +346,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         tables_panel.setLayout(new javax.swing.BoxLayout(tables_panel, javax.swing.BoxLayout.X_AXIS));
 
+        permintaan_container.setMaximumSize(new java.awt.Dimension(2147483647, 500));
+        permintaan_container.setMinimumSize(new java.awt.Dimension(400, 400));
         permintaan_container.setLayout(new java.awt.GridBagLayout());
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -344,6 +361,9 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jScrollPane3.setMaximumSize(new java.awt.Dimension(32767, 500));
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(16, 500));
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(452, 400));
 
         permintaan_table_dashboard.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         permintaan_table_dashboard.setModel(new javax.swing.table.DefaultTableModel(
@@ -366,6 +386,9 @@ public class DashboardUI extends javax.swing.JFrame {
             }
         });
         permintaan_table_dashboard.setGridColor(new java.awt.Color(255, 255, 255));
+        permintaan_table_dashboard.setMaximumSize(new java.awt.Dimension(2147483647, 500));
+        permintaan_table_dashboard.setMinimumSize(new java.awt.Dimension(45, 500));
+        permintaan_table_dashboard.setRequestFocusEnabled(false);
         permintaan_table_dashboard.setRowHeight(30);
         jScrollPane3.setViewportView(permintaan_table_dashboard);
         if (permintaan_table_dashboard.getColumnModel().getColumnCount() > 0) {
@@ -381,6 +404,11 @@ public class DashboardUI extends javax.swing.JFrame {
 
         tables_panel.add(permintaan_container);
 
+        jSeparator11.setMaximumSize(new java.awt.Dimension(10, 10));
+        tables_panel.add(jSeparator11);
+
+        permintaan_container1.setMaximumSize(new java.awt.Dimension(2147483647, 500));
+        permintaan_container1.setMinimumSize(new java.awt.Dimension(400, 400));
         permintaan_container1.setLayout(new java.awt.GridBagLayout());
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -394,6 +422,9 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jScrollPane4.setMaximumSize(new java.awt.Dimension(32767, 400));
+        jScrollPane4.setMinimumSize(new java.awt.Dimension(16, 400));
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(452, 400));
 
         persediaan_table_dashboard.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         persediaan_table_dashboard.setModel(new javax.swing.table.DefaultTableModel(
@@ -404,7 +435,7 @@ public class DashboardUI extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Kode Pemesanan", "Pelanggan", "Tanggal"
+                "Kode Pemesanan", "Barang", "Jumlah"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -431,6 +462,11 @@ public class DashboardUI extends javax.swing.JFrame {
 
         tables_panel.add(permintaan_container1);
 
+        jSeparator12.setMaximumSize(new java.awt.Dimension(10, 10));
+        tables_panel.add(jSeparator12);
+
+        permintaan_container2.setMaximumSize(new java.awt.Dimension(2147483647, 500));
+        permintaan_container2.setMinimumSize(new java.awt.Dimension(400, 400));
         permintaan_container2.setLayout(new java.awt.GridBagLayout());
 
         jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -444,6 +480,9 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jScrollPane5.setMaximumSize(new java.awt.Dimension(32767, 400));
+        jScrollPane5.setMinimumSize(new java.awt.Dimension(16, 400));
+        jScrollPane5.setPreferredSize(new java.awt.Dimension(452, 400));
 
         pengiriman_table_dashboard.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         pengiriman_table_dashboard.setModel(new javax.swing.table.DefaultTableModel(
@@ -583,6 +622,7 @@ public class DashboardUI extends javax.swing.JFrame {
         kode_pesanan_permintaan.setEditable(false);
         kode_pesanan_permintaan.setBackground(new java.awt.Color(239, 239, 239));
         kode_pesanan_permintaan.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        kode_pesanan_permintaan.setFocusable(false);
         kode_pesanan_permintaan.setMaximumSize(new java.awt.Dimension(350, 24));
         kode_pesanan_permintaan.setMinimumSize(new java.awt.Dimension(350, 24));
         kode_pesanan_permintaan.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -769,6 +809,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(tambah_pengiriman_button1, gridBagConstraints);
 
+        nama_barang_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         nama_barang_field.setMaximumSize(new java.awt.Dimension(400, 24));
         nama_barang_field.setMinimumSize(new java.awt.Dimension(400, 24));
         nama_barang_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -788,6 +829,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(kirim8, gridBagConstraints);
 
+        kategori_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         kategori_field.setMaximumSize(new java.awt.Dimension(400, 24));
         kategori_field.setMinimumSize(new java.awt.Dimension(400, 24));
         kategori_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -836,6 +878,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         id_barang_field.setEditable(false);
         id_barang_field.setBackground(new java.awt.Color(239, 239, 239));
+        id_barang_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        id_barang_field.setFocusable(false);
         id_barang_field.setMaximumSize(new java.awt.Dimension(400, 24));
         id_barang_field.setMinimumSize(new java.awt.Dimension(400, 24));
         id_barang_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -869,6 +913,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.ipady = 10;
         addnew1.add(exp_date_field, gridBagConstraints);
 
+        lokasi_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         lokasi_field.setMaximumSize(new java.awt.Dimension(400, 24));
         lokasi_field.setMinimumSize(new java.awt.Dimension(400, 24));
         lokasi_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -879,6 +924,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew1.add(lokasi_field, gridBagConstraints);
 
+        jumlah_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jumlah_field.setMaximumSize(new java.awt.Dimension(400, 24));
         jumlah_field.setMinimumSize(new java.awt.Dimension(400, 24));
         jumlah_field.setPreferredSize(new java.awt.Dimension(300, 24));
@@ -985,6 +1031,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(ubah_pengiriman_button, gridBagConstraints);
 
+        pelanggan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         pelanggan_field.setMaximumSize(new java.awt.Dimension(350, 24));
         pelanggan_field.setMinimumSize(new java.awt.Dimension(350, 24));
         pelanggan_field.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -1004,6 +1051,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim2, gridBagConstraints);
 
+        jenis_produk_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jenis_produk_field.setMaximumSize(new java.awt.Dimension(350, 24));
         jenis_produk_field.setMinimumSize(new java.awt.Dimension(350, 24));
         jenis_produk_field.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -1023,6 +1071,7 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim3, gridBagConstraints);
 
+        biaya_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         biaya_pengiriman_field.setMaximumSize(new java.awt.Dimension(350, 24));
         biaya_pengiriman_field.setMinimumSize(new java.awt.Dimension(350, 24));
         biaya_pengiriman_field.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -1062,6 +1111,8 @@ public class DashboardUI extends javax.swing.JFrame {
 
         kode_pemesanan_field.setEditable(false);
         kode_pemesanan_field.setBackground(new java.awt.Color(239, 239, 239));
+        kode_pemesanan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        kode_pemesanan_field.setFocusable(false);
         kode_pemesanan_field.setMaximumSize(new java.awt.Dimension(350, 24));
         kode_pemesanan_field.setMinimumSize(new java.awt.Dimension(350, 24));
         kode_pemesanan_field.setPreferredSize(new java.awt.Dimension(350, 24));
@@ -1082,6 +1133,7 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew.add(title, gridBagConstraints);
         title.getAccessibleContext().setAccessibleName("");
 
+        jenis_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jenis_pengiriman_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
         jenis_pengiriman_field.setMaximumSize(new java.awt.Dimension(350, 24));
         jenis_pengiriman_field.setMinimumSize(new java.awt.Dimension(350, 24));
@@ -1442,6 +1494,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private void tambah_pengiriman_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button1ActionPerformed
         insertPersediaanRecord();
         supply_table.setModel(DatabaseConnect.populatePersediaanTable());
+        this.setAllTable();
     }//GEN-LAST:event_tambah_pengiriman_button1ActionPerformed
 
     private void insertPersediaanRecord() {
@@ -1499,6 +1552,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private void tambah_pengiriman_button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button2ActionPerformed
         insertPermintaanRecord();
         this.updateTableModel();
+        this.setAllTable();
     }//GEN-LAST:event_tambah_pengiriman_button2ActionPerformed
 
     private void jumlah_pesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_field1ActionPerformed
@@ -1541,6 +1595,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private void tambah_pengiriman_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button3ActionPerformed
         insertPengirimanRecord();
         delivery_table.setModel(DatabaseConnect.populatePengirimanTable());
+        this.setAllTable();
     }//GEN-LAST:event_tambah_pengiriman_button3ActionPerformed
 
     private void request_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_request_tableMouseClicked
@@ -1563,22 +1618,26 @@ public class DashboardUI extends javax.swing.JFrame {
 
     private void container_tabStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_container_tabStateChanged
         // TODO add your handling code here:
-        int selectedIndex = this.container_tab.getSelectedIndex();
-
-        //? permintaan tab
-        if (selectedIndex == 1){
-            this.kode_pesanan_permintaan.setText(Controller.generateCode());
-        }
+        // int selectedIndex = this.container_tab.getSelectedIndex();
+        this.setAllTable();
+        fillInputCode();
 
 
     }//GEN-LAST:event_container_tabStateChanged
     
+
+    private void fillInputCode(){
+        this.kode_pesanan_permintaan.setText(Controller.generateCode("kode_pemesanan", "permintaan", "ORD"));
+        this.id_barang_field.setText(Controller.generateCode("id_barang", "persediaan", "BRG"));
+        this.kode_pemesanan_field.setText(Controller.generateCode("kode_pemesanan", "pengiriman", "ORD"));
+    }
+
     public void updateTableModel() {
         // Set the table model using the DatabaseConnect.populatePermintaanTable() method
         request_table.setModel(DatabaseConnect.populatePermintaanTable());
         delivery_table.setModel(DatabaseConnect.populatePengirimanTable());
         supply_table.setModel(DatabaseConnect.populatePersediaanTable());
-        this.kode_pesanan_permintaan.setText(Controller.generateCode());
+        fillInputCode();
     }
     
     private void insertPermintaanRecord() {
@@ -1713,6 +1772,8 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;

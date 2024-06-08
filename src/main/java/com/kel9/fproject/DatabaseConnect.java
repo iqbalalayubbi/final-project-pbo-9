@@ -540,8 +540,8 @@ public class DatabaseConnect {
         return null;
     }
 
-    public static String lastRowTable(){
-        String query = "SELECT kode_pemesanan FROM permintaan ORDER BY kode_pemesanan DESC LIMIT 1";
+    public static String lastRowTable(String columnName, String tableName) {
+        String query = String.format("SELECT %s FROM %s ORDER BY %s DESC LIMIT 1", columnName, tableName, columnName);
         try {
             Connection conn = getConnection();
             Statement stmt = conn.createStatement();
@@ -562,6 +562,108 @@ public class DatabaseConnect {
         }
 
         return null;
+    }
+
+    public static DefaultTableModel permintaanTableDashboard() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("Kode Pemesanan");
+        model.addColumn("Jumlah");
+        model.addColumn("Status");
+
+        // SQL query to select all records from the persediaan table
+        String query = "SELECT kode_pemesanan, jumlah_pesanan, status_pemesanan FROM permintaan";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            int i = 1;
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                // row.add(i);
+                row.add(rs.getString("kode_pemesanan"));
+                row.add(rs.getString("jumlah_pesanan"));
+                row.add(rs.getString("status_pemesanan"));
+                model.addRow(row);
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
+    }
+
+    public static DefaultTableModel persediaanTableDashboard() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("Kode Barang");
+        model.addColumn("Barang");
+        model.addColumn("Jumlah");
+
+        // SQL query to select all records from the persediaan table
+        String query = "SELECT id_barang, nama_barang, jumlah FROM persediaan";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            int i = 1;
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                // row.add(i);
+                row.add(rs.getString("id_barang"));
+                row.add(rs.getString("nama_barang"));
+                row.add(rs.getString("jumlah"));
+                model.addRow(row);
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
+    }
+
+    public static DefaultTableModel pengirimanTableDashboard() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Add columns to the table model
+        model.addColumn("Kode Pemesanan");
+        model.addColumn("Pelanggan");
+        model.addColumn("Tanggal");
+
+        // SQL query to select all records from the persediaan table
+        String query = "SELECT kode_pemesanan, pelanggan, tanggal_kirim FROM pengiriman";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            // Populate the table model with data from the ResultSet
+            int i = 1;
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                // row.add(i);
+                row.add(rs.getString("kode_pemesanan"));
+                row.add(rs.getString("pelanggan"));
+                row.add(rs.getString("tanggal_kirim"));
+                model.addRow(row);
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to fetch data from database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return model;
     }
 
 }
