@@ -5,6 +5,6 @@ public class Controller {
         String getLastData = DatabaseConnect.lastRowTable(columnName
         , tableName);
         int lastDatanumber = Integer.parseInt(getLastData.substring(3))+1;
-        return String.format(formatCode+"%06d", lastDatanumber);
+        return String.format(formatCode+"%03d", lastDatanumber);
     }
 }

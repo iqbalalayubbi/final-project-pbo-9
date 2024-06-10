@@ -28,4 +28,5 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>com.kel9.fproject.FinalProjectPbo9</exec.mainClass>
     </properties>
+    <name>Aplikasi SCM Perusahaan</name>
 </project>

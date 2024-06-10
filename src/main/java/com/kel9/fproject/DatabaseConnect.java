@@ -86,7 +86,7 @@ public class DatabaseConnect {
         model.addColumn("Pelanggan");
         model.addColumn("Jenis Produk");
         model.addColumn("Biaya Kirim");
-        model.addColumn("Jasa Kirim");
+        model.addColumn("Jenis Pengiriman");
         model.addColumn("Tanggal Kirim");
 
         // SQL query to select all records from the pengiriman table
@@ -124,8 +124,8 @@ public class DatabaseConnect {
         // Add columns to the table model
         model.addColumn("No");
         model.addColumn("Kode Pemesanan");
-        model.addColumn("Tanggal Pemesanan");
-        model.addColumn("Jenis Produk");
+        model.addColumn("Tanggal Pengiriman");
+        model.addColumn("Nama Produk");
         model.addColumn("Pelanggan");
         model.addColumn("Jumlah Pesanan");
         model.addColumn("Status Pemesanan");
@@ -227,23 +227,82 @@ public class DatabaseConnect {
     }
    
     public static boolean insertPermintaanRecord(String kodePemesanan, String tanggalPemesanan, String jenisProduk, String pelanggan, int jumlahPesanan, String statusPemesanan) {
-        String query = "INSERT INTO permintaan (kode_pemesanan, tanggal_pemesanan, jenis_produk, pelanggan, jumlah_pesanan, status_pemesanan) VALUES (?, ?, ?, ?, ?, ?)";
+        String checkStockQuery = "SELECT jumlah FROM persediaan WHERE nama_barang = ?";
+        String updateStockQuery = "UPDATE persediaan SET jumlah = jumlah - ? WHERE nama_barang = ?";
+        String permintaanQuery = "INSERT INTO permintaan (kode_pemesanan, tanggal_pemesanan, jenis_produk, pelanggan, jumlah_pesanan, status_pemesanan) VALUES (?, ?, ?, ?, ?, ?)";
+        String pengirimanQuery = "INSERT INTO pengiriman (kode_pemesanan, pelanggan, jenis_produk, biaya_kirim, jasa_kirim, tanggal_kirim) VALUES (?, ?, ?, 0.00, 'Pending', ?)";
 
-        try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try (Connection conn = getConnection()) {
+            // Disable auto-commit to handle transaction manually
+            conn.setAutoCommit(false);
 
-            pstmt.setString(1, kodePemesanan);
-            pstmt.setString(2, tanggalPemesanan);
-            pstmt.setString(3, jenisProduk);
-            pstmt.setString(4, pelanggan);
-            pstmt.setInt(5, jumlahPesanan);
-            pstmt.setString(6, statusPemesanan);
+            // Check stock availability
+            try (PreparedStatement pstmtCheckStock = conn.prepareStatement(checkStockQuery)) {
+                pstmtCheckStock.setString(1, jenisProduk);
 
-            int rowsInserted = pstmt.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("A new record has been inserted into the permintaan table.");
-                return true;
+                try (ResultSet rs = pstmtCheckStock.executeQuery()) {
+                    if (rs.next()) {
+                        int availableStock = rs.getInt("jumlah");
+
+                        if (availableStock >= jumlahPesanan) {
+                            // Update stock
+                            try (PreparedStatement pstmtUpdateStock = conn.prepareStatement(updateStockQuery)) {
+                                pstmtUpdateStock.setInt(1, jumlahPesanan);
+                                pstmtUpdateStock.setString(2, jenisProduk);
+
+                                int rowsUpdatedStock = pstmtUpdateStock.executeUpdate();
+
+                                if (rowsUpdatedStock > 0) {
+                                    // Insert into permintaan table
+                                    try (PreparedStatement pstmtPermintaan = conn.prepareStatement(permintaanQuery)) {
+                                        pstmtPermintaan.setString(1, kodePemesanan);
+                                        pstmtPermintaan.setString(2, tanggalPemesanan);
+                                        pstmtPermintaan.setString(3, jenisProduk);
+                                        pstmtPermintaan.setString(4, pelanggan);
+                                        pstmtPermintaan.setInt(5, jumlahPesanan);
+                                        pstmtPermintaan.setString(6, statusPemesanan);
+
+                                        int rowsInsertedPermintaan = pstmtPermintaan.executeUpdate();
+
+                                        if (rowsInsertedPermintaan > 0) {
+                                            // Insert into pengiriman table with default values
+                                            try (PreparedStatement pstmtPengiriman = conn.prepareStatement(pengirimanQuery)) {
+                                                pstmtPengiriman.setString(1, kodePemesanan);
+                                                pstmtPengiriman.setString(2, pelanggan);
+                                                pstmtPengiriman.setString(3, jenisProduk);
+                                                pstmtPengiriman.setString(4, tanggalPemesanan); // Assuming same date as pemesanan
+
+                                                int rowsInsertedPengiriman = pstmtPengiriman.executeUpdate();
+
+                                                if (rowsInsertedPengiriman > 0) {
+                                                    // Commit transaction if all inserts are successful
+                                                    conn.commit();
+                                                    System.out.println("A new record has been inserted into permintaan and pengiriman tables, and stock updated.");
+                                                    return true;
+                                                } else {
+                                                    conn.rollback();
+                                                    JOptionPane.showMessageDialog(null, "Failed to insert data into the pengiriman table.", "Error", JOptionPane.ERROR_MESSAGE);
+                                                }
+                                            }
+                                        } else {
+                                            conn.rollback();
+                                            JOptionPane.showMessageDialog(null, "Failed to insert data into the permintaan table.", "Error", JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    }
+                                } else {
+                                    conn.rollback();
+                                    JOptionPane.showMessageDialog(null, "Failed to update stock in the persediaan table.", "Error", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Insufficient stock available.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Product not found in the persediaan table.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed to insert data into the database.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -251,6 +310,8 @@ public class DatabaseConnect {
 
         return false;
     }
+
+
     
     public static boolean insertPersediaanRecord(String idBarang, String namaBarang, String kategori, String lokasi, String expDate, int jumlah) {
         String query = "INSERT INTO persediaan (id_barang, nama_barang, kategori, lokasi, exp_date, jumlah) VALUES (?, ?, ?, ?, ?, ?)";
@@ -489,10 +550,10 @@ public class DatabaseConnect {
     public static boolean deleteItemTable(String kodeItem, String tableName, String columnName) {
         // System.out.println();
 
-        StringBuilder queryBuilder = new StringBuilder("DELETE FROM " + tableName + " WHERE "+columnName+" = ?");
+        String queryBuilder = "DELETE FROM " + tableName + " WHERE "+columnName+" = ?";
 
         try (Connection conn = getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(queryBuilder.toString())) {
+            PreparedStatement pstmt = conn.prepareStatement(queryBuilder)) {
             pstmt.setString(1, kodeItem);
             int rowsUpdated = pstmt.executeUpdate();
             if (rowsUpdated > 0) {
