@@ -212,23 +212,8 @@ public class DashboardUI extends javax.swing.JFrame {
         supply_table = new javax.swing.JTable();
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
-        kirim1 = new java.awt.Label();
         ubah_pengiriman_button = new javax.swing.JButton();
-        pelanggan_field = new javax.swing.JTextField();
-        kirim2 = new java.awt.Label();
-        jenis_produk_field = new javax.swing.JTextField();
-        kirim3 = new java.awt.Label();
-        biaya_pengiriman_field = new javax.swing.JTextField();
-        kirim4 = new java.awt.Label();
-        kirim5 = new java.awt.Label();
-        kirim6 = new java.awt.Label();
-        kode_pemesanan_field = new javax.swing.JTextField();
         title = new java.awt.Label();
-        jenis_pengiriman_field = new javax.swing.JComboBox<>();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        tanggal_pengiriman_field = new com.toedter.calendar.JDateChooser();
-        jSeparator9 = new javax.swing.JSeparator();
-        tambah_pengiriman_button3 = new javax.swing.JButton();
         listitem = new javax.swing.JScrollPane();
         delivery_table = new javax.swing.JTable();
         setting = new javax.swing.JPanel();
@@ -1005,15 +990,6 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew.setPreferredSize(new java.awt.Dimension(1182, 400));
         addnew.setLayout(new java.awt.GridBagLayout());
 
-        kirim1.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim1.setText("Pelanggan");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kirim1, gridBagConstraints);
-
         ubah_pengiriman_button.setBackground(new java.awt.Color(102, 102, 255));
         ubah_pengiriman_button.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         ubah_pengiriman_button.setForeground(new java.awt.Color(255, 255, 255));
@@ -1032,176 +1008,24 @@ public class DashboardUI extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(ubah_pengiriman_button, gridBagConstraints);
 
-        pelanggan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        pelanggan_field.setMaximumSize(new java.awt.Dimension(350, 24));
-        pelanggan_field.setMinimumSize(new java.awt.Dimension(350, 24));
-        pelanggan_field.setPreferredSize(new java.awt.Dimension(350, 24));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(pelanggan_field, gridBagConstraints);
-
-        kirim2.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim2.setText("Jenis Produk");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kirim2, gridBagConstraints);
-
-        jenis_produk_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jenis_produk_field.setMaximumSize(new java.awt.Dimension(350, 24));
-        jenis_produk_field.setMinimumSize(new java.awt.Dimension(350, 24));
-        jenis_produk_field.setPreferredSize(new java.awt.Dimension(350, 24));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(jenis_produk_field, gridBagConstraints);
-
-        kirim3.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim3.setText("Biaya Pengiriman");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kirim3, gridBagConstraints);
-
-        biaya_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        biaya_pengiriman_field.setMaximumSize(new java.awt.Dimension(350, 24));
-        biaya_pengiriman_field.setMinimumSize(new java.awt.Dimension(350, 24));
-        biaya_pengiriman_field.setPreferredSize(new java.awt.Dimension(350, 24));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(biaya_pengiriman_field, gridBagConstraints);
-
-        kirim4.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim4.setText("Jenis Pengiriman");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kirim4, gridBagConstraints);
-
-        kirim5.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim5.setText("Tanggal Pengiriman");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kirim5, gridBagConstraints);
-
-        kirim6.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim6.setText("Kode Pemesanan");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kirim6, gridBagConstraints);
-
-        kode_pemesanan_field.setEditable(false);
-        kode_pemesanan_field.setBackground(new java.awt.Color(239, 239, 239));
-        kode_pemesanan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        kode_pemesanan_field.setFocusable(false);
-        kode_pemesanan_field.setMaximumSize(new java.awt.Dimension(350, 24));
-        kode_pemesanan_field.setMinimumSize(new java.awt.Dimension(350, 24));
-        kode_pemesanan_field.setPreferredSize(new java.awt.Dimension(350, 24));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(kode_pemesanan_field, gridBagConstraints);
-
+        title.setAlignment(java.awt.Label.CENTER);
         title.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        title.setText("Tambah Data Pengiriman Baru");
+        title.setText("Ubah Data Pengiriman");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(title, gridBagConstraints);
         title.getAccessibleContext().setAccessibleName("");
-
-        jenis_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jenis_pengiriman_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
-        jenis_pengiriman_field.setMaximumSize(new java.awt.Dimension(350, 24));
-        jenis_pengiriman_field.setMinimumSize(new java.awt.Dimension(350, 24));
-        jenis_pengiriman_field.setPreferredSize(new java.awt.Dimension(350, 24));
-        jenis_pengiriman_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jenis_pengiriman_fieldActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(jenis_pengiriman_field, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
-        addnew.add(filler2, gridBagConstraints);
-
-        tanggal_pengiriman_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        tanggal_pengiriman_field.setMaximumSize(new java.awt.Dimension(350, 24));
-        tanggal_pengiriman_field.setMinimumSize(new java.awt.Dimension(350, 24));
-        tanggal_pengiriman_field.setPreferredSize(new java.awt.Dimension(350, 24));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipady = 10;
-        addnew.add(tanggal_pengiriman_field, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        addnew.add(jSeparator9, gridBagConstraints);
-
-        tambah_pengiriman_button3.setBackground(new java.awt.Color(0, 173, 181));
-        tambah_pengiriman_button3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        tambah_pengiriman_button3.setForeground(new java.awt.Color(255, 255, 255));
-        tambah_pengiriman_button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plus.png"))); // NOI18N
-        tambah_pengiriman_button3.setText("TAMBAH");
-        tambah_pengiriman_button3.setAlignmentX(0.5F);
-        tambah_pengiriman_button3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        tambah_pengiriman_button3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tambah_pengiriman_button3.setIconTextGap(10);
-        tambah_pengiriman_button3.setMaximumSize(new java.awt.Dimension(300, 40));
-        tambah_pengiriman_button3.setMinimumSize(new java.awt.Dimension(300, 40));
-        tambah_pengiriman_button3.setPreferredSize(new java.awt.Dimension(300, 40));
-        tambah_pengiriman_button3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambah_pengiriman_button3ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(tambah_pengiriman_button3, gridBagConstraints);
 
         pengiriman.add(addnew);
 
@@ -1467,10 +1291,6 @@ public class DashboardUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jenis_pengiriman_fieldActionPerformed
-
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
@@ -1602,12 +1422,6 @@ public class DashboardUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_status_pemesanan_field1ActionPerformed
 
-    private void tambah_pengiriman_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button3ActionPerformed
-        insertPengirimanRecord();
-        delivery_table.setModel(DatabaseConnect.populatePengirimanTable());
-        this.setAllTable();
-    }//GEN-LAST:event_tambah_pengiriman_button3ActionPerformed
-
     private void request_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_request_tableMouseClicked
         // TODO add your handling code here:
         // int idx = /
@@ -1643,7 +1457,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private void fillInputCode(){
         this.kode_pesanan_permintaan.setText(Controller.generateCode("kode_pemesanan", "permintaan", "ORD"));
         this.id_barang_field.setText(Controller.generateCode("id_barang", "persediaan", "BRG"));
-        this.kode_pemesanan_field.setText(Controller.generateCode("kode_pemesanan", "pengiriman", "ORD"));
+        //this.kode_pemesanan_field.setText(Controller.generateCode("kode_pemesanan", "pengiriman", "ORD"));
     }
 
     public void updateTableModel() {
@@ -1682,7 +1496,7 @@ public class DashboardUI extends javax.swing.JFrame {
             tanggal_pesanan_field1.setDate(null); // Clear the date chooser
         }
     }
-    
+    /*
     private void insertPengirimanRecord() {
         // Get input data
         String kodePemesanan = kode_pemesanan_field.getText();
@@ -1710,7 +1524,7 @@ public class DashboardUI extends javax.swing.JFrame {
             tanggal_pengiriman_field.setDate(null); // Clear the date chooser
         }
     }
-
+    */
     private boolean sendToQueryFunction(String kodePemesanan, String pelanggan, String jenisProduk, String biayaKirim, String jasaKirim, String tanggalKirim) {
         // Simulate database insertion
         try {
@@ -1737,7 +1551,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel addnew;
     private javax.swing.JPanel addnew1;
     private javax.swing.JPanel addnew2;
-    private javax.swing.JTextField biaya_pengiriman_field;
     private javax.swing.JButton btn_logout;
     private javax.swing.JPanel button_container;
     private javax.swing.JPanel card;
@@ -1755,7 +1568,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JTable delivery_table;
     private javax.swing.JLabel delivery_value;
     private com.toedter.calendar.JDateChooser exp_date_field;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.JTextField id_barang_field;
@@ -1784,19 +1596,15 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JComboBox<String> jenis_pengiriman_field;
-    private javax.swing.JTextField jenis_produk_field;
     private javax.swing.JTextField jenis_produk_field1;
     private javax.swing.JTextField jumlah_field;
     private javax.swing.JTextField jumlah_pesanan_field1;
     private javax.swing.JTextField kategori_field;
-    private java.awt.Label kirim1;
     private java.awt.Label kirim10;
     private java.awt.Label kirim11;
     private java.awt.Label kirim12;
@@ -1806,21 +1614,14 @@ public class DashboardUI extends javax.swing.JFrame {
     private java.awt.Label kirim17;
     private java.awt.Label kirim18;
     private java.awt.Label kirim19;
-    private java.awt.Label kirim2;
-    private java.awt.Label kirim3;
-    private java.awt.Label kirim4;
-    private java.awt.Label kirim5;
-    private java.awt.Label kirim6;
     private java.awt.Label kirim7;
     private java.awt.Label kirim8;
     private java.awt.Label kirim9;
-    private javax.swing.JTextField kode_pemesanan_field;
     private javax.swing.JTextField kode_pesanan_permintaan;
     private javax.swing.JScrollPane listitem;
     private javax.swing.JScrollPane listitem1;
     private javax.swing.JTextField lokasi_field;
     private javax.swing.JTextField nama_barang_field;
-    private javax.swing.JTextField pelanggan_field;
     private javax.swing.JTextField pelanggan_field1;
     private javax.swing.JPanel pengiriman;
     private javax.swing.JTable pengiriman_table_dashboard;
@@ -1843,8 +1644,6 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel tables_panel;
     private javax.swing.JButton tambah_pengiriman_button1;
     private javax.swing.JButton tambah_pengiriman_button2;
-    private javax.swing.JButton tambah_pengiriman_button3;
-    private com.toedter.calendar.JDateChooser tanggal_pengiriman_field;
     private com.toedter.calendar.JDateChooser tanggal_pesanan_field1;
     private java.awt.Label title;
     private java.awt.Label title1;
