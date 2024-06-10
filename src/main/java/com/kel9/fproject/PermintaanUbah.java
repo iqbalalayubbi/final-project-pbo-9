@@ -36,19 +36,29 @@ public class PermintaanUbah extends javax.swing.JFrame {
 
     private void fillTextInput(Map<String, String> valuesRow) {
         try {
-
-
-            //? kode pemesanan
+            // kode pemesanan
             this.kode_pemesanan_field.setText(valuesRow.get("Kode Pemesanan"));
             
-            //? date chooser
-            String dateValue = valuesRow.get("Tanggal Pemesanan");
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            this.tanggal_pemesanan_field.setDate(date);
+            // date chooser
+            String dateValue = valuesRow.get("Tanggal Pengiriman");
+            if (dateValue != null && !dateValue.isEmpty()) {
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+                this.tanggal_pemesanan_field.setDate(date);
+            } else {
+                // Handle the null or empty dateValue appropriately, e.g., set to null or a default date
+                this.tanggal_pemesanan_field.setDate(null);
+            }
             
+            // jenis produk
             this.jenis_produk_field.setText(valuesRow.get("Jenis Produk"));
+            
+            // pelanggan
             this.pelanggan_field.setText(valuesRow.get("Pelanggan"));
+            
+            // jumlah pesanan
             this.jumlah_pesanan_field.setText(valuesRow.get("Jumlah Pesanan"));
+            
+            // status pemesanan
             this.status_pemesanan_field.setSelectedItem(valuesRow.get("Status Pemesanan"));
        
         } catch (ParseException ex) {
