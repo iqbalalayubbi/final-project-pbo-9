@@ -427,11 +427,20 @@ public class PermintaanUbah extends javax.swing.JFrame {
     }//GEN-LAST:event_delete_btnActionPerformed
 
     private void deletePermintaanRecord(){
-        boolean success = DatabaseConnect.deleteItemTable(this.idSelected, "permintaan", "kode_pemesanan");
-        if (success) {
-            JOptionPane.showMessageDialog(this, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        // Delete from permintaan table
+        boolean successPermintaan = DatabaseConnect.deleteItemTable(this.idSelected, "permintaan", "kode_pemesanan");
+
+        // Delete from pengiriman table
+        boolean successPengiriman = DatabaseConnect.deleteItemTable(this.idSelected, "pengiriman", "kode_pemesanan");
+
+        if (successPermintaan && successPengiriman) {
+            JOptionPane.showMessageDialog(this, "Records deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else if (successPermintaan) {
+            JOptionPane.showMessageDialog(this, "Record deleted from permintaan table, but no corresponding record found in pengiriman table.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else if (successPengiriman) {
+            JOptionPane.showMessageDialog(this, "Record deleted from pengiriman table, but no corresponding record found in permintaan table.", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to delete the record.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Failed to delete the records.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
