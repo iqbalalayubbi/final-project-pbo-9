@@ -174,7 +174,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
         code_input5.setLayout(new javax.swing.BoxLayout(code_input5, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Tanggal Pemesanan");
+        jLabel10.setText("Tanggal Pengiriman");
         code_input5.add(jLabel10);
 
         gap10.setForeground(new java.awt.Color(242, 242, 242));

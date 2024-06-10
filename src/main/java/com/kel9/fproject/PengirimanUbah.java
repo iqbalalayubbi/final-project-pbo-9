@@ -142,6 +142,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         gap2.setRequestFocusEnabled(false);
         code_input.add(gap2);
 
+        kode_pemesanan_field.setEditable(false);
         kode_pemesanan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         kode_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         kode_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
@@ -173,6 +174,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         gap10.setRequestFocusEnabled(false);
         code_input5.add(gap10);
 
+        pelanggan_field.setEditable(false);
         pelanggan_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         pelanggan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         pelanggan_field.setMinimumSize(new java.awt.Dimension(300, 24));
@@ -204,6 +206,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
         gap3.setRequestFocusEnabled(false);
         code_input1.add(gap3);
 
+        jenis_produk_field.setEditable(false);
         jenis_produk_field.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jenis_produk_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
         jenis_produk_field.setMinimumSize(new java.awt.Dimension(300, 24));
@@ -424,7 +427,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
     private void modifyPengirimanRecord() {
         // Get input data
         String kodePemesanan = kode_pemesanan_field.getText();
-        String pelanggan = biaya_pengiriman_field.getText();
+        String pelanggan = pelanggan_field.getText();
         String jenisProduk = jenis_produk_field.getText();
         String biayaKirim = biaya_pengiriman_field.getText();
         String jasaKirim = (String) jenis_pengiriman_field.getSelectedItem();

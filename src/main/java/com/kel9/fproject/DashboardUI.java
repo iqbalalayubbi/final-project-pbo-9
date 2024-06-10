@@ -851,7 +851,7 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew1.add(kirim10, gridBagConstraints);
 
         kirim11.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim11.setText("Tanggal Pengiriman");
+        kirim11.setText("Tanggal Expired");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;

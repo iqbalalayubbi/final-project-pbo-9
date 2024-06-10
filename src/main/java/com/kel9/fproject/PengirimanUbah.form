@@ -117,6 +117,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="kode_pemesanan_field">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Liberation Sans" size="18" style="0"/>
                 </Property>
@@ -182,6 +183,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="pelanggan_field">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Liberation Sans" size="18" style="0"/>
                 </Property>
@@ -247,6 +249,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jenis_produk_field">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Liberation Sans" size="18" style="0"/>
                 </Property>
