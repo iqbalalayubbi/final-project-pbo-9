@@ -40,7 +40,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
             this.kode_pemesanan_field.setText(valuesRow.get("Kode Pemesanan"));
             
             // date chooser
-            String dateValue = valuesRow.get("Tanggal Pengiriman");
+            String dateValue = valuesRow.get("Tanggal Pemesanan");
             if (dateValue != null && !dateValue.isEmpty()) {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
                 this.tanggal_pemesanan_field.setDate(date);
@@ -50,7 +50,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
             }
             
             // jenis produk
-            this.jenis_produk_field.setText(valuesRow.get("Jenis Produk"));
+            this.jenis_produk_field.setText(valuesRow.get("Nama Barang"));
             
             // pelanggan
             this.pelanggan_field.setText(valuesRow.get("Pelanggan"));
@@ -174,7 +174,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
         code_input5.setLayout(new javax.swing.BoxLayout(code_input5, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Tanggal Pengiriman");
+        jLabel10.setText("Tanggal Pemesanan");
         code_input5.add(jLabel10);
 
         gap10.setForeground(new java.awt.Color(242, 242, 242));
@@ -202,7 +202,7 @@ public class PermintaanUbah extends javax.swing.JFrame {
         code_input1.setLayout(new javax.swing.BoxLayout(code_input1, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Jenis Produk");
+        jLabel7.setText("Nama Barang");
         code_input1.add(jLabel7);
 
         gap3.setForeground(new java.awt.Color(242, 242, 242));

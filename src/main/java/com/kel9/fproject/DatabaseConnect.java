@@ -84,7 +84,7 @@ public class DatabaseConnect {
         model.addColumn("No");
         model.addColumn("Kode Pemesanan");
         model.addColumn("Pelanggan");
-        model.addColumn("Jenis Produk");
+        model.addColumn("Nama Produk");
         model.addColumn("Biaya Kirim");
         model.addColumn("Jenis Pengiriman");
         model.addColumn("Tanggal Kirim");
@@ -124,8 +124,8 @@ public class DatabaseConnect {
         // Add columns to the table model
         model.addColumn("No");
         model.addColumn("Kode Pemesanan");
-        model.addColumn("Tanggal Pengiriman");
-        model.addColumn("Nama Produk");
+        model.addColumn("Tanggal Pemesanan");
+        model.addColumn("Nama Barang");
         model.addColumn("Pelanggan");
         model.addColumn("Jumlah Pesanan");
         model.addColumn("Status Pemesanan");

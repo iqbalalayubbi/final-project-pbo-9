@@ -43,7 +43,7 @@ public class PengirimanUbah extends javax.swing.JFrame {
             //? pelanggan
             this.pelanggan_field.setText(valuesRow.get("Pelanggan"));
             //? jenis produk
-            this.jenis_produk_field.setText(valuesRow.get("Jenis Produk"));
+            this.jenis_produk_field.setText(valuesRow.get("Nama Produk"));
             //? biaya kirim
             this.biaya_pengiriman_field.setText(valuesRow.get("Biaya Kirim"));
             //? jasa kirim
@@ -416,11 +416,20 @@ public class PengirimanUbah extends javax.swing.JFrame {
     }//GEN-LAST:event_delete_btnActionPerformed
 
     private void deletePengirimanRecord(){
-        boolean success = DatabaseConnect.deleteItemTable(this.idSelected, "pengiriman", "kode_pemesanan");
-        if (success) {
-            JOptionPane.showMessageDialog(this, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        // Delete from pengiriman table
+        boolean successPengiriman = DatabaseConnect.deleteItemTable(this.idSelected, "pengiriman", "kode_pemesanan");
+
+        // Delete from permintaan table
+        boolean successPermintaan = DatabaseConnect.deleteItemTable(this.idSelected, "permintaan", "kode_pemesanan");
+
+        if (successPengiriman && successPermintaan) {
+            JOptionPane.showMessageDialog(this, "Records deleted successfully from both pengiriman and permintaan tables.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else if (successPengiriman) {
+            JOptionPane.showMessageDialog(this, "Record deleted from pengiriman table, but no corresponding record found in permintaan table.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else if (successPermintaan) {
+            JOptionPane.showMessageDialog(this, "Record deleted from permintaan table, but no corresponding record found in pengiriman table.", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to delete the record.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Failed to delete the records.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

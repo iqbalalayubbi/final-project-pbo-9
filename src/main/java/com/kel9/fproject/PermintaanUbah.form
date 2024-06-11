@@ -174,7 +174,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Tanggal Pengiriman"/>
+                <Property name="text" type="java.lang.String" value="Tanggal Pemesanan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="gap10">
@@ -238,7 +238,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Jenis Produk"/>
+                <Property name="text" type="java.lang.String" value="Nama Barang"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="gap3">

@@ -593,7 +593,7 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew2.add(kirim16, gridBagConstraints);
 
         kirim17.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim17.setText("Tanggal Pengiriman");
+        kirim17.setText("Tanggal Pemesanan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
@@ -706,7 +706,7 @@ public class DashboardUI extends javax.swing.JFrame {
         addnew2.add(ubah_permintaan_button, gridBagConstraints);
 
         kirim19.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        kirim19.setText("Jenis Produk");
+        kirim19.setText("Nama Barang");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;

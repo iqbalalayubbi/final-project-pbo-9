@@ -735,7 +735,7 @@
                       <Font name="Liberation Sans" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&quot;Tanggal Pengiriman&quot;" type="code"/>
+                      <Connection code="&quot;Tanggal Pemesanan&quot;" type="code"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -942,7 +942,7 @@
                       <Font name="Liberation Sans" size="16" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&quot;Jenis Produk&quot;" type="code"/>
+                      <Connection code="&quot;Nama Barang&quot;" type="code"/>
                     </Property>
                   </Properties>
                   <Constraints>
